@@ -147,14 +147,18 @@ const doc = new Document({
 
       // ───────── 04
       slideHead("04", "⑃  OS CINCO VENDEDORES"),
-      fala("Hoje tem cinco vendedores anunciando esse catálogo na Amazon. Um é a própria Amazon, que compra de vocês. Os outros quatro são a Cobasi, o Empório Animal, uma loja chamada Only Fish, que é especialista em aquarismo, e outra chamada Paraíso dos Pássaros, especialista em aves. Repara que os dois últimos pegaram justamente as duas linhas de nicho da fábrica de vocês. Isso não é bagunça, é organização. A minha pergunta é de quem."),
+      fala("Hoje tem cinco vendedores anunciando esse catálogo na Amazon."),
+      fala("Um é a própria Amazon, que compra de vocês. Os outros quatro são a Cobasi, o Empório Animal, e duas lojas menores: a Only Fish e a Paraíso dos Pássaros."),
+      fala("Repara no nome das duas últimas. Only Fish é de aquarismo. Paraíso dos Pássaros é de passarinho. Elas pegaram exatamente a linha de aquário e a linha de ave de vocês."),
+      fala("Isso não é bagunça. Isso é organizado. Só que quem organizou não foram vocês."),
+      fala("Esses quatro — vocês escolheram?"),
       pausa("Faz a pergunta e cala a boca. Espera ele responder."),
       bifurcacao([
         ["“temos política”, “são nossos parceiros”, “a gente aprova”", "Foi decisão nossa"],
         ["“não sabia”, “como assim?”, hesitação, olhar para a filha", "Não sabíamos"],
       ]),
       nota("Na dúvida entre os dois, clique em “Não sabíamos”. Esse caminho abre conversa; o outro assume um conhecimento que ele pode não ter e te deixa sem saída se ele estiver blefando.", MUTE),
-      insight("“A pergunta é de quem” é a frase que faz o trabalho. Você não acusou ninguém de nada e mesmo assim colocou a questão do controle na mesa. E note que você elogiou os revendedores antes: chamar a organização deles de organização tira qualquer tom de reclamação."),
+      insight("A fala está quebrada em cinco pedaços curtos de propósito: lista de quatro nomes numa respiração só ninguém acompanha. Cada frase é uma ideia, e a última é só a pergunta, sem nada grudado nela — é o que faz o silêncio depois funcionar. E note que você elogia os revendedores antes de perguntar: chamar a organização deles de organização tira qualquer tom de reclamação, e mesmo assim coloca o controle na mesa."),
 
       // ───────── 05
       slideHead("05", "A BUY BOX  ·  O SLIDE"),
