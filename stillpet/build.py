@@ -341,15 +341,17 @@ ws.cell(row=14, column=2, value="'Disponivel a um preco mais baixo em outros ven
 ws.cell(row=14, column=2).alignment = WRAP; ws.cell(row=14, column=2).fill = YEL
 ws.merge_cells("B14:G16")
 
-ws.cell(row=18, column=2, value="HIPOTESE DE CAUSA - NAO CONFIRMADA, NAO LEVAR AO DECK SEM O CARLOS CONFIRMAR").font = RED
+ws.cell(row=18, column=2, value="MECANISMO - cada passo marcado com o nivel de evidencia. NAO levar ao deck sem o Carlos confirmar os passos 1 e 2.").font = RED
 cadeia = [
- "1. Na call, a Beatriz declarou que a Amazon exigia desconto de 8% a 11% e que a StillPet 'subia um pouco o preco justamente para ter esse desconto'.",
- "2. A Amazon monta a margem dela sobre um custo ja inflado - o 1P chega a R$18,32.",
- "3. Um revendedor compra no atacado normal e lista via FBA a R$11,25, com margem.",
- "4. A propria pagina da Amazon avisa o comprador que existe mais barato ao lado.",
- "5. O ASIN 1P perde venda, e o algoritmo de compra da Amazon reduz o pedido de reposicao.",
- "6. Foi exatamente o que a StillPet descreveu: o produto que representava 60-70% da venda na Amazon caiu.",
- "7. A conclusao da fabrica virou 'a Amazon e burocratica e nao funciona'. A evidencia aponta para arquitetura de preco, nao burocracia.",
+ "1. Na call, a Beatriz declarou que a Amazon exigia desconto de 8% a 11% e que a StillPet 'subia um pouco o preco justamente para ter esse desconto'.  [DECLARADO NA CALL]",
+ "2. A Amazon monta a margem dela sobre um custo ja inflado - o 1P chega a R$18,32.  [INFERENCIA]",
+ "3. Um revendedor compra no atacado normal e lista via FBA a R$11,25, com margem.  [PRINT 23/09/2026]",
+ "4. O mecanismo NAO e o consumidor clicar em 'outros vendedores' - a Buy Box concentra a esmagadora maioria das vendas na Amazon, e o link de outras ofertas e caminho de baixissimo trafego.",
+ "5. O mecanismo e a propria Amazon: diante de uma oferta FBA 39% mais barata no mesmo ASIN, ou ela perde a Buy Box para o terceiro, ou deixa de comprar um item em que seu custo nao compete.",
+ "6. PERDER A BUY BOX NESTE CATALOGO ESTA PROVADO: na Bica Pedra Calopsitas, com selo Escolha da Amazon, quem detem a Buy Box e a Cobasi - nao a Amazon.  [PRINT 23/09/2026]",
+ "7. A reducao de pedido de reposicao por falta de competitividade de preco e INFERENCIA - coerente com o relato da fabrica, mas nao verificada.",
+ "8. Foi o que a StillPet descreveu: o produto que representava 60-70% da venda na Amazon caiu.  [DECLARADO NA CALL]",
+ "9. A conclusao da fabrica virou 'a Amazon e burocratica e nao funciona'. A evidencia aponta para arquitetura de preco, nao burocracia.",
 ]
 rr = 19
 for c in cadeia:
@@ -366,6 +368,13 @@ ws.cell(row=rr, column=2, value="Monitorar preco e orientar posicionamento: pode
 ws.cell(row=rr, column=2).alignment = WRAP; ws.cell(row=rr, column=2).fill = YEL
 ws.merge_cells(start_row=rr, start_column=2, end_row=rr+2, end_column=7)
 
+
+rr += 5
+ws.cell(row=rr, column=2, value="POR QUE A BUY BOX E O ATIVO").font = RED
+rr += 1
+ws.cell(row=rr, column=2, value="A Buy Box concentra a esmagadora maioria das vendas de um ASIN. Isso reposiciona dois achados desta planilha como perda quase total, nao parcial: (a) o Comedouro Filhote 450ml Rosa, com 4,8 estrelas e 182 avaliacoes, esta SEM Buy Box - nao e venda reduzida, e venda proxima de zero; (b) na Bica Pedra, com selo Escolha da Amazon, quem detem a Buy Box e a Cobasi - ou seja, praticamente toda a venda desse ASIN e da Cobasi. Se for usar um percentual de Buy Box no deck, cite a fonte do estudo - nao publique numero sem referencia.").font = BODY
+ws.cell(row=rr, column=2).alignment = WRAP; ws.cell(row=rr, column=2).fill = YEL
+ws.merge_cells(start_row=rr, start_column=2, end_row=rr+3, end_column=7)
 
 wb.save("Evidencias_StillPet_Amazon_BR_2026-09-23.xlsx")
 print("ok")
