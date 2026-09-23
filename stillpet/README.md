@@ -1,36 +1,38 @@
-# StillPet / Tudo Pet — Diagnóstico de canal (Amazon Brasil)
+# StillPet — Diagnóstico de canal (Amazon Brasil)
 
-Fase 1 do `diagnostico-marketplace` da impulsio. Captura de **23/09/2026**, Amazon.com.br, CEP 12244000.
+Fase 1 e 3 do `diagnostico-marketplace` da impulsio. Captura de **23/09/2026**, Amazon.com.br, CEP 12244000.
 
-## Arquivos
+## Estado atual
 
-- `Evidencias_StillPet_Amazon_BR_2026-09-23.xlsx` — planilha de evidências (7 abas)
-- `build.py` — script que gera a planilha; editar aqui e rodar `python3 build.py` para atualizar
+| Arquivo | O que é | Versão |
+|---|---|---|
+| **deck/index.html** | A apresentação. Publicada em https://claude.ai/artifact/ELhtvZKscaXqp6wJnK4NrB | **v5** |
+| **deck-conteudo.md** | Todo o texto do deck, para ler e estudar | v5 |
+| **falas-da-call.md** | Como conduzir ao vivo: uma fala por slide, onde pausar, como escolher o caminho | atual |
+| **Evidencias_StillPet_Amazon_BR_2026-09-23.xlsx** | 7 abas: 28 ASINs, 5 vendedores, 19 erros, 31 concorrentes, dispersão de preço | atual |
+| **roteiro-narracao.md** | Narração fonética, 18 faixas. **Não gerado** — conta ElevenLabs sem créditos | parado |
+| **build.py** | Gera a planilha. Editar e rodar `python3 build.py` | — |
 
-## Abas
+## O deck
 
-| Aba | Conteúdo |
-|---|---|
-| Leia-me | Método, fontes, e **os limites do que foi verificado** |
-| Vendedores | Os 5 vendedores no catálogo da marca Tudo Pet |
-| ASINs StillPet | 28 ASINs: preço, vendedor, estoque, avaliações, categoria |
-| Erros de cadastro | 19 itens acionáveis, priorizados (2 críticos, 9 altos) |
-| Benchmark | 31 concorrentes que ocupam as buscas + os importados do topo patrocinado |
-| Buscas | Termos capturados e onde a marca aparece (ou não) |
-| Dispersão de preço | Mesmo ASIN a R$18,32 (1P) e R$11,25 (3P) |
+18 slides no tronco, navegáveis só com `→`. Três bifurcações rasas: a pergunta leva a um
+slide de resposta e volta ao tronco. `F` entra em tela cheia.
 
-## Regra da casa
+| Bifurcação | Slide | Decide |
+|---|---|---|
+| Quem vende | 04 | se existe critério de credenciamento |
+| Arquitetura de marca | 07 | se separar as três marcas foi escolha |
+| Postura de canal | 12 | **a estrutura da proposta comercial** |
 
-Todo número tem fonte e data de print. Células `n/d` não foram capturadas — **não preencher por dedução**.
-A cadeia causal da aba "Dispersão de preço" está marcada como **hipótese a confirmar com o cliente**.
+## Regras que o material respeita
 
-## Restrição legal
+- Todo número tem print, fonte e data. Onde não foi verificado, está escrito.
+- Sem meta de faturamento: a operação responde pelo que controla.
+- Sem imposição de preço de revenda (Lei 12.529/2011).
+- Sem valor comercial: preço é arquivo separado, segunda metade da reunião.
 
-Monitorar preço e orientar posicionamento: pode. Impor preço mínimo de revenda com punição: não
-(Lei 12.529/2011). A correção proposta é no preço de sell-in da própria fábrica.
+## O que falta
 
-## Nota técnica
-
-O LibreOffice deste ambiente não conseguiu recalcular o arquivo (timeout). As fórmulas são todas
-`COUNTA`/`COUNTIF`/`MEDIAN`/aritmética e calculam normalmente ao abrir no Excel ou Google Sheets;
-apenas não há valores em cache gravados.
+1. Navegar o deck e validar a copy em voz alta.
+2. Proposta comercial — só depois que o slide 12 der a resposta e souberem quantos SKUs
+   o distribuidor não compra.
