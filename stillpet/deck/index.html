@@ -41,8 +41,8 @@ button{font:inherit;color:inherit;font-family:var(--fd)}
 @media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
 
 /* ═══ tipografia: Archivo expandido, grande ═══ */
-.eyebrow{font-family:var(--fm);font-size:clamp(9px,.74vw,12px);font-weight:700;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--hot);
+.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--hot);
   display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
 .eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
 h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
@@ -50,12 +50,12 @@ h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
   color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
 h1 em{font-style:normal;color:var(--hot)}
 h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
-  font-size:clamp(15px,1.5vw,26px);line-height:1.04;letter-spacing:-.01em;
-  color:var(--paper);margin:0 0 12px}
-.sub{font-size:clamp(13px,1.08vw,21px);line-height:1.42;color:var(--text);
-  max-width:60ch;margin:0 0 clamp(10px,1.6vh,18px);font-weight:400}
+  font-size:clamp(17px,1.72vw,32px);line-height:1.04;letter-spacing:-.01em;
+  color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);
+  max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px);font-weight:400}
 .sub strong{color:var(--paper);font-weight:700}
-.small{font-size:clamp(11px,.78vw,15px);line-height:1.5;color:var(--mute);max-width:64ch}
+.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
 .kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);
   font-family:var(--fd);font-variation-settings:var(--cond);
   font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);
@@ -66,7 +66,12 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
 .ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);
   grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:stretch}
 .ev.even{grid-template-columns:1fr 1fr}
-.col{min-height:0;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+.col{min-height:0;display:flex;flex-direction:column;justify-content:flex-start;
+  overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;
+  scrollbar-color:var(--rule) transparent}
+.col::-webkit-scrollbar{width:6px}
+.col::-webkit-scrollbar-thumb{background:var(--rule)}
+.col.shot{overflow:hidden}
 .shot{min-height:0;display:flex;flex-direction:column;gap:8px}
 .shot figure{margin:0;flex:1;min-height:0;position:relative;background:#fff;
   border:1px solid var(--rule);overflow:hidden;display:flex;
@@ -75,18 +80,18 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
 .slide.on .shot figure{animation:mask .62s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s}
 @keyframes mask{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 @media(prefers-reduced-motion:reduce){.slide.on .shot figure{animation:none}}
-.cap{font-family:var(--fm);font-size:clamp(8px,.6vw,11px);line-height:1.5;
-  color:var(--faint);letter-spacing:.06em;text-transform:uppercase;flex:0 0 auto}
+.cap{font-family:var(--fm);font-size:clamp(10px,.78vw,15px);line-height:1.5;
+  color:var(--mute);letter-spacing:.06em;text-transform:uppercase;flex:0 0 auto}
 .cap b{color:var(--mute);font-weight:400}
 
 /* ═══ dados ═══ */
-.rows{display:flex;flex-direction:column;font-size:clamp(11px,.88vw,17px)}
-.row{display:flex;justify-content:space-between;gap:16px;
-  padding:clamp(6px,.95vh,13px) 0;border-bottom:1px solid var(--rule)}
+.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.row{display:flex;justify-content:space-between;gap:18px;
+  padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
 .row:last-child{border-bottom:0}
-.row>span:first-child{color:var(--mute)}
+.row>span:first-child{color:var(--text)}
 .row>span:last-child{color:var(--paper);font-family:var(--fm);
-  font-size:clamp(10px,.78vw,15px);text-align:right;font-variant-numeric:tabular-nums}
+  font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
 .row .hot{color:var(--hot)!important} .row .amb{color:var(--amber)!important}
 .row .grn{color:var(--green)!important}
 
@@ -96,8 +101,8 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
   font-size:clamp(44px,7.6vw,148px);line-height:.82;color:var(--paper);
   letter-spacing:-.045em;font-variant-numeric:tabular-nums}
 .fig .n.hot{color:var(--hot)} .fig .n.amb{color:var(--amber)}
-.fig .l{font-family:var(--fm);font-size:clamp(9px,.66vw,12px);letter-spacing:.16em;
-  text-transform:uppercase;color:var(--mute);margin-top:12px;max-width:22ch;line-height:1.5}
+.fig .l{font-family:var(--fm);font-size:clamp(11px,.84vw,16px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);margin-top:14px;max-width:22ch;line-height:1.5}
 
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(140px,15vw,210px),1fr));
   gap:1px;background:var(--rule);border:1px solid var(--rule)}
@@ -106,12 +111,12 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
   font-size:clamp(26px,3vw,56px);color:var(--paper);line-height:.86;
   font-variant-numeric:tabular-nums;letter-spacing:-.035em}
 .tile .n.hot{color:var(--hot)} .tile .n.amb{color:var(--amber)}
-.tile .l{font-size:clamp(10px,.74vw,14px);line-height:1.4;color:var(--mute);margin-top:10px}
+.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.38;color:var(--text);margin-top:12px}
 .tile .l b{color:var(--paper);font-weight:700}
 
 .pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);
-  font-size:clamp(8px,.6vw,11px);letter-spacing:.14em;text-transform:uppercase;
-  padding:5px 11px;border:1px solid var(--rule);color:var(--mute)}
+  font-size:clamp(10px,.74vw,14px);letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border:1px solid var(--rule);color:var(--mute)}
 .pill.seal{color:var(--seal-l);border-color:#25406E}
 .pill.hot{color:var(--hot);border-color:#5B2412}
 
@@ -161,16 +166,16 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
 .choice:hover,.choice:focus-visible{background:var(--ink3);border-color:var(--faint);
   transform:translateY(-2px);outline:none}
 .choice:hover::after,.choice:focus-visible::after{transform:scaleY(1)}
-.choice .k{font-family:var(--fm);font-size:clamp(8px,.6vw,11px);letter-spacing:.18em;
+.choice .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;
   color:var(--hot);text-transform:uppercase}
 .choice .q{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
-  font-size:clamp(16px,1.72vw,32px);color:var(--paper);line-height:1.02;letter-spacing:-.02em}
-.choice .d{font-size:clamp(11px,.82vw,16px);line-height:1.4;color:var(--mute)}
+  font-size:clamp(18px,1.86vw,36px);color:var(--paper);line-height:1.02;letter-spacing:-.02em}
+.choice .d{font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
 .answer{border-left:3px solid var(--hot)}
 .backline{display:flex;gap:10px;align-items:center;margin-top:auto;
   padding-top:clamp(12px,2vh,20px);border-top:1px solid var(--rule);flex:0 0 auto}
-.btn{background:transparent;border:1px solid var(--rule);padding:10px 20px;cursor:pointer;
-  font-size:clamp(11px,.8vw,15px);font-weight:600;transition:border-color .18s,background .18s;
+.btn{background:transparent;border:1px solid var(--rule);padding:12px 24px;cursor:pointer;
+  font-size:clamp(12px,.92vw,18px);font-weight:600;transition:border-color .18s,background .18s;
   font-family:var(--fm);letter-spacing:.06em;text-transform:uppercase}
 .btn:hover,.btn:focus-visible{border-color:var(--paper);outline:none}
 .btn.primary{background:var(--hot);border-color:var(--hot);color:#140A05;font-weight:700}
@@ -180,11 +185,11 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,64px);
   flex:1;min-height:0;align-items:start}
 .field{display:flex;flex-direction:column;gap:7px;margin-bottom:clamp(10px,1.8vh,20px)}
-.field label{font-size:clamp(11px,.8vw,16px);color:var(--mute);line-height:1.35}
+.field label{font-size:clamp(13px,1.02vw,21px);color:var(--text);line-height:1.34}
 .inputwrap{display:flex;align-items:center;gap:10px;background:var(--ink2);
   border:1px solid var(--rule);padding:0 16px;transition:border-color .18s}
 .inputwrap:focus-within{border-color:var(--hot)}
-.inputwrap span{font-family:var(--fm);font-size:clamp(11px,.8vw,15px);color:var(--faint)}
+.inputwrap span{font-family:var(--fm);font-size:clamp(13px,.96vw,19px);color:var(--mute)}
 .inputwrap input{flex:1;background:none;border:0;outline:none;
   padding:clamp(10px,1.5vh,17px) 0;color:var(--paper);font-family:var(--fm);
   font-size:clamp(17px,1.5vw,28px);font-variant-numeric:tabular-nums;min-width:0}
@@ -193,7 +198,7 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
 .result .r{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
   padding:clamp(8px,1.3vh,16px) 0;border-bottom:1px solid var(--rule)}
 .result .r:last-of-type{border-bottom:0}
-.result .r span{font-size:clamp(11px,.8vw,16px);color:var(--mute)}
+.result .r span{font-size:clamp(13px,1.02vw,21px);color:var(--text)}
 .result .r b{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
   font-size:clamp(22px,2.3vw,44px);color:var(--paper);font-variant-numeric:tabular-nums;
   letter-spacing:-.03em;line-height:1}
@@ -207,7 +212,7 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
   display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);
   padding:clamp(9px,1.3vh,15px) clamp(24px,4.2vw,92px);
   padding-bottom:calc(clamp(9px,1.3vh,15px) + env(safe-area-inset-bottom,0px));
-  font-family:var(--fm);font-size:clamp(9px,.66vw,12px);color:var(--faint);
+  font-family:var(--fm);font-size:clamp(10px,.78vw,14px);color:var(--mute);
   letter-spacing:.14em;text-transform:uppercase;
   background:linear-gradient(to top,var(--ink) 55%,transparent)}
 #pos{color:var(--mute)}
@@ -614,22 +619,22 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
       </g>
 
       <g class="notes" font-family="JetBrains Mono, monospace">
-        <text x="422" y="72"  fill="var(--mute)" font-size="13" letter-spacing="2.2">MARCA GRAVADA NO MOLDE</text>
-        <text x="422" y="99"  fill="var(--hot)"  font-size="21" font-weight="700">ficha diz &#8220;Tudo Pet&#8221;</text>
+        <text x="422" y="72"  fill="var(--mute)" font-size="16" letter-spacing="2.4">MARCA GRAVADA NO MOLDE</text>
+        <text x="422" y="99"  fill="var(--hot)"  font-size="26" font-weight="700">ficha diz &#8220;Tudo Pet&#8221;</text>
 
-        <text x="422" y="191" fill="var(--mute)" font-size="13" letter-spacing="2.2">CAPACIDADE EM ML</text>
-        <text x="422" y="218" fill="var(--hot)"  font-size="21" font-weight="700">campo vazio</text>
+        <text x="422" y="191" fill="var(--mute)" font-size="16" letter-spacing="2.4">CAPACIDADE EM ML</text>
+        <text x="422" y="218" fill="var(--hot)"  font-size="26" font-weight="700">campo vazio</text>
 
-        <text x="422" y="254" fill="var(--mute)" font-size="13" letter-spacing="2.2">MATERIAL</text>
-        <text x="422" y="281" fill="var(--hot)"  font-size="21" font-weight="700">&#8220;Madeira ou Plástico&#8221;</text>
+        <text x="422" y="254" fill="var(--mute)" font-size="16" letter-spacing="2.4">MATERIAL</text>
+        <text x="422" y="281" fill="var(--hot)"  font-size="26" font-weight="700">&#8220;Madeira ou Plástico&#8221;</text>
 
-        <text x="422" y="378" fill="var(--mute)" font-size="13" letter-spacing="2.2">RECURSO ANTIDERRAPANTE</text>
-        <text x="422" y="405" fill="var(--hot)"  font-size="21" font-weight="700">campo vazio</text>
+        <text x="422" y="378" fill="var(--mute)" font-size="16" letter-spacing="2.4">RECURSO ANTIDERRAPANTE</text>
+        <text x="422" y="405" fill="var(--hot)"  font-size="26" font-weight="700">campo vazio</text>
       </g>
 
       <g class="notes">
         <line x1="422" y1="436" x2="908" y2="436" stroke="var(--rule)" stroke-width="1"></line>
-        <text x="422" y="461" fill="var(--mute)" font-family="JetBrains Mono, monospace" font-size="13">
+        <text x="422" y="461" fill="var(--mute)" font-family="JetBrains Mono, monospace" font-size="16">
           e dois campos que não descrevem peça nenhuma: peso &#8220;10 gramas&#8221; · &#8220;controle por rádio: Mastigar&#8221;
         </text>
       </g>
