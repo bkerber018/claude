@@ -1,172 +1,246 @@
-# Prompt para o Codex — montar base de prospecção de indústrias com marca registrada
+# Prompt para o Codex — base de prospecção de indústrias com marca registrada
 
-> Cole tudo abaixo da linha no Codex (ou em qualquer agente com acesso livre à internet).
-> Ele foi escrito para ser autocontido: não depende de nenhum contexto anterior.
+> **Versão 3.** A v1 foi revisada pelo próprio Codex e a crítica dele foi incorporada.
+> A inspeção da RPI, que a v1 pedia como primeira tarefa, **já foi feita** — o resultado está aqui dentro.
+> Cole tudo abaixo da linha. É autocontido: não depende de nenhum contexto anterior.
 
 ---
 
 ## Contexto
 
-Trabalho numa operadora de canais de marketplace. Vendemos operação de canal (Mercado Livre, Amazon, Shopee, TikTok Shop) para **donos de marca** — indústrias e importadores exclusivos. Não vendemos para varejo nem para distribuidor que só revende marca de terceiro, porque esses não têm Brand Registry, não controlam preço e não têm buy box a proteger.
+Trabalho numa operadora de canais de marketplace. Vendemos operação de canal (Mercado Livre, Amazon, Shopee, TikTok Shop) para **donos de marca** — indústrias e importadores exclusivos. Não vendemos para varejo nem para distribuidor que só revende marca de terceiro: sem marca própria não há Brand Registry, não há controle de preço e não há buy box a proteger.
 
-Preciso montar, do zero, uma base nacional que me permita gerar listas de prospecção de **fabricantes que são donos de marca registrada**, em qualquer segmento — pet, cosmético, alimento, utilidade doméstica, ferramenta, brinquedo, moda, o que for.
+Preciso de uma base nacional que gere listas de prospecção de **fabricantes donos de marca registrada**, em qualquer segmento — pet, cosmético, alimento, utilidade doméstica, ferramenta, brinquedo, moda. O segmento é um filtro no fim, não um projeto separado.
 
-Hoje o processo é o inverso e é ruim: pegamos uma lista pronta (expositores de feira, associados de entidade) e tentamos descobrir quem ali é fabricante. Medi isso numa base de 441 empresas e o resultado foi:
+Hoje o processo é o inverso e é ruim: pegamos uma lista pronta (expositores de feira, associados de entidade) e tentamos descobrir quem ali é fabricante. Medi numa base de 441 empresas:
 
 - **9,3%** eram indústria de fato
 - **60%** das empresas cujo nome sugeria "indústria" NÃO eram indústria pelo CNAE
-- **100%** das empresas com "Import"/"Importação" na razão social não tinham CNAE de importação
-- **~30%** das que tinham "Distribuidora" no nome eram varejo na Receita
+- **100%** das que tinham "Import"/"Importação" na razão social não tinham CNAE de importação
+- **~30%** das com "Distribuidora" no nome eram varejo na Receita
+- **6%** dos CNPJs falhavam no dígito verificador — o número não existe
 
-Conclusão: **nome de empresa não informa atividade.** A lista precisa nascer do registro oficial, não de um diretório.
+**Nome de empresa não informa atividade.** A lista tem que nascer do registro oficial.
 
-## O que eu quero que você construa
+## Objetivo
 
-Um pipeline reprodutível que produza uma tabela com uma linha por empresa, onde toda linha satisfaça simultaneamente:
+Um pipeline reprodutível que produza `industrias_com_marca`: uma linha por empresa, onde toda linha satisfaça:
 
-1. **É indústria** — CNAE principal registrado na Receita Federal nas divisões 10 a 33
-2. **Tem marca registrada** — é titular de pelo menos um registro de marca no INPI
-3. **Tem porte mínimo** — não é MEI; situação cadastral ativa
+1. **É indústria** — tem estabelecimento ativo com CNAE principal nas divisões 10 a 33
+2. **Tem marca** — é titular de processo de marca no INPI
+3. **Não é MEI** — e a situação cadastral é ativa
 
-Depois quero poder filtrar essa tabela por CNAE, por UF, por classe de Nice da marca e por porte, para gerar a lista de cada campanha.
+Depois quero filtrar por CNAE, UF, classe de Nice, porte e estado da marca, para montar a lista de cada campanha.
 
-## Fonte 1 — Base CNPJ da Receita Federal (dados abertos)
+---
+
+# Decisões já tomadas — implemente assim, não pergunte
+
+A revisão anterior levantou seis ambiguidades reais. Todas estão decididas abaixo. **Se você discordar de alguma, diga antes de implementar — mas não pare o projeto para perguntar.**
+
+### D1 · "É indústria" = qualquer estabelecimento, consolidado no CNPJ básico
+
+A empresa entra se **qualquer estabelecimento ativo** tiver CNAE principal nas divisões 10–33. Não exijo que seja a matriz.
+
+Motivo: fabricante com sede administrativa em CNAE de escritório ou holding, e fábrica numa filial, é caso comum. Exigir a matriz perde esses. Já vi acontecer na prática.
+
+Consolide por **CNPJ básico** (8 dígitos) e preserve:
+
+| Coluna | Conteúdo |
+|---|---|
+| `cnpj_basico` | chave da empresa |
+| `cnpj_matriz` | CNPJ completo da matriz |
+| `cnae_principal_matriz` | o que a matriz declara |
+| `estabelecimentos_industriais` | lista de CNPJs completos com CNAE 10–33 |
+| `qtd_estabelecimentos_ativos` | |
+| `criterio_inclusao` | `MATRIZ_INDUSTRIAL` ou `FILIAL_INDUSTRIAL` |
+
+Assim eu consigo, depois, apertar o critério sem reprocessar nada.
+
+### D2 · "Marca" tem quatro estados, e eu quero os quatro
+
+Não colapse em um booleano. Crie:
+
+| Coluna | Significado |
+|---|---|
+| `tem_processo_inpi` | aparece como titular em qualquer processo |
+| `tem_pedido_pendente` | depósito sem decisão final |
+| `tem_registro_concedido` | houve concessão (`IPAS158`) |
+| `tem_marca_viva` | concedido e **sem** extinção/nulidade/arquivamento posterior |
+| `despacho_mais_recente` | código + data |
+| `situacao_calculada_em` | data da revista mais recente processada |
+
+**A lista comercial principal usa `tem_marca_viva`** — é o que habilita Brand Registry.
+
+Mas `tem_pedido_pendente` **não é descarte, é gatilho de timing.** Empresa depositando marca agora é empresa prestes a lançar ou a proteger algo — é o melhor momento para uma abordagem. Quero essa lista separada, não misturada.
+
+### D3 · Estado da marca se reconstrói por histórico, não por evento isolado
+
+Este é o ponto conceitual mais importante do projeto.
+
+**A RPI publica movimentação, não acervo.** Um processo aparece só na semana em que teve despacho. Encontrar uma concessão numa revista não significa que a marca está viva hoje — pode ter sido extinta depois.
+
+Portanto: **agregue todos os despachos por número de processo, ordene por data e derive o estado final.** Não trate cada linha da RPI como verdade isolada. Eventos que mudam estado: concessão, prorrogação, arquivamento, extinção, nulidade, transferência de titularidade.
+
+Levante a tabela completa de códigos IPAS no Manual de Marcas do INPI antes de fechar a regra. Os códigos que já identifiquei estão no apêndice.
+
+### D4 · A junção é por CNPJ básico; o CNPJ completo fica guardado
+
+Quando houver CNPJ (só virá da busca do INPI, ver D6), junte no **básico de 8 dígitos**, porque o INPI pode informar matriz ou filial e não há como saber qual.
+
+Guarde sempre: valor bruto do INPI, valor normalizado, resultado da validação de DV, CNPJ básico derivado, método de correspondência e confiança.
+
+Junção por nome nunca é apresentada como igualdade. Use `confianca_match` com estes níveis:
+
+`EXATA_CNPJ` · `NOME_NORMALIZADO_UNICO` · `NOME_NORMALIZADO_AMBIGUO` · `NOME_CURTO_BAIXA_CONFIANCA` · `SEM_CORRESPONDENCIA` · `REVISADA_MANUALMENTE`
+
+**Nada abaixo de `NOME_NORMALIZADO_UNICO` entra na lista comercial sem revisão.**
+
+### D5 · Porte: excluo só MEI, o resto vira filtro
+
+Exclua MEI — não sustenta operação de canal. Isso exige baixar e cruzar também o **conjunto do Simples/MEI** da Receita; coloque isso nos entregáveis intermediários.
+
+ME, EPP e demais portes **ficam na base**, com o porte como coluna filtrável. Não corte por porte no pipeline: a decisão é por campanha, e eu não quero reprocessar para mudar de ideia.
+
+### D6 · O CNPJ do titular não existe na RPI — confirmado
+
+**Já inspecionei a revista RM2907 (22/09/2026).** O elemento `<titular>` tem exatamente três atributos: `nome-razao-social`, `pais`, `uf`. **Não há CPF nem CNPJ.**
+
+Varri os 53 MB: os 312 CNPJs presentes no arquivo estão dentro de texto corrido de exigência ("comprovar vínculo de grupo econômico com a empresa X (CNPJ ...)") e se referem a **terceiros**, não ao titular.
+
+Consequência: a descoberta é por nome, e a resolução de CNPJ vem da busca do INPI (ver Fonte 2B). Não perca tempo procurando CNPJ no XML.
+
+### D7 · CNPJ inválido vai para tabela de rejeição, não some
+
+A v1 se contradizia. A regra correta:
+
+- Registro com DV inválido vai para `rejeitados`, com motivo `DV_INVALIDO`
+- Fica **fora** de `industrias_com_marca`
+- O relatório conta separadamente: encontrados, rejeitados por motivo, recuperados
+
+Nada some em silêncio. Nada entra sem passar.
+
+---
+
+## Fonte 1 — Base CNPJ da Receita Federal
 
 `https://dadosabertos.rfb.gov.br/CNPJ/`
 
-Publicação mensal, em arquivos ZIP com CSV separados por `;` e encoding **latin-1** (não UTF-8 — isso quebra se você assumir errado). Os conjuntos relevantes:
+Publicação mensal, ZIP com CSV separados por `;`, encoding **latin-1** (não UTF-8 — assumir errado quebra os acentos silenciosamente).
 
-| Arquivo | Contém |
+| Arquivo | Uso |
 |---|---|
-| `Empresas*.zip` | CNPJ básico (8 dígitos), razão social, natureza jurídica, capital social, porte |
-| `Estabelecimentos*.zip` | CNPJ completo (básico + ordem + DV), CNAE fiscal principal, CNAEs secundários, situação cadastral, UF, município, data de início |
-| `Cnaes.zip`, `Municipios.zip`, `Naturezas.zip` | tabelas de domínio para decodificar os códigos |
+| `Empresas*.zip` | razão social, natureza jurídica, capital social, **porte** |
+| `Estabelecimentos*.zip` | CNAE principal e secundários, situação cadastral, UF, município, matriz/filial |
+| `Simples*.zip` | **identificação de MEI** (necessário para D5) |
+| `Cnaes`, `Municipios`, `Naturezas` | tabelas de domínio |
 
-Pontos de atenção que você vai encontrar:
+Armadilhas:
 
-- Os arquivos são grandes (dezenas de GB descompactados no total). **Não carregue tudo em memória.** Use DuckDB ou SQLite, ou leia em chunks com pandas. DuckDB lendo CSV direto é o caminho mais simples e rápido.
-- O CNPJ vem **em três colunas separadas** (básico, ordem, DV). Junte-as para formar o CNPJ de 14 dígitos.
-- `situacao_cadastral`: **02 = ativa**. Filtre por isso.
-- `identificador_matriz_filial`: 1 = matriz, 2 = filial. Para prospecção, normalmente você quer a matriz — mas CNAE pode variar por estabelecimento, então decida explicitamente e documente a escolha.
-- `porte_empresa` está em `Empresas`, não em `Estabelecimentos`: 01 = micro, 03 = pequeno, 05 = demais. MEI é identificado no Simples, em arquivo separado.
-- Baixe apenas o mês mais recente. Confira no diretório qual é.
+- Dezenas de GB descompactados. **Não carregue em memória.** DuckDB lendo CSV direto é o caminho mais simples e rápido.
+- CNPJ vem em **três colunas** (básico, ordem, DV). Junte para formar os 14 dígitos.
+- `situacao_cadastral`: **02 = ativa**.
+- `identificador_matriz_filial`: 1 = matriz, 2 = filial. Ver D1.
+- `porte_empresa` está em `Empresas`, não em `Estabelecimentos`.
+- Baixe só o mês mais recente; confira no diretório qual é.
 
-**Entregável desta fonte:** uma tabela `empresas_industria` com CNPJ, razão social, nome fantasia, CNAE principal (código e descrição), CNAEs secundários, porte, capital social, UF, município, data de abertura — filtrada para CNAE principal nas divisões 10–33 e situação ativa.
+**Entregável:** `empresas_industria`, conforme D1.
 
-## Fonte 2 — Marcas registradas no INPI
+## Fonte 2 — INPI
 
-O INPI **não tem API pública**. Existem dois caminhos, e eu quero os dois:
+O INPI não tem API pública. São dois caminhos com papéis diferentes.
 
-### Caminho A — Revista da Propriedade Industrial (RPI) em XML
+### 2A · RPI em XML — descoberta em massa
 
 `https://revistas.inpi.gov.br/rpi/`
 
-A RPI sai semanalmente e traz todos os despachos de marca, em XML. **Eu já inspecionei uma revista (RM2907, de 22/09/2026) e o schema está no apêndice no fim deste documento — não precisa descobrir do zero.**
-
-**O achado que define a arquitetura do projeto: o XML NÃO traz o CNPJ do titular.** O elemento `<titular>` tem exatamente três atributos — `nome-razao-social`, `pais` e `uf`. Nada de CPF ou CNPJ. Varri o arquivo inteiro: os únicos CNPJs que aparecem estão dentro de texto corrido de exigência ("comprovar vínculo de grupo econômico com a empresa X (CNPJ ...)"), e se referem a terceiros, não ao titular.
-
-Consequência: **a junção com a Receita tem que ser por razão social normalizada + UF.** Isso é impreciso e você precisa tratar como tal:
-
-- Normalize agressivamente: maiúsculas, sem acento, sem pontuação, e remova sufixos societários (LTDA, ME, EPP, EIRELI, S.A., CIA).
-- **Use a UF como desempate.** Ela vem preenchida em 100% dos titulares brasileiros — medi, são 34.143 de 34.143.
-- Medi a taxa de colisão dentro da própria revista: 59 chaves normalizadas apontam para titulares diferentes, num universo de ~24 mil chaves. **0,25%.** É baixa, mas a colisão entre registros do INPI e da Receita (bases diferentes, grafias diferentes) vai ser maior — meça e me reporte.
-- Nomes curtos são o perigo. Encontrei 940 chaves com menos de 12 caracteres (BIONEXO, AGA FOOD, UZE TOP). Trate qualquer chave curta como match de baixa confiança, e marque isso numa coluna em vez de descartar.
-
-**Nunca entregue um match de nome como se fosse certeza.** Quero uma coluna `confianca_match` com o critério que a sustenta.
-
-Sobre volume e cobertura, com números medidos numa revista:
+Schema confirmado no apêndice. Medidas de uma revista:
 
 | Medida | Valor |
 |---|---|
-| Tamanho do XML | 53 MB (9 MB zipado) |
-| Processos numa revista | 37.393 |
+| Tamanho | 53 MB (9 MB zipado) |
+| Processos | 37.393 |
 | Titulares brasileiros | 34.373 de 37.419 (92%) |
-| Titulares PJ distintos (heurística de sufixo) | ~11.760 |
-| Titulares PF distintos | ~12.366 |
-| Processos com classe de Nice | 29.236 (78%) |
+| PJ distintos (heurística de sufixo) | ~11.760 |
+| PF distintos | ~12.366 |
+| Com classe de Nice | 29.236 (78%) |
+| **UF preenchida nos titulares BR** | **100%** |
 
-**Atenção a um limite que muda o planejamento:** a RPI publica *movimentação*, não o acervo. Uma empresa só aparece na semana em que teve despacho. Para montar a base de marcas vivas você precisa **acumular anos de revistas**, não algumas semanas. Antes de baixar o histórico inteiro, me diga quantas revistas você pretende puxar e qual cobertura estima atingir.
+Sobre a junção por nome, medido na própria revista:
 
-Valide o pipeline com 12 semanas antes de rodar o histórico longo.
+- Normalize forte: maiúsculas, sem acento, sem pontuação, sem sufixo societário (LTDA, ME, EPP, EIRELI, S.A., CIA).
+- **Colisão interna: 59 chaves ambíguas em ~24 mil — 0,25%.** Baixa. A colisão contra a Receita (bases distintas, grafias distintas) será maior: **meça e reporte**.
+- **940 chaves têm menos de 12 caracteres** (BIONEXO, AGA FOOD, UZE TOP). Marque como `NOME_CURTO_BAIXA_CONFIANCA`, não descarte.
+- A UF resolve pouco: testei e ela desfaz só **5%** das colisões, porque a maioria é dentro do mesmo estado. Use, mas não conte com ela.
 
-### Caminho B — Busca de marcas do INPI, via navegador
+Valide o parser com 12 semanas. **Antes de baixar o histórico longo, me diga quantas revistas pretende puxar e qual cobertura estima** — ver D3, doze semanas não são um acervo.
 
-`https://busca.inpi.gov.br/pePI/`
+**Entregável:** `marcas_inpi` (evento por evento) e `marcas_estado` (estado consolidado por processo, conforme D3).
 
-É formulário com sessão, feito para humano. **Este é o caminho para obter o CNPJ**, que falta na RPI: a página de detalhe do processo mostra o titular com CPF/CNPJ. Confirme isso na primeira consulta e me diga se procede — se não procede, o CNPJ não existe em nenhuma fonte pública do INPI e a junção fica sendo por nome, ponto final.
-
-O papel dele no projeto é **resolver, não descobrir**: rodar sobre a lista curta que saiu do cruzamento, para converter match por nome em match por CNPJ.
-
-Use Playwright com Chromium. Respeite o serviço: delay entre requisições, sem paralelismo agressivo, e **pare se aparecer captcha ou bloqueio — não tente contornar proteção de serviço público.** Se houver limite, respeite e me avise.
-
-### Caminho B — Busca de marcas do INPI, via navegador
+### 2B · Busca do INPI via navegador — resolução de CNPJ
 
 `https://busca.inpi.gov.br/pePI/`
 
-É formulário com sessão, feito para humano. Serve para **qualificar uma lista que já existe** ("este CNPJ tem marca?"), não para descobrir do zero.
+Formulário com sessão, feito para humano. **É a única fonte pública que pode ter o CNPJ do titular.**
 
-Use Playwright com Chromium. A busca permite consultar por titular. Respeite o serviço: coloque delay entre requisições, não paralelize agressivamente, e pare se aparecer captcha ou bloqueio — não tente contornar proteção. Se o site impuser limite, respeite e me diga.
+**Primeira tarefa aqui:** abra um processo qualquer e me diga se a página de detalhe mostra CPF/CNPJ do titular. Se mostrar, o projeto fecha com junção exata. Se não mostrar, o CNPJ não existe em fonte pública do INPI e a junção fica por nome em definitivo — o que ainda funciona, mas com taxa de erro que precisa ser medida e declarada na entrega.
 
-**Entregável desta fonte:** tabela `marcas_inpi` com número do processo, marca, titular (nome e CNPJ quando disponível), classe de Nice, situação e data.
+Papel: **resolver, não descobrir.** Roda sobre a lista curta saída do cruzamento.
 
-## O cruzamento
+Use Playwright com Chromium. Delay entre requisições, sem paralelismo agressivo. **Pare se aparecer captcha ou bloqueio — não contorne proteção de serviço público.** Se houver limite, respeite e me avise.
 
-```
-empresas_industria  ⨝  marcas_inpi   ON  CNPJ do titular = CNPJ da empresa
-```
-
-Resultado: `industrias_com_marca` — uma linha por empresa, com as colunas da Receita mais:
-
-- `qtd_marcas` — quantas marcas registradas a empresa tem
-- `marcas` — lista dos nomes
-- `classes_nice` — lista das classes
-- `marca_mais_antiga` / `marca_mais_recente` — datas
-- `tem_marca_viva` — se ao menos um registro está em vigor (não arquivado, não extinto)
+---
 
 ## Regras de qualidade que não se negociam
 
-Estas vêm de erro que já cometi e me custou caro:
-
-1. **Dado ausente vale mais que dado errado.** Numa lista de prospecção, um dado errado faz o vendedor abrir a call falando bobagem e queima o lead. Campo que você não conseguiu confirmar fica **vazio**, nunca preenchido por dedução.
-2. **Nunca infira atividade ou marca a partir do nome da empresa.** Os números no topo deste prompt mostram que o nome erra entre 30% e 100% dependendo do rótulo. Se a fonte oficial não disse, não é dado.
-3. **Confira CNPJ dígito a dígito** em qualquer junção. Homônimo de razão social é a regra, não a exceção — "Distripet", "Delta Imports", "Cia do Pet" aparecem várias vezes com CNPJs diferentes.
-4. **Valide o dígito verificador do CNPJ** com o algoritmo oficial antes de usar. Na base de 441 que analisei, **26 CNPJs (6%) falhavam no DV** — ou seja, o número não existe. Marque, não descarte silenciosamente.
-5. **Registre a proveniência de cada coluna.** Quero saber, por campo, de qual arquivo e de qual data ele veio.
+1. **Dado ausente vale mais que dado errado.** Campo não confirmado fica vazio. Um dado errado faz o vendedor abrir a call falando bobagem e queima o lead.
+2. **Nunca infira atividade ou marca a partir do nome.** Os números no topo mostram erro de 30% a 100% conforme o rótulo.
+3. **Confira CNPJ dígito a dígito** em toda junção. Homônimo é regra, não exceção.
+4. **Valide o DV** antes de usar. Ver D7.
+5. **Proveniência por coluna:** de qual arquivo e de qual data veio cada campo.
 
 ## Entregáveis
 
-1. **Código versionado** no repositório, com README explicando como rodar do zero e quanto tempo/disco leva.
-2. **Banco local** (DuckDB ou SQLite) com as tabelas `empresas_industria`, `marcas_inpi` e `industrias_com_marca`.
-3. **Um script de consulta** que recebe filtros (lista de CNAEs, UFs, classes de Nice, porte mínimo) e cospe um CSV pronto para o time comercial.
+1. **Código versionado**, com README: como rodar do zero, quanto tempo e quanto disco.
+2. **Banco local** (DuckDB ou SQLite) com `empresas_industria`, `marcas_inpi`, `marcas_estado`, `industrias_com_marca`, `rejeitados`.
+3. **Script de consulta** que recebe filtros (CNAEs, UFs, classes de Nice, porte, estado da marca) e cospe CSV pronto para o comercial.
 4. **Relatório de cobertura**, com números reais e não arredondados:
-   - quantas empresas de indústria ativas existem no país
-   - quantas têm ao menos uma marca no INPI
-   - qual o percentual de junção que você conseguiu, e por que o resto não casou
-   - quantos CNPJs foram descartados por DV inválido
-5. **Auditoria de amostra:** sorteie 20 linhas do resultado final, confira manualmente na busca do INPI e na consulta de CNPJ, e me reporte a **taxa de erro medida**. Um número medido vale mais que a afirmação de que ficou tudo certo.
+   - indústrias ativas no país
+   - quantas têm ao menos um processo no INPI
+   - percentual de junção atingido e **por que o resto não casou**
+   - distribuição de `confianca_match`
+   - rejeitados por motivo
+   - processos cujo estado não pôde ser resolvido por falta de histórico
+5. **Auditoria de amostra reproduzível:** sorteie 20 linhas **com semente fixa**, confira à mão na busca do INPI e na consulta de CNPJ, e registre por linha: data da verificação, URLs consultadas, campos conferidos, esperado × observado, tipo do erro, evidência. Reporte a **taxa de erro medida, com denominador explícito** (por empresa e por campo).
 
 ## Como quero que você trabalhe
 
-- **Comece pequeno e me mostre antes de escalar.** Primeiro: baixe uma RPI, abra o XML, me diga o que tem dentro. Segundo: baixe um arquivo de Estabelecimentos, me mostre 10 linhas. Só depois construa o pipeline inteiro.
-- **Me avise se alguma fonte estiver fora do ar ou tiver mudado de formato.** Não invente um workaround silencioso.
-- **Se bater em limite de rate, de captcha ou de termos de uso, pare e me diga.** Não contorne proteção de serviço público.
-- Se alguma premissa minha estiver errada — por exemplo, se a RPI não trouxer CNPJ, ou se a base da Receita tiver mudado de estrutura — **me diga em vez de adaptar por conta própria.** Prefiro replanejar a receber um resultado que parece certo e não é.
+Quatro checkpoints, não nove. Pare nestes, siga nos outros:
+
+| # | Checkpoint | O que apresentar |
+|---|---|---|
+| 1 | **Busca do INPI tem CNPJ?** | resposta objetiva, com print ou trecho da página |
+| 2 | **Layout da Receita confere?** | 10 registros de Estabelecimentos já interpretados |
+| 3 | **Piloto de 12 semanas rodado** | métricas de junção, ambiguidade e estado não resolvido |
+| 4 | **Antes da escala histórica** | volume, tempo e disco estimados |
+
+Fora desses quatro, decida e siga. As decisões de modelagem estão em D1–D7.
+
+Me avise se uma fonte sair do ar, mudar de formato ou se alguma premissa minha estiver errada — **prefiro replanejar a receber resultado que parece certo e não é.** Não invente workaround silencioso.
 
 ## Prioridade se faltar tempo
 
-Se você só conseguir fazer uma parte, faça nesta ordem:
-
-1. Base da Receita filtrada por indústria (isso sozinho já é muito melhor que qualquer lista de feira)
-2. Parser da RPI + acúmulo de revistas
-3. Cruzamento por nome + UF, com coluna de confiança
-4. Resolução de CNPJ via busca do INPI para a lista curta
-5. Script de consulta e relatório de cobertura
+1. Receita filtrada por indústria (sozinho já é ordens de grandeza melhor que lista de feira)
+2. Parser da RPI + reconstrução de estado (D3)
+3. Cruzamento com `confianca_match`
+4. Resolução de CNPJ via busca do INPI
+5. Consulta, relatório e auditoria
 
 ---
 
 # Apêndice — Schema real do XML da RPI
 
-Verificado na revista **RM2907, de 22/09/2026**. Encoding UTF-8. Estrutura:
+Verificado na revista **RM2907, de 22/09/2026**. Encoding UTF-8.
 
 ```xml
 <revista numero="2907" data="22/09/2026">
@@ -182,18 +256,14 @@ Verificado na revista **RM2907, de 22/09/2026**. Encoding UTF-8. Estrutura:
       <nome>...</nome>
     </marca>
     <lista-classe-nice>
-      <classe-nice codigo="35">
-        <especificacao>...</especificacao>
-      </classe-nice>
+      <classe-nice codigo="35"><especificacao>...</especificacao></classe-nice>
     </lista-classe-nice>
-    <classes-vienna>
-      <classe-vienna .../>
-    </classes-vienna>
+    <classes-vienna><classe-vienna .../></classes-vienna>
   </processo>
 </revista>
 ```
 
-**Atributos confirmados, por elemento** (contagem numa revista):
+**Atributos confirmados, com contagem numa revista:**
 
 | Elemento | Atributos | Ocorrências |
 |---|---|---|
@@ -206,9 +276,9 @@ Verificado na revista **RM2907, de 22/09/2026**. Encoding UTF-8. Estrutura:
 | `cedente` / `cessionario` | `nome-razao-social` (+ `pais`, `uf` no cedente) | ~540 |
 | `protocolo` | `numero`, `data`, `codigoServico` | 6.149 |
 
-Elementos de texto (não atributo): `nome` (da marca), `especificacao`, `texto-complementar`, `procurador`, `apostila`.
+Elementos de texto: `nome` (da marca), `especificacao`, `texto-complementar`, `procurador`, `apostila`.
 
-**Códigos de despacho mais frequentes** — use-os para saber o estado do registro:
+**Despachos mais frequentes:**
 
 | Código | Qtd | Significado |
 |---|---|---|
@@ -221,6 +291,4 @@ Elementos de texto (não atributo): `nome` (da marca), `especificacao`, `texto-c
 | `IPAS161` | 1.071 | **Extinção por expiração de vigência** |
 | `IPAS360` | 754 | Notificação de recurso |
 
-Para "tem marca viva", o sinal forte é `IPAS158` (concessão) sem `IPAS161` (extinção) posterior no mesmo processo. Levante a tabela completa de códigos IPAS no Manual de Marcas do INPI antes de fechar a regra.
-
-`cedente`/`cessionario` marcam **transferência de titularidade** — é um sinal comercial interessante por si só: marca que mudou de dono recentemente costuma indicar movimento societário.
+**Sinal comercial extra:** `cedente`/`cessionario` marcam **transferência de titularidade**. Marca que trocou de dono indica movimento societário — vale como gatilho de prospecção por si só, junto com `tem_pedido_pendente` (D2). Quero essas duas listas separadas da principal.
