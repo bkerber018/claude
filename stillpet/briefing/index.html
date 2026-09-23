@@ -1,0 +1,420 @@
+<title>Briefing StillPet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,500..800&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#FBF9F6; --card:#FFFFFF; --rule:#E6E0D8; --rule2:#F0EBE4;
+  --ink:#1A1512; --body:#3D362F; --mute:#7A7066; --faint:#A79C90;
+  --hot:#C23A12; --hot-bg:#FCF0EC; --seal:#2B5FB8; --amber:#96650A; --amber-bg:#FDF6E7;
+  --fh:"Archivo","Liberation Sans",system-ui,sans-serif;
+  --fb:"Newsreader","Bitstream Charter",Charter,Georgia,serif;
+  --exp:'wdth' 118;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#100E0C; --card:#191512; --rule:#2C251F; --rule2:#221D18;
+    --ink:#F6F2EC; --body:#CCC2B6; --mute:#8D8276; --faint:#5E554C;
+    --hot:#FF5E31; --hot-bg:#231310; --seal:#7FA8F0; --amber:#E8A62B; --amber-bg:#221A0C;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#100E0C; --card:#191512; --rule:#2C251F; --rule2:#221D18;
+  --ink:#F6F2EC; --body:#CCC2B6; --mute:#8D8276; --faint:#5E554C;
+  --hot:#FF5E31; --hot-bg:#231310; --seal:#7FA8F0; --amber:#E8A62B; --amber-bg:#221A0C;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--fb);overflow-x:hidden;
+  font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+
+.wrap{max-width:820px;margin:0 auto;padding:0 20px;padding-block:0 96px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+  margin:0;padding:0 20px}
+.navin{max-width:820px;margin:0 auto;display:flex;gap:4px;align-items:center;
+  padding:10px 0;overflow-x:auto;scrollbar-width:none}
+.navin::-webkit-scrollbar{display:none}
+.nav a{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.02em;
+  color:var(--mute);text-decoration:none;padding:7px 13px;border-radius:99px;
+  white-space:nowrap;transition:color .15s,background .15s}
+.nav a:hover,.nav a:focus-visible{color:var(--ink);background:var(--rule2);outline:none}
+.nav a.on{color:var(--hot);background:var(--hot-bg)}
+
+/* cabeçalho */
+header{padding:clamp(40px,7vw,76px) 0 clamp(26px,4vw,40px)}
+.kicker{font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:16px}
+h1{font-family:var(--fh);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(34px,6.4vw,60px);line-height:1;letter-spacing:-.028em;color:var(--ink);
+  margin:0 0 18px;text-wrap:balance}
+.lede{font-size:clamp(19px,2.4vw,23px);line-height:1.5;color:var(--body);margin:0;max-width:56ch}
+.meta{font-family:var(--fh);font-size:13px;color:var(--faint);margin-top:22px;
+  padding-top:18px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 20px}
+
+/* seções */
+section{padding-top:clamp(34px,5vw,58px);scroll-margin-top:66px}
+h2{font-family:var(--fh);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(25px,3.6vw,38px);line-height:1.06;letter-spacing:-.02em;color:var(--ink);
+  margin:0 0 10px;text-wrap:balance}
+h2 + .say{margin-top:0}
+h3{font-family:var(--fh);font-weight:700;font-size:clamp(17px,2vw,21px);line-height:1.2;
+  color:var(--ink);margin:36px 0 10px;letter-spacing:-.008em}
+.slideno{font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.slideno b{color:var(--hot);font-weight:700}
+p{margin:0 0 16px}
+strong{color:var(--ink);font-weight:600}
+hr{border:0;border-top:1px solid var(--rule);margin:40px 0}
+
+/* blocos */
+.say{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--hot);
+  padding:18px 22px;margin:0 0 18px}
+.say .lbl{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:7px}
+.say p{margin:0;font-size:clamp(18px,2.2vw,21px);line-height:1.45;color:var(--ink);font-weight:500}
+.note{background:var(--card);border:1px solid var(--rule);padding:16px 20px;margin:0 0 18px}
+.note .lbl{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mute);margin-bottom:7px}
+.note p:last-child{margin-bottom:0}
+.warn{background:var(--amber-bg);border:1px solid var(--rule);padding:16px 20px;margin:0 0 18px}
+.warn .lbl{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:7px}
+.warn p:last-child{margin-bottom:0}
+.pause{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--hot);
+  margin:0 0 18px;display:flex;gap:9px;align-items:baseline}
+
+/* tabelas */
+.tbl{width:100%;border-collapse:collapse;margin:0 0 20px;font-family:var(--fh);
+  font-size:clamp(14px,1.7vw,16px)}
+.tbl th{text-align:left;font-weight:700;color:var(--mute);font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;padding:0 12px 9px 0;
+  border-bottom:1px solid var(--rule)}
+.tbl th:last-child,.tbl td:last-child{padding-right:0;text-align:right}
+.tbl td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule2);
+  color:var(--body);vertical-align:top;line-height:1.4}
+.tbl td:last-child{color:var(--ink);font-weight:600}
+.tbl td .hot{color:var(--hot)}
+.tblwrap{overflow-x:auto;margin:0 0 20px}
+.tblwrap .tbl{margin:0}
+
+ul{margin:0 0 18px;padding-left:22px}
+li{margin-bottom:9px}
+li::marker{color:var(--hot)}
+.dash{list-style:none;padding-left:0}
+.dash li{padding-left:20px;position:relative}
+.dash li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+
+.quote{font-family:var(--fb);font-size:clamp(19px,2.4vw,24px);line-height:1.42;
+  color:var(--ink);font-style:italic;border-left:2px solid var(--rule);
+  padding-left:20px;margin:0 0 18px}
+
+footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--rule);
+  font-family:var(--fh);font-size:13px;color:var(--faint)}
+
+/* ═══ impressão / PDF ═══ */
+@media print{
+  :root{color-scheme:light;
+    --bg:#fff; --card:#FCFAF7; --rule:#DDD5CB; --rule2:#EDE7DF;
+    --ink:#14100D; --body:#332C26; --mute:#6B6157; --faint:#968B7F;
+    --hot:#B23410; --hot-bg:#FBF0EC; --amber:#8A5C08; --amber-bg:#FCF6E9}
+  @page{size:A4;margin:16mm 15mm 14mm}
+  body{background:#fff;font-size:11pt;line-height:1.52}
+  .wrap{max-width:none;padding:0}
+  .nav{display:none}
+  header{padding:0 0 14pt}
+  h1{font-size:30pt;margin-bottom:10pt}
+  .lede{font-size:12pt}
+  .meta{margin-top:12pt;padding-top:10pt;font-size:8.5pt}
+  section{padding-top:16pt;break-before:page}
+  section#conduzir{break-before:avoid}
+  h2{font-size:19pt;margin-bottom:8pt}
+  h3{font-size:12.5pt;margin:16pt 0 6pt;break-after:avoid}
+  .slideno{font-size:8.5pt;margin-top:14pt;break-after:avoid}
+  p{margin-bottom:8pt}
+  hr{margin:16pt 0}
+  .say,.note,.warn,.quote,.tblwrap,table,ul,.pause{break-inside:avoid}
+  .say{padding:10pt 13pt;margin-bottom:9pt}
+  .say p{font-size:11.5pt;line-height:1.35}
+  .note,.warn{padding:9pt 12pt;margin-bottom:9pt}
+  .say .lbl,.note .lbl,.warn .lbl{font-size:7.5pt;margin-bottom:4pt}
+  .pause{font-size:10pt;margin-bottom:9pt}
+  .tbl{font-size:9.5pt} .tbl td{padding:6pt 8pt 6pt 0}
+  .tbl th{font-size:7.5pt;padding-bottom:5pt}
+  .quote{font-size:12pt;padding-left:12pt;margin-bottom:9pt}
+  ul{margin-bottom:9pt} li{margin-bottom:4pt}
+  footer{margin-top:20pt;padding-top:10pt;font-size:8.5pt}
+  a{text-decoration:none;color:inherit}
+}
+</style>
+
+<nav class="nav"><div class="navin">
+  <a href="#conduzir" class="on">Como conduzir</a>
+  <a href="#slides">O que está nos slides</a>
+  <a href="#regras">Regras</a>
+</div></nav>
+
+<div class="wrap">
+
+<header>
+  <div class="kicker">Briefing interno &middot; não enviar ao cliente</div>
+  <h1>StillPet:<br>como conduzir a call</h1>
+  <p class="lede">O diagnóstico está pronto e a apresentação é ao vivo, com três perguntas que
+  ramificam conforme a resposta do cliente. Este documento é o que fica aberto no celular durante
+  a reunião.</p>
+  <div class="meta">
+    <span>Amazon Brasil</span><span>Captura de 23 set 2026</span>
+    <span>18 slides + 6 de resposta</span><span>equipe impulsio</span>
+  </div>
+</header>
+
+<section id="conduzir">
+<h2>A regra que vale mais que todas</h2>
+<div class="say">
+  <div class="lbl">Não leia os números</div>
+  <p>Os números estão na tela. Se o slide mostra 151 e você diz &ldquo;cento e cinquenta e um
+  produtos&rdquo;, você virou legenda. Diga o que o número significa. O cliente lê sozinho.</p>
+</div>
+
+<h3>Os três momentos de calar a boca</h3>
+<ul>
+  <li>Depois da buy box da Cobasi <strong>(slide 05)</strong></li>
+  <li>Depois de cada pergunta de bifurcação <strong>(04, 07, 12)</strong></li>
+  <li>Depois que a calculadora mostra o número <strong>(14)</strong></li>
+</ul>
+<p>Quem fala primeiro depois do silêncio perde a mesa. Deixa ser ele.</p>
+
+<hr>
+
+<div class="slideno">Slide <b>01</b> &middot; Abertura</div>
+<h3>O método</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;Não usei nada de vocês. Sem login, sem planilha. Tudo isso vocês conferem agora,
+se quiserem.&rdquo;</p></div>
+<div class="note"><div class="lbl">Por que importa</div>
+<p>É o que separa a impulsio de consultoria que chega com apresentação genérica.</p></div>
+
+<div class="slideno">Slide <b>02–03</b> &middot; O catálogo</div>
+<h3>151 fichas e 842 avaliações</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;Vocês nunca saíram da Amazon. O cadastro de 2019 continua no ar.&rdquo;</p></div>
+<div class="pause"><span>⏸</span><span>Pausa. Deixa o número na tela trabalhar.</span></div>
+<p>No slide seguinte: <strong>&ldquo;Avaliação só existe depois da compra. Isso é histórico de venda
+real.&rdquo;</strong> Fecha com: &ldquo;O problema não é o produto de vocês.&rdquo;</p>
+
+<div class="slideno">Slide <b>04</b> &middot; ⑃ Bifurcação</div>
+<h3>Os cinco vendedores</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;Cinco vendedores anunciam esse catálogo. Um é a Amazon, que compra de vocês.&rdquo;</p></div>
+<div class="say"><div class="lbl">A pergunta</div>
+<p>&ldquo;Os outros quatro — vocês escolheram?&rdquo;</p></div>
+<div class="pause"><span>⏸</span><span>Cala a boca e espera.</span></div>
+<div class="tblwrap"><table class="tbl">
+<tr><th>Se ele disser</th><th>Clique</th></tr>
+<tr><td>&ldquo;temos política&rdquo;, &ldquo;são nossos parceiros&rdquo;, &ldquo;a gente aprova&rdquo;</td><td>Foi decisão nossa</td></tr>
+<tr><td>&ldquo;não sabia&rdquo;, &ldquo;como assim?&rdquo;, hesitação, olhar para a filha</td><td>Não sabíamos</td></tr>
+</table></div>
+<div class="note"><div class="lbl">Desempate</div>
+<p>Na dúvida entre os dois, clique em <strong>Não sabíamos</strong>. É o caminho que abre conversa;
+o outro assume um conhecimento que ele pode não ter.</p></div>
+
+<div class="slideno">Slide <b>05</b> &middot; O slide</div>
+<h3>A buy box da Cobasi</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;A Amazon escolheu esse produto de vocês para recomendar. Quem recebe o dinheiro é a
+Cobasi.&rdquo;</p></div>
+<div class="pause"><span>⏸</span><span>Pausa longa. Esse é o slide.</span></div>
+<div class="note"><div class="lbl">Se ele defender a Cobasi — e ele provavelmente vai</div>
+<p>&ldquo;Faz sentido, ela é cliente de vocês. A pergunta não é se ela deveria vender. É se vocês
+<strong>escolheram</strong> que fosse ela, nesse produto, a esse preço.&rdquo;</p></div>
+
+<div class="slideno">Slide <b>06</b> &middot; Preço</div>
+<h3>A dispersão</h3>
+<div class="say"><div class="lbl">O ponto</div>
+<p>&ldquo;O revendedor não está atacando vocês. Está fazendo o óbvio com o preço que recebeu.&rdquo;</p></div>
+<div class="warn"><div class="lbl">Nunca diga</div>
+<p>Que vamos obrigar revendedor a subir preço. É infração à ordem econômica (Lei 12.529/2011),
+e pode haver advogado na sala.</p></div>
+
+<div class="slideno">Slide <b>07</b> &middot; ⑃ Bifurcação</div>
+<h3>As três marcas</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;O selo Still Pet está no molde do produto. A ficha da Amazon diz Tudo Pet.&rdquo;
+<br>Depois: &ldquo;Isso foi decisão de vocês?&rdquo;</p></div>
+<div class="tblwrap"><table class="tbl">
+<tr><th>Se ele disser</th><th>Clique</th></tr>
+<tr><td>&ldquo;sim, a gente separa por causa da rede&rdquo;</td><td>Foi escolha</td></tr>
+<tr><td>&ldquo;isso foi do jeito que subiu&rdquo;, &ldquo;nem lembro&rdquo;</td><td>Foi como saiu</td></tr>
+</table></div>
+
+<div class="slideno">Slide <b>08–11</b> &middot; A busca</div>
+<h3>Onde a marca não aparece</h3>
+<ul class="dash">
+  <li><strong>08</strong> &ldquo;Agora tira o nome de vocês da busca. É aqui que entra comprador novo.&rdquo; Fecha: nos 48 primeiros, nenhum produto de vocês.</li>
+  <li><strong>09</strong> &ldquo;Importado, marca genérica, entrega em três semanas. O de vocês custa nove reais e chega amanhã.&rdquo; Fecha: <strong>não perdem para produto melhor, perdem para cadastro melhor</strong>.</li>
+  <li><strong>10</strong> &ldquo;E esse aqui é distribuidor de vocês, com marca própria e selo da Amazon.&rdquo; Encerra o &ldquo;a Amazon não funciona pro nosso produto&rdquo;.</li>
+  <li><strong>11</strong> vista explodida: &ldquo;Vocês fabricam comedouro à prova de formigas. Quem marca esse filtro não vê o produto, porque o campo está vazio.&rdquo;</li>
+</ul>
+
+<div class="slideno">Slide <b>12</b> &middot; ⑃ A bifurcação que decide a proposta</div>
+<h3>A postura de canal</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;Pelo que vocês me contaram, o caminho parece ser organizar quem já vende. Quero confirmar,
+porque muda tudo que vem depois.&rdquo;</p></div>
+<div class="note"><div class="lbl">Por que chegar com hipótese e não neutro</div>
+<p>A Beatriz já sinalizou o caminho 1. Chegando assim usamos o que ela deu <strong>e</strong>
+forçamos o Carlos a corrigir se ele pensar diferente — que é o que precisamos saber antes de
+escrever a proposta, não depois.</p></div>
+<div class="tblwrap"><table class="tbl">
+<tr><th>Se ele disser</th><th>Clique</th></tr>
+<tr><td>&ldquo;não quero brigar com quem me compra&rdquo;, &ldquo;meu medo é o distribuidor&rdquo;</td><td>Organizar quem já vende</td></tr>
+<tr><td>&ldquo;eu também quero vender&rdquo;, &ldquo;se não for eu vai ser outro&rdquo;</td><td>Vender direto também</td></tr>
+</table></div>
+
+<h3>A provocação para soltar aqui</h3>
+<p>Ela mesma disse na primeira call:</p>
+<div class="quote">&ldquo;A gente tem muito produto de fábrica que não vende, porque o distribuidor
+não quer, ou ele compra do concorrente.&rdquo;</div>
+<div class="say"><div class="lbl">Devolve como pergunta</div>
+<p>&ldquo;Aqueles produtos que vocês fabricam e o distribuidor não compra — quantos são?&rdquo;</p></div>
+<p>O ponto que vem depois: <strong>esses não queimam ninguém.</strong> A rede já disse não a eles.
+É uma terceira lista, que não pertence a nenhum dos dois caminhos, e é por onde se começa a testar
+venda direta sem conflito.</p>
+<div class="warn"><div class="lbl">Ressalva que precisa ser dita junto</div>
+<p>Produto que o distribuidor recusa pode ser produto que ninguém quer. A lista tem que ser filtrada
+contra demanda real de marketplace, não só contra &ldquo;o distribuidor disse não&rdquo;. Sem isso,
+soa brilhante na sala e desmonta no terceiro mês.</p></div>
+
+<h3>Se alguém levantar o terceiro CNPJ</h3>
+<p>Ela cogitou isso na primeira call, e disse que não tem quem responda por ele. Nossa posição:</p>
+<div class="say"><div class="lbl">A resposta</div>
+<p>&ldquo;Não acho que precise. A distribuidora de vocês já vende essa marca, e marketplace é
+distribuição — não é canal novo, é mais uma modalidade do que ela já faz. E se o medo é a Cobasi
+perceber, ela percebe em uma semana: a marca é a mesma, o produto é o mesmo, a foto é a mesma.
+CNPJ novo não esconde nada de quem conhece o mercado. O que separa canal é sortimento, não razão
+social.&rdquo;</p></div>
+<div class="note"><div class="lbl">Por que isso credencia</div>
+<p>Acabamos de tirar da mesa um projeto de meses — abertura de empresa, contador, responsável legal
+— que não resolveria o problema. Consultoria média venderia esse projeto.</p></div>
+
+<div class="slideno">Slide <b>13–14</b> &middot; O custo</div>
+<h3>O que está parado, e a calculadora</h3>
+<div class="say"><div class="lbl">Abre com</div>
+<p>&ldquo;Não tenho o faturamento de vocês, então não vou inventar quanto isso custa.&rdquo;</p></div>
+<div class="note"><div class="lbl">Por que isso vende</div>
+<p>Acabamos de recusar o número fácil. Depois disso, tudo que for dito vale mais.</p></div>
+<p>Na calculadora: <strong>&ldquo;Esse número quem coloca são vocês. Qual era o faturamento daquele
+produto no melhor momento?&rdquo;</strong> Pede o número em voz alta e digita.</p>
+<div class="pause"><span>⏸</span><span>Deixa a tela calcular. Não comenta o resultado — ele vai comentar.</span></div>
+
+<div class="slideno">Slide <b>15–17</b> &middot; Fecho</div>
+<h3>O que fazemos e o que não prometemos</h3>
+<p><strong>15:</strong> &ldquo;A ordem importa mais que a lista.&rdquo; Mídia paga entra por último —
+tráfego para ficha incompleta vira desconto, não vira venda.</p>
+<p><strong>16:</strong> &ldquo;E aqui está o que a gente não promete.&rdquo;</p>
+<div class="say"><div class="lbl">A frase</div>
+<p>&ldquo;Não prometo meta de faturamento. Faturamento depende de preço, estoque e decisão de
+vocês — três coisas que eu não controlo.&rdquo;</p></div>
+<div class="note"><div class="lbl">Por que funciona</div>
+<p>Toda agência promete crescimento. Recusar é o que nos separa delas. É a segunda recusa da
+apresentação, e duas recusas fazem o resto valer mais.</p></div>
+<p><strong>17:</strong> faz as três perguntas abertas e para. Fecha com: &ldquo;Esse diagnóstico é de
+vocês, decidindo trabalhar conosco ou não.&rdquo;</p>
+</section>
+
+<section id="slides">
+<h2>O que está nos slides</h2>
+<p class="lede" style="margin-bottom:26px">Resumo do argumento, em ordem. Todo número abaixo tem
+captura de tela datada de 23 de setembro.</p>
+
+<div class="tblwrap"><table class="tbl">
+<tr><th>Slide</th><th>O achado</th></tr>
+<tr><td><strong>02</strong> O catálogo</td><td class="hot">151 fichas no ar desde 2019, sem manutenção</td></tr>
+<tr><td><strong>03</strong> O patrimônio</td><td>842 avaliações numa coleira · 2 selos Escolha da Amazon</td></tr>
+<tr><td><strong>04</strong> Quem vende</td><td class="hot">5 vendedores. A fábrica escolheu 1</td></tr>
+<tr><td><strong>05</strong> Buy box</td><td class="hot">Cobasi detém a buy box de um Escolha da Amazon</td></tr>
+<tr><td><strong>06</strong> Preço</td><td>R$ 18,32 na buy box · R$ 11,25 de um revendedor</td></tr>
+<tr><td><strong>07</strong> Marca</td><td class="hot">3 marcas da mesma fábrica competindo entre si</td></tr>
+<tr><td><strong>08</strong> Busca genérica</td><td class="hot">0 produtos nos 48 primeiros de 2.000+</td></tr>
+<tr><td><strong>09</strong> Concorrência</td><td>Importados de R$ 104 a R$ 1.055 ocupam o topo</td></tr>
+<tr><td><strong>10</strong> Distribuidor</td><td class="hot">My Pet Brasil com Marca em Destaque e 10 mil+ pedidos</td></tr>
+<tr><td><strong>11</strong> A ficha</td><td>4 campos que a Amazon filtra e a ficha não responde</td></tr>
+<tr><td><strong>13</strong> O que está parado</td><td class="hot">1 ASIN com 4,8★ e 182 avaliações sem buy box</td></tr>
+</table></div>
+
+<h3>A tese, em uma frase</h3>
+<div class="quote">O produto compete. A ficha não.</div>
+<p>Os concorrentes que ganham a busca não são mais baratos — o comparável da StillPet custa
+R$ 9,36 contra importados de R$ 104 a R$ 1.055. São mais bem cadastrados. Isso derruba a hipótese
+de que o problema é preço, que foi o que o Carlos verbalizou na primeira call.</p>
+
+<h3>O que ainda não sabemos</h3>
+<p>Três respostas que só eles têm, e que mudam o desenho do trabalho:</p>
+<ul>
+  <li>Qual era o produto que representava 60% a 70% da venda na Amazon?</li>
+  <li>A separação entre as três marcas foi decisão comercial?</li>
+  <li>Qual preço a fábrica pratica com a Amazon e com a distribuição?</li>
+</ul>
+<div class="note"><div class="lbl">A terceira é a que mais destrava</div>
+<p>Sem ela, levamos um diagnóstico de sintomas. Com ela, levamos a causa — e essa é a diferença
+entre uma reunião boa e um contrato.</p></div>
+</section>
+
+<section id="regras">
+<h2>Regras que não se negociam</h2>
+
+<h3>Três coisas para nunca dizer</h3>
+<ul>
+  <li><strong>Qualquer valor de proposta.</strong> Preço é a segunda reunião, arquivo separado.</li>
+  <li><strong>Que vamos controlar ou impor preço de revendedor.</strong> Lei 12.529/2011.</li>
+  <li><strong>Qualquer número que não esteja na tela com print.</strong></li>
+</ul>
+
+<div class="warn"><div class="lbl">Sobre valores</div>
+<p>Na call de descoberta foram mencionados setup, mensal e percentual variável. Esses números
+foram cotados para 3P, e o que eles pediram foi proposta de 1P na Amazon — que não foi
+precificado. <strong>Essa conversa fica para a segunda reunião</strong>, com escopo definido depois
+que o slide 12 disser qual é a postura.</p></div>
+
+<h3>O que o material nunca afirma</h3>
+<ul class="dash">
+  <li>Meta de faturamento. A operação responde pelo que controla: buy box, fichas no padrão, vendedores com critério, ruptura.</li>
+  <li>Número sem print. Onde não foi verificado, está escrito que não foi.</li>
+  <li>Imposição de preço a terceiro. Monitorar e orientar posicionamento: pode. Impor com punição: não.</li>
+</ul>
+
+<h3>Se travar durante a apresentação</h3>
+<p>Aperta <strong>→</strong>. O deck anda inteiro sem nenhuma escolha. As bifurcações não bloqueiam
+nada, e <strong>F</strong> entra em tela cheia.</p>
+
+<div class="warn"><div class="lbl">Sobre o link do deck</div>
+<p>Não enviar antes da reunião. As bifurcações existem para o cliente responder ao vivo; se ele
+abrir antes, lê os dois caminhos de cada pergunta e a mecânica perde o sentido. Na call é
+compartilhamento de tela. O link é para depois.</p></div>
+
+<footer>
+  Briefing interno &middot; impulsio &middot; Diagnóstico de canal StillPet &middot; Amazon Brasil
+  &middot; 23 de setembro de 2026
+</footer>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.nav a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function mark(){
+    var y = window.scrollY + 90, best = 0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) best = i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i === best); });
+  }
+  window.addEventListener('scroll', mark, {passive:true});
+  mark();
+})();
+</script>
