@@ -72,8 +72,11 @@
 **O ponto:** "Vocês fabricam comedouro à prova de formigas. Quem marca esse filtro não vê o produto, porque o campo está vazio."
 
 ## 13 · ⑃ A POSTURA
-**Abre com:** "Antes de falar do que fazer, preciso saber qual jogo vocês querem jogar."
-⏸ **Deixa os dois cartões na tela e fica quieto.** Essa decisão é deles.
+**Abre com:** "Pelo que vocês me contaram, o caminho parece ser organizar quem já vende. Quero confirmar, porque muda tudo que vem depois."
+
+**Por que chegar com hipótese e não neutro:** a Beatriz já sinalizou o caminho 1. Chegando assim você usa o que ela deu **e** força o Carlos a te corrigir se ele pensar diferente — que é exatamente o que você precisa saber antes de escrever a proposta, não depois.
+
+⏸ **Deixa os dois cartões na tela e fica quieto.**
 
 | Se ele disser | Clique |
 |---|---|
@@ -81,6 +84,23 @@
 | "eu também quero vender", "se não for eu vai ser outro" | **Vender direto também** |
 
 **Esta é a bifurcação que decide a proposta.** Anote a resposta.
+
+### A provocação para soltar aqui
+Ela mesma disse na primeira call:
+> *"A gente tem muito produto de fábrica que não vende, porque o distribuidor não quer, ou ele compra do concorrente."*
+
+**Devolve isso como pergunta:** "Aqueles produtos que vocês fabricam e o distribuidor não compra — quantos são?"
+
+O ponto que vem depois: **esses não queimam ninguém.** A rede já disse não a eles. É uma terceira lista, que não pertence a nenhum dos dois caminhos, e é por onde se começa a testar venda direta sem conflito.
+
+⚠️ **Ressalva que você precisa dizer junto, senão desmonta no terceiro mês:** produto que o distribuidor recusa pode ser produto que ninguém quer. A lista tem que ser filtrada contra demanda real de marketplace, não só contra "o distribuidor disse não".
+
+### Se alguém levantar o terceiro CNPJ
+Ela cogitou isso na primeira call, e disse que não tem quem responda por ele. **Sua posição:**
+
+> "Não acho que precise. A distribuidora de vocês já vende essa marca, e marketplace é distribuição — não é canal novo, é mais uma modalidade do que ela já faz. E se o medo é a Cobasi perceber, ela percebe em uma semana: a marca é a mesma, o produto é o mesmo, a foto é a mesma. CNPJ novo não esconde nada de quem conhece o mercado. O que separa canal é sortimento, não razão social."
+
+**Por que isso te credencia:** você acabou de tirar da mesa um projeto de meses — abertura de empresa, contador, responsável legal — que não resolveria o problema. Consultoria média venderia esse projeto.
 
 ## 14 · O que está parado
 **Abre com:** "Não tenho o faturamento de vocês, então não vou inventar quanto isso custa."
