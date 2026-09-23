@@ -61,23 +61,43 @@ O INPI **não tem API pública**. Existem dois caminhos, e eu quero os dois:
 
 `https://revistas.inpi.gov.br/rpi/`
 
-A RPI sai semanalmente e traz todos os despachos de marca. Os arquivos ficam disponíveis para download, em XML.
+A RPI sai semanalmente e traz todos os despachos de marca, em XML. **Eu já inspecionei uma revista (RM2907, de 22/09/2026) e o schema está no apêndice no fim deste documento — não precisa descobrir do zero.**
 
-**Não confie na minha descrição do schema — inspecione o XML real antes de escrever o parser.** O que eu preciso extrair de cada processo de marca é:
+**O achado que define a arquitetura do projeto: o XML NÃO traz o CNPJ do titular.** O elemento `<titular>` tem exatamente três atributos — `nome-razao-social`, `pais` e `uf`. Nada de CPF ou CNPJ. Varri o arquivo inteiro: os únicos CNPJs que aparecem estão dentro de texto corrido de exigência ("comprovar vínculo de grupo econômico com a empresa X (CNPJ ...)"), e se referem a terceiros, não ao titular.
 
-- número do processo
-- nome da marca (elemento nominativo)
-- **titular: nome e, se houver, o CNPJ/CPF** ← este é o campo crítico, porque é a chave de junção com a Receita
-- classe(s) de Nice
-- código e descrição do despacho (para saber se é depósito, concessão, arquivamento, extinção)
-- data
+Consequência: **a junção com a Receita tem que ser por razão social normalizada + UF.** Isso é impreciso e você precisa tratar como tal:
 
-**A primeira coisa a fazer é baixar UMA revista, abrir o XML e me dizer o que ele realmente contém**, em especial se o CNPJ do titular está presente ou se só vem o nome. Isso muda todo o resto do projeto:
+- Normalize agressivamente: maiúsculas, sem acento, sem pontuação, e remova sufixos societários (LTDA, ME, EPP, EIRELI, S.A., CIA).
+- **Use a UF como desempate.** Ela vem preenchida em 100% dos titulares brasileiros — medi, são 34.143 de 34.143.
+- Medi a taxa de colisão dentro da própria revista: 59 chaves normalizadas apontam para titulares diferentes, num universo de ~24 mil chaves. **0,25%.** É baixa, mas a colisão entre registros do INPI e da Receita (bases diferentes, grafias diferentes) vai ser maior — meça e me reporte.
+- Nomes curtos são o perigo. Encontrei 940 chaves com menos de 12 caracteres (BIONEXO, AGA FOOD, UZE TOP). Trate qualquer chave curta como match de baixa confiança, e marque isso numa coluna em vez de descartar.
 
-- **Se o CNPJ vier no XML:** a junção com a Receita é exata e o projeto é direto.
-- **Se só vier o nome do titular:** precisamos casar por razão social normalizada contra a base da Receita, o que é impreciso e exige regra de desempate. Nesse caso, me avise antes de prosseguir — vamos decidir juntos o critério.
+**Nunca entregue um match de nome como se fosse certeza.** Quero uma coluna `confianca_match` com o critério que a sustenta.
 
-Para montar a base histórica, acumule várias revistas. Comece com as últimas 12 semanas para validar o pipeline; só depois rode o histórico longo.
+Sobre volume e cobertura, com números medidos numa revista:
+
+| Medida | Valor |
+|---|---|
+| Tamanho do XML | 53 MB (9 MB zipado) |
+| Processos numa revista | 37.393 |
+| Titulares brasileiros | 34.373 de 37.419 (92%) |
+| Titulares PJ distintos (heurística de sufixo) | ~11.760 |
+| Titulares PF distintos | ~12.366 |
+| Processos com classe de Nice | 29.236 (78%) |
+
+**Atenção a um limite que muda o planejamento:** a RPI publica *movimentação*, não o acervo. Uma empresa só aparece na semana em que teve despacho. Para montar a base de marcas vivas você precisa **acumular anos de revistas**, não algumas semanas. Antes de baixar o histórico inteiro, me diga quantas revistas você pretende puxar e qual cobertura estima atingir.
+
+Valide o pipeline com 12 semanas antes de rodar o histórico longo.
+
+### Caminho B — Busca de marcas do INPI, via navegador
+
+`https://busca.inpi.gov.br/pePI/`
+
+É formulário com sessão, feito para humano. **Este é o caminho para obter o CNPJ**, que falta na RPI: a página de detalhe do processo mostra o titular com CPF/CNPJ. Confirme isso na primeira consulta e me diga se procede — se não procede, o CNPJ não existe em nenhuma fonte pública do INPI e a junção fica sendo por nome, ponto final.
+
+O papel dele no projeto é **resolver, não descobrir**: rodar sobre a lista curta que saiu do cruzamento, para converter match por nome em match por CNPJ.
+
+Use Playwright com Chromium. Respeite o serviço: delay entre requisições, sem paralelismo agressivo, e **pare se aparecer captcha ou bloqueio — não tente contornar proteção de serviço público.** Se houver limite, respeite e me avise.
 
 ### Caminho B — Busca de marcas do INPI, via navegador
 
@@ -137,6 +157,70 @@ Estas vêm de erro que já cometi e me custou caro:
 Se você só conseguir fazer uma parte, faça nesta ordem:
 
 1. Base da Receita filtrada por indústria (isso sozinho já é muito melhor que qualquer lista de feira)
-2. Inspeção do XML da RPI e resposta sobre o CNPJ do titular
-3. Cruzamento
-4. Script de consulta e relatório de cobertura
+2. Parser da RPI + acúmulo de revistas
+3. Cruzamento por nome + UF, com coluna de confiança
+4. Resolução de CNPJ via busca do INPI para a lista curta
+5. Script de consulta e relatório de cobertura
+
+---
+
+# Apêndice — Schema real do XML da RPI
+
+Verificado na revista **RM2907, de 22/09/2026**. Encoding UTF-8. Estrutura:
+
+```xml
+<revista numero="2907" data="22/09/2026">
+  <processo numero="906428203" data-deposito="..." data-concessao="..." data-vigencia="...">
+    <despachos>
+      <despacho codigo="IPAS161" nome="Extinção de registro pela expiração do prazo de vigência"/>
+    </despachos>
+    <titulares>
+      <titular nome-razao-social="Mercilo João Rigon" pais="BR" uf="SC"/>
+    </titulares>
+    <procurador>MARIA ELISA SANTUCCI BREVES</procurador>
+    <marca apresentacao="..." natureza="...">
+      <nome>...</nome>
+    </marca>
+    <lista-classe-nice>
+      <classe-nice codigo="35">
+        <especificacao>...</especificacao>
+      </classe-nice>
+    </lista-classe-nice>
+    <classes-vienna>
+      <classe-vienna .../>
+    </classes-vienna>
+  </processo>
+</revista>
+```
+
+**Atributos confirmados, por elemento** (contagem numa revista):
+
+| Elemento | Atributos | Ocorrências |
+|---|---|---|
+| `processo` | `numero`, `data-deposito`, `data-concessao`, `data-vigencia` | 37.393 |
+| `titular` | `nome-razao-social`, `pais`, `uf` — **e só isso** | 37.419 |
+| `despacho` | `codigo`, `nome` | 37.588 |
+| `marca` | `apresentacao`, `natureza` | 20.982 |
+| `classe-nice` | `codigo` | 30.574 |
+| `requerente` | `nome-razao-social`, `pais`, `uf` | 5.814 |
+| `cedente` / `cessionario` | `nome-razao-social` (+ `pais`, `uf` no cedente) | ~540 |
+| `protocolo` | `numero`, `data`, `codigoServico` | 6.149 |
+
+Elementos de texto (não atributo): `nome` (da marca), `especificacao`, `texto-complementar`, `procurador`, `apostila`.
+
+**Códigos de despacho mais frequentes** — use-os para saber o estado do registro:
+
+| Código | Qtd | Significado |
+|---|---|---|
+| `IPAS009` | 9.848 | Publicação de pedido para oposição |
+| `IPAS158` | 9.004 | **Concessão de registro** |
+| `IPAS029` | 6.150 | Deferimento do pedido |
+| `IPAS270` | 3.721 | Deferimento da petição |
+| `IPAS024` | 2.127 | Indeferimento do pedido |
+| `IPAS136` | 1.560 | Exigência de mérito |
+| `IPAS161` | 1.071 | **Extinção por expiração de vigência** |
+| `IPAS360` | 754 | Notificação de recurso |
+
+Para "tem marca viva", o sinal forte é `IPAS158` (concessão) sem `IPAS161` (extinção) posterior no mesmo processo. Levante a tabela completa de códigos IPAS no Manual de Marcas do INPI antes de fechar a regra.
+
+`cedente`/`cessionario` marcam **transferência de titularidade** — é um sinal comercial interessante por si só: marca que mudou de dono recentemente costuma indicar movimento societário.
