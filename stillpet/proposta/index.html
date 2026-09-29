@@ -1,0 +1,461 @@
+<title>Proposta StillPet Amazon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#080D18; --ink2:#111A2C; --ink3:#182440; --rule:#24314F;
+  --hot:#FF4A1C; --hot-d:#C22F08;
+  --seal:#3B82F6; --seal-l:#7FA8F0;
+  --paper:#F7F4F0; --text:#C6D1E4; --mute:#78839A; --faint:#4C5670;
+  --amber:#F5A524; --green:#35B37E;
+  --fd:"Archivo",system-ui,sans-serif;
+  --fm:"JetBrains Mono",ui-monospace,monospace;
+  --exp:'wdth' 122; --cond:'wdth' 88;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--fd);
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;font-family:var(--fd)}
+
+.deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+  padding:clamp(28px,4.4vh,64px) clamp(24px,4.2vw,92px) clamp(54px,7vh,88px);overflow:hidden}
+.slide.on{display:flex}
+.slide.on > *{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+.slide.on > *:nth-child(1){animation-delay:.02s}
+.slide.on > *:nth-child(2){animation-delay:.07s}
+.slide.on > *:nth-child(3){animation-delay:.12s}
+.slide.on > *:nth-child(4){animation-delay:.17s}
+.slide.on > *:nth-child(5){animation-delay:.22s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
+
+.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--hot);
+  display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
+.eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
+h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(28px,4.3vw,80px);line-height:.95;letter-spacing:-.025em;
+  color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
+h1 em{font-style:normal;color:var(--hot)}
+h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(17px,1.72vw,32px);line-height:1.05;color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);
+  max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px)}
+.sub strong{color:var(--paper);font-weight:700}
+.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
+.kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);
+  font-family:var(--fd);font-variation-settings:var(--cond);
+  font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);
+  font-weight:700;text-wrap:balance;flex:0 0 auto}
+.kick .small{color:var(--mute);font-variation-settings:normal;font-weight:400;margin-top:8px}
+
+.ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);
+  grid-template-columns:1fr 1fr;align-items:start}
+.ev.wide{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.col{min-height:0;display:flex;flex-direction:column;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.col::-webkit-scrollbar{width:6px}
+.col::-webkit-scrollbar-thumb{background:var(--rule)}
+
+.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.row{display:flex;justify-content:space-between;gap:18px;
+  padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.row>span:first-child{color:var(--text)}
+.row>span:last-child{color:var(--paper);font-family:var(--fm);
+  font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
+.row .hot{color:var(--hot)!important} .row .grn{color:var(--green)!important}
+.row .amb{color:var(--amber)!important} .row .mut{color:var(--mute)!important}
+
+.figs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,60px);align-items:flex-end}
+.fig{display:flex;flex-direction:column}
+.fig .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(40px,7vw,138px);line-height:.82;color:var(--paper);
+  letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.fig .n.hot{color:var(--hot)} .fig .n small{font-size:.42em;letter-spacing:-.02em}
+.fig .l{font-family:var(--fm);font-size:clamp(11px,.84vw,16px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);margin-top:14px;max-width:22ch;line-height:1.5}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(150px,16vw,240px),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tile{background:var(--ink2);padding:clamp(13px,2vh,26px) clamp(14px,1.4vw,26px)}
+.tile .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:10px}
+.tile .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(16px,1.5vw,26px);color:var(--paper);line-height:1.08;margin-bottom:9px}
+.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.4;color:var(--mute)}
+
+.no{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(160px,17vw,250px),1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.no div{background:var(--ink2);padding:clamp(12px,1.8vh,22px) clamp(13px,1.3vw,24px);
+  font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
+.no div b{display:block;font-family:var(--fm);font-size:clamp(10px,.72vw,13px);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:8px;font-weight:700}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);flex:0 0 auto}
+.tl{background:var(--ink2);padding:clamp(13px,2vh,24px) clamp(12px,1.2vw,22px)}
+.tl .m{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.14em;
+  color:var(--hot);text-transform:uppercase;margin-bottom:10px}
+.tl .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(15px,1.4vw,25px);color:var(--paper);line-height:1.08;margin-bottom:10px}
+.tl ul{margin:0;padding-left:16px;font-size:clamp(12px,.94vw,18px);line-height:1.42;color:var(--mute)}
+.tl li{margin-bottom:5px}
+.tl li::marker{color:var(--faint)}
+
+.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);flex:0 0 auto}
+.pc{background:var(--ink2);padding:clamp(18px,2.8vh,36px) clamp(18px,1.9vw,36px)}
+.pc .k{font-family:var(--fm);font-size:clamp(10px,.78vw,14px);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:14px}
+.pc .v{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(34px,4.4vw,80px);line-height:.9;color:var(--paper);
+  letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pc .v small{font-size:.32em;color:var(--mute);letter-spacing:0;font-weight:500}
+.pc .d{font-size:clamp(12px,.96vw,19px);line-height:1.42;color:var(--mute);margin-top:14px}
+
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);
+  font-size:clamp(10px,.74vw,14px);letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border:1px solid var(--rule);color:var(--mute)}
+.pill.grn{color:var(--green);border-color:#1F4A38}
+.pill.hot{color:var(--hot);border-color:#5B2412}
+
+.rail{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;
+  gap:clamp(10px,1.4vw,20px);padding:clamp(9px,1.3vh,15px) clamp(24px,4.2vw,92px);
+  padding-bottom:calc(clamp(9px,1.3vh,15px) + env(safe-area-inset-bottom,0px));
+  font-family:var(--fm);font-size:clamp(10px,.78vw,14px);color:var(--mute);
+  letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(to top,var(--ink) 55%,transparent)}
+#pos em{font-style:normal;color:var(--hot)}
+.topbar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--rule);z-index:5}
+.topbar i{display:block;height:100%;background:var(--hot);width:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
+.hint{margin-left:auto;color:var(--faint)}
+.nav{display:flex;gap:5px}
+.nav button,.fsbtn{background:transparent;border:1px solid var(--rule);width:32px;height:28px;
+  cursor:pointer;color:var(--mute);display:grid;place-items:center;font-size:12px;
+  transition:border-color .18s,color .18s}
+.nav button:hover:not(:disabled),.fsbtn:hover{border-color:var(--hot);color:var(--hot)}
+.nav button:disabled{opacity:.28;cursor:default}
+.fsbtn{width:auto;padding:0 11px;font-family:var(--fm);font-size:9px;letter-spacing:.14em}
+
+@media(max-width:860px){
+  body{overflow:auto} .deck{position:static}
+  .slide{position:static;min-height:calc(100vh - 44px);padding:24px 18px 60px}
+  .ev,.ev.wide,.price{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .hint{display:none}
+}
+</style>
+
+<div class="topbar"><i id="fill"></i></div>
+<div class="deck" id="deck">
+
+<!-- 01 CAPA -->
+<section class="slide">
+  <div class="eyebrow">Proposta comercial <b>/</b> Amazon Brasil <b>/</b> setembro 2026</div>
+  <h1>Organizar o catálogo<br>da StillPet <em>na Amazon</em></h1>
+  <p class="sub">Seis meses para colocar no padrão tudo que já está no ar, e abrir espaço para o
+  que vem depois.</p>
+  <div class="figs">
+    <div class="fig"><div class="n">151</div><div class="l">fichas no ar para corrigir</div></div>
+    <div class="fig"><div class="n hot">40</div><div class="l">SKUs novos ao longo do contrato</div></div>
+    <div class="fig"><div class="n">6</div><div class="l">meses de execução</div></div>
+  </div>
+  <div class="kick">O diagnóstico vocês já receberam. Isto é o que fazemos com ele.
+    <div class="small">impulsio &middot; operação de canais digitais para indústrias e distribuidores</div></div>
+</section>
+
+<!-- 02 O PONTO DE PARTIDA -->
+<section class="slide">
+  <div class="eyebrow">O ponto de partida <b>/</b> 02</div>
+  <h1>O que já está medido</h1>
+  <div class="ev wide">
+    <div class="col">
+      <p class="sub">O diagnóstico entregue em 23 de setembro mapeou a conta inteira, com print e data
+      em cada número. Esta proposta parte dele, não de suposição.</p>
+      <p class="small">Nada aqui depende de a Amazon comprar mais produtos de vocês. O trabalho é sobre
+      o que já está no ar e sobre o que vocês decidirem cadastrar.</p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Fichas da marca no ar</span><span>151</span></div>
+        <div class="row"><span>Fichas dentro do padrão</span><span class="hot">0 de 151</span></div>
+        <div class="row"><span>Erros de cadastro mapeados</span><span class="amb">19, sendo 2 críticos</span></div>
+        <div class="row"><span>Marcas concorrendo entre si</span><span class="amb">3</span></div>
+        <div class="row"><span>Buy box perdida ou vazia</span><span class="hot">2 fichas</span></div>
+        <div class="row"><span>Ruptura no catálogo documentado</span><span class="amb">13 de 28</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Linha de partida medida em 23/09/2026. Toda revisão do
+      contrato compara contra ela.</p>
+    </div>
+  </div>
+  <div class="kick">O trabalho não começa do zero. Começa de um levantamento que vocês já têm na mão.</div>
+</section>
+
+<!-- 03 O OBJETIVO -->
+<section class="slide">
+  <div class="eyebrow">O objetivo <b>/</b> 03</div>
+  <h1>Uma ficha que<br>responde <em>as perguntas</em></h1>
+  <div class="tiles">
+    <div class="tile"><div class="k">01</div><div class="t">Arquitetura de marca</div>
+      <div class="l">Definir como Still Pet, Tudo Pet e Quick Pet convivem no canal, e migrar as fichas para essa decisão.</div></div>
+    <div class="tile"><div class="k">02</div><div class="t">Ficha no padrão</div>
+      <div class="l">Título, atributos, categoria e conteúdo preenchidos do jeito que a Amazon filtra e o comprador procura.</div></div>
+    <div class="tile"><div class="k">03</div><div class="t">Catálogo em ondas</div>
+      <div class="l">Os 151 primeiro. Depois, dez produtos novos por mês, na ordem que vocês definirem.</div></div>
+  </div>
+  <div class="kick">O produto de vocês já compete. O que falta é a informação chegar junto com ele.</div>
+</section>
+
+<!-- 04 ESCOPO -->
+<section class="slide">
+  <div class="eyebrow">O que a impulsio executa <b>/</b> 04</div>
+  <h1>O escopo, entrega<br>por entrega</h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Auditoria e arquitetura</h2>
+      <div class="rows">
+        <div class="row"><span>Leitura das 151 fichas, uma a uma</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Arquitetura das três marcas</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Padrão de ficha e de título</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Mapa de categoria e atributos</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Plano de ondas, com prioridade</span><span class="mut">mês 1</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Execução de catálogo</h2>
+      <div class="rows">
+        <div class="row"><span>Correção das 151 fichas no ar</span><span class="mut">meses 1 a 3</span></div>
+        <div class="row"><span>Cadastro de 10 SKUs novos por mês</span><span class="mut">meses 3 a 6</span></div>
+        <div class="row"><span>Correção de categoria e atributo</span><span class="mut">contínuo</span></div>
+        <div class="row"><span>Monitoramento de regressão de ficha</span><span class="mut">contínuo</span></div>
+        <div class="row"><span>Relatório de execução</span><span class="mut">mensal</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Imagens e informação técnica de produto são fornecidas
+      pela StillPet. A impulsio organiza, não produz foto nem vídeo.</p>
+    </div>
+  </div>
+  <div class="kick">191 fichas no padrão ao fim de seis meses: as 151 que já estão no ar, mais 40 novas.</div>
+</section>
+
+<!-- 05 O QUE NÃO ESTÁ INCLUÍDO -->
+<section class="slide">
+  <div class="eyebrow">O que não está incluído <b>/</b> 05</div>
+  <h1>E dizemos isso<br><em>antes</em> de vocês perguntarem</h1>
+  <div class="no">
+    <div><b>Comercial com a Amazon</b>Nenhuma negociação de preço, prazo, pedido ou entrada de produto. Essa relação continua sendo de vocês, direto com a Amazon.</div>
+    <div><b>Gestão de performance</b>Não acompanhamos venda, sell-out, rentabilidade nem metas de faturamento neste contrato.</div>
+    <div><b>Mídia paga</b>Retail media não entra. Tráfego pago para ficha incompleta vira desconto, não vira venda — e a ficha só fica pronta ao longo deste trabalho.</div>
+    <div><b>Foto, vídeo e criativo</b>Produção de imagem não está no escopo. Trabalhamos com o material que a StillPet fornecer.</div>
+    <div><b>Atendimento ao comprador</b>SAC, devolução e disputa com a plataforma seguem com vocês.</div>
+    <div><b>Assunto jurídico de marca</b>Registro, contrafação e notificação são do departamento legal da StillPet. A impulsio atua na operação.</div>
+  </div>
+  <div class="kick">Escopo que não está escrito vira discussão no mês quatro. Preferimos a discussão agora.</div>
+</section>
+
+<!-- 06 O CRONOGRAMA -->
+<section class="slide">
+  <div class="eyebrow">Como o trabalho anda <b>/</b> 06</div>
+  <h1>Seis meses,<br>em quatro tempos</h1>
+  <div class="timeline">
+    <div class="tl"><div class="m">Mês 1</div><div class="t">Arquitetura</div>
+      <ul><li>Leitura das 151 fichas</li><li>Decisão de marca</li><li>Padrão de ficha</li><li>Plano de ondas</li></ul></div>
+    <div class="tl"><div class="m">Meses 1–3</div><div class="t">Onda 1</div>
+      <ul><li>151 fichas corrigidas</li><li>Categoria e atributo</li><li>Título e conteúdo</li><li>Migração de marca</li></ul></div>
+    <div class="tl"><div class="m">Meses 3–6</div><div class="t">Onda 2</div>
+      <ul><li>10 SKUs novos por mês</li><li>Prioridade definida por vocês</li><li>Mesmo padrão da Onda 1</li></ul></div>
+    <div class="tl"><div class="m">Mês 6</div><div class="t">Fechamento</div>
+      <ul><li>Revisão contra a linha de partida</li><li>Entrega de planilha e padrão</li><li>Plano da onda seguinte</li></ul></div>
+  </div>
+  <p class="small" style="margin-top:clamp(12px,2vh,20px)">O prazo corre a partir do recebimento de
+  cada insumo. Se um material atrasa, a entrega desloca o mesmo número de dias, com aviso por escrito
+  no momento em que o atraso aparece.</p>
+  <div class="kick">Onda 2 só começa depois que a Onda 1 estiver publicada. Catálogo meio-corrigido não sustenta o seguinte.</div>
+</section>
+
+<!-- 07 COMO SE MEDE -->
+<section class="slide">
+  <div class="eyebrow">Como o trabalho é medido <b>/</b> 07</div>
+  <h1>Pelo que a operação<br>controla</h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Os indicadores do contrato</h2>
+      <div class="rows">
+        <div class="row"><span>Fichas no padrão</span><span>0 &rarr; 191</span></div>
+        <div class="row"><span>Erros críticos abertos</span><span>2 &rarr; 0</span></div>
+        <div class="row"><span>Erros de categoria</span><span>5 mapeados &rarr; 0</span></div>
+        <div class="row"><span>Atributos de filtro preenchidos</span><span>por ficha</span></div>
+        <div class="row"><span>Marcas na arquitetura</span><span>3 soltas &rarr; 1 decidida</span></div>
+        <div class="row"><span>SKUs novos publicados</span><span>10 por mês</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>O que não prometemos</h2>
+      <p class="sub"><strong>Meta de faturamento.</strong> Faturamento na Amazon 1P depende do pedido
+      que a Amazon decide fazer, do preço que vocês praticam e do estoque que vocês têm. Nada disso
+      está sob controle da operação.</p>
+      <p class="small">Também não prometemos que a Amazon vai comprar os produtos novos. O que fazemos
+      é deixar a ficha pronta e correta para quando ela comprar. A decisão de compra é dela.</p>
+      <p class="small" style="margin-top:14px">Sobre preço de revenda: a impulsio monitora e orienta
+      posicionamento. Não impõe preço a terceiro, porque impor preço de revenda com punição é infração
+      à ordem econômica.</p>
+    </div>
+  </div>
+  <div class="kick">É mais fácil vender promessa de faturamento. É mais honesto vender o que dá para conferir na tela.</div>
+</section>
+
+<!-- 08 O INVESTIMENTO -->
+<section class="slide">
+  <div class="eyebrow">O investimento <b>/</b> 08</div>
+  <h1>Dentro do orçamento<br>que vocês definiram</h1>
+  <div class="price">
+    <div class="pc">
+      <div class="k">Setup e arquitetura</div>
+      <div class="v">R$ 2.500<small> · único</small></div>
+      <div class="d">Auditoria das 151 fichas, arquitetura das três marcas, padrão de ficha, mapa de
+      categoria e plano de ondas. Pago na assinatura.</div>
+    </div>
+    <div class="pc">
+      <div class="k">Execução mensal</div>
+      <div class="v">R$ 2.500<small> /mês</small></div>
+      <div class="d">Execução do catálogo, correção contínua, monitoramento de regressão e relatório
+      mensal. Seis meses.</div>
+    </div>
+  </div>
+  <div class="rows" style="margin-top:clamp(14px,2.2vh,24px)">
+    <div class="row"><span>Total do contrato, seis meses</span><span class="grn">R$ 17.500</span></div>
+    <div class="row"><span>Fichas entregues no padrão</span><span>191</span></div>
+    <div class="row"><span>Sem variável, sem comissão sobre venda</span><span class="mut">fixo integral</span></div>
+  </div>
+  <p class="small" style="margin-top:14px">Não há remuneração variável neste contrato. Quem decide o
+  volume comprado é a Amazon, e a impulsio não cobra percentual sobre decisão que não é dela nem de vocês.</p>
+  <div class="kick">Seis meses fechados. Reajuste só na renovação, e o valor por ficha fica registrado para a onda seguinte.</div>
+</section>
+
+<!-- 09 O QUE PRECISAMOS DE VOCÊS -->
+<section class="slide">
+  <div class="eyebrow">O que precisamos de vocês <b>/</b> 09</div>
+  <h1>Cinco coisas,<br>e o relógio para</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Acesso ao Vendor Central</span><span class="mut">semana 1</span></div>
+        <div class="row"><span>Planilha de produtos do ERP</span><span class="mut">semana 1</span></div>
+        <div class="row"><span>Decisão sobre arquitetura de marca</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Imagens de produto em alta</span><span class="mut">por onda</span></div>
+        <div class="row"><span>Ficha técnica: medida, peso, capacidade</span><span class="mut">por onda</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Parada de relógio</h2>
+      <p class="sub">O prazo de cada entrega corre <strong>a partir do recebimento do insumo</strong>,
+      não da data do contrato.</p>
+      <p class="small">Se um material atrasar, a entrega desloca o mesmo número de dias e avisamos por
+      escrito no momento em que o atraso aparece — não no fim do mês, quando já não dá para recuperar.</p>
+      <p class="small" style="margin-top:14px">A decisão de arquitetura de marca é a que mais trava:
+      sem ela, a correção das fichas não pode começar, porque não se sabe para qual marca migrar.</p>
+    </div>
+  </div>
+  <div class="kick">A informação técnica do produto está com vocês. Sem ela, nenhuma ficha fica pronta.</div>
+</section>
+
+<!-- 10 TITULARIDADE -->
+<section class="slide">
+  <div class="eyebrow">Titularidade e saída <b>/</b> 10</div>
+  <h1>Tudo que for construído<br>é <em>de vocês</em></h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">A conta é de vocês. O registro de marca é de vocês. As fichas, o padrão, a
+      arquitetura e a planilha de controle são de vocês, durante o contrato e depois dele.</p>
+      <p class="sub">A impulsio opera dentro da conta da StillPet. <strong>Nada fica hospedado
+      conosco.</strong></p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Acessos administrativos</span><span class="grn">StillPet</span></div>
+        <div class="row"><span>Fichas e conteúdo produzido</span><span class="grn">StillPet</span></div>
+        <div class="row"><span>Padrão e planilha de controle</span><span class="grn">StillPet</span></div>
+        <div class="row"><span>Entrega na saída</span><span>15 dias</span></div>
+        <div class="row"><span>Vigência</span><span>6 meses</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Se ao fim dos seis meses vocês quiserem internalizar a
+      operação, entregamos planilha, padrão e acessos em quinze dias, sem retenção de nada.</p>
+    </div>
+  </div>
+  <div class="kick">Organizar a casa de vocês, não alugá-la.</div>
+</section>
+
+<!-- 11 PRÓXIMO PASSO -->
+<section class="slide">
+  <div class="eyebrow">O próximo passo <b>/</b> 11</div>
+  <h1>Quatro movimentos<br>para começar</h1>
+  <div class="tiles">
+    <div class="tile"><div class="k">01</div><div class="t">Aceite</div>
+      <div class="l">Assinatura e pagamento do setup.</div></div>
+    <div class="tile"><div class="k">02</div><div class="t">Acessos</div>
+      <div class="l">Vendor Central e planilha do ERP, na primeira semana.</div></div>
+    <div class="tile"><div class="k">03</div><div class="t">Kickoff</div>
+      <div class="l">Reunião de alinhamento em até 48 horas do aceite.</div></div>
+    <div class="tile"><div class="k">04</div><div class="t">Arquitetura</div>
+      <div class="l">A decisão sobre as três marcas, que destrava a Onda 1.</div></div>
+  </div>
+  <p class="small" style="margin-top:clamp(14px,2.2vh,24px)">Ao fim dos seis meses, a StillPet tem 191
+  fichas no padrão, uma arquitetura de marca decidida e um catálogo pronto para receber o restante do
+  portfólio. O que vem depois é decisão de vocês.</p>
+  <div class="kick">impulsio &middot; operação de canais digitais para indústrias e distribuidores
+    <div class="small">Proposta válida por 30 dias &middot; setembro de 2026</div></div>
+</section>
+
+</div>
+
+<div class="rail">
+  <span id="pos"><em>01</em> / 11</span>
+  <div class="nav">
+    <button id="prev" aria-label="Slide anterior">&larr;</button>
+    <button id="next" aria-label="Próximo slide">&rarr;</button>
+  </div>
+  <button class="fsbtn" id="fs" aria-label="Tela cheia">Tela cheia</button>
+  <span class="hint" id="hint">← → navegar · F tela cheia</span>
+</div>
+
+<script>
+(function(){
+  var all = [].slice.call(document.querySelectorAll('.slide')), cur = 0;
+  function show(i){
+    if(i<0||i>=all.length) return;
+    all.forEach(function(s){ s.classList.remove('on'); });
+    all[i].classList.add('on'); cur = i;
+    document.getElementById('pos').innerHTML =
+      '<em>'+String(i+1).padStart(2,'0')+'</em> / '+String(all.length).padStart(2,'0');
+    document.getElementById('fill').style.width = ((i+1)/all.length*100)+'%';
+    document.getElementById('prev').disabled = (i===0);
+    document.getElementById('next').disabled = (i===all.length-1);
+    if(window.innerWidth<=860) window.scrollTo(0,0);
+  }
+  document.getElementById('next').addEventListener('click', function(){ show(cur+1); });
+  document.getElementById('prev').addEventListener('click', function(){ show(cur-1); });
+  var fsBtn = document.getElementById('fs');
+  function toggleFs(){
+    if(!document.fullscreenElement){
+      var p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      if(p && p.catch) p.catch(function(){});
+    } else if(document.exitFullscreen){ document.exitFullscreen(); }
+  }
+  fsBtn.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', function(){
+    fsBtn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); show(cur+1); }
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(cur-1); }
+    if(e.key==='Home'){ e.preventDefault(); show(0); }
+    if(e.key==='f'||e.key==='F'){ e.preventDefault(); toggleFs(); }
+  });
+  show(0);
+})();
+</script>
