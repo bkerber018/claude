@@ -1,0 +1,17 @@
+Crie um vídeo em português do Brasil, de 6 a 8 minutos, para a diretoria comercial da Pet Toys, indústria pet do Grupo Toys.
+
+Objetivo: mostrar como a marca Pet Toys aparece hoje na Amazon e no Mercado Livre, e por que o problema é de governança de marca, não de produto nem de preço.
+
+Estrutura:
+1. Abra com o contraste: uma indústria de 50 mil m² que aparece no marketplace como sobra de estoque de revendedor.
+2. Apresente os achados nesta ordem: poucas fichas; títulos sem o nome da marca; cor que o comprador não escolhe; oito vendedores sem critério; o mesmo Pet Ball em cinco preços; estoque de uma a nove unidades; fichas sem avaliação; "Pet Toys" usado por produtos de outras fábricas no Mercado Livre; o contraste entre vendedores com alerta de atendimento e a revendedora que vende bem.
+3. Feche com o caminho recomendado: a marca dona da ficha e fornecedora da Amazon, a rede credenciada continua vendendo, e a ordem do trabalho (governança, catálogo, canais, mídia por último).
+4. Termine com as quatro perguntas em aberto.
+
+Regras:
+- Use só os números que estão no documento, com a data de 5 de outubro de 2026. Não estime faturamento nem prometa crescimento de vendas.
+- Diga sempre que preço é diretriz de posicionamento e que o revendedor tem autonomia comercial. Nunca fale em impor preço mínimo.
+- Tom direto, técnico e respeitoso com a empresa. Sem exagero, sem tom de alarme, sem ironia.
+- Quando citar um vendedor com alerta, deixe claro que o alerta é do Mercado Livre.
+- Explique buy box, 1P, 3P e registro de marca na primeira vez que aparecerem.
+- Escreva "impulsio" sempre em minúsculas.
