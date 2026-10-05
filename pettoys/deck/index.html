@@ -1,0 +1,771 @@
+<title>Diagnóstico Pet Toys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Palco escuro de apresentação (tema único, por escolha): azul-tinta do molde do comedouro DOG,
+   vermelho do CAT como acento, amarelo do rótulo como aviso. */
+:root{
+  color-scheme: dark;
+  --ink:#070B16; --ink2:#0F1526; --ink3:#172038; --rule:#263050;
+  --hot:#F0452F; --hot-d:#B52A19;
+  --seal:#2D6BE4; --seal-l:#7FA8F0;
+  --paper:#F6F5F1; --text:#C8CFDF; --mute:#7E889E; --faint:#4A5370;
+  --amber:#FFC83D; --green:#3DBE7C;
+  --fd:"Archivo",system-ui,sans-serif;
+  --fm:"JetBrains Mono",ui-monospace,monospace;
+  --exp:'wdth' 122; --cond:'wdth' 88;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--fd);
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;font-family:var(--fd)}
+
+.deck{position:fixed;inset:0;display:flex;flex-direction:column}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+  padding:clamp(28px,4.4vh,64px) clamp(24px,4.2vw,92px) clamp(54px,7vh,88px);overflow:hidden}
+.slide.on{display:flex}
+.slide.on > *{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+.slide.on > *:nth-child(1){animation-delay:.02s}
+.slide.on > *:nth-child(2){animation-delay:.07s}
+.slide.on > *:nth-child(3){animation-delay:.12s}
+.slide.on > *:nth-child(4){animation-delay:.17s}
+.slide.on > *:nth-child(5){animation-delay:.22s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
+
+.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--hot);
+  display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
+.eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
+h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(30px,4.6vw,86px);line-height:.94;letter-spacing:-.025em;
+  color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
+h1 em{font-style:normal;color:var(--hot)}
+h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(17px,1.72vw,32px);line-height:1.04;letter-spacing:-.01em;
+  color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);
+  max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px);font-weight:400}
+.sub strong{color:var(--paper);font-weight:700}
+.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
+.kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);
+  font-family:var(--fd);font-variation-settings:var(--cond);
+  font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);
+  font-weight:700;text-wrap:balance;flex:0 0 auto;letter-spacing:-.01em}
+.kick .small{color:var(--mute);font-variation-settings:normal;font-weight:400;margin-top:8px}
+
+.ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:stretch}
+.ev.even{grid-template-columns:1fr 1fr}
+.col{min-height:0;display:flex;flex-direction:column;justify-content:flex-start;
+  overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.col::-webkit-scrollbar{width:6px}
+.col::-webkit-scrollbar-thumb{background:var(--rule)}
+.col.shot{overflow:hidden}
+.shot{min-height:0;display:flex;flex-direction:column;gap:8px}
+.shot figure{margin:0;flex:1;min-height:0;position:relative;background:#fff;
+  border:1px solid var(--rule);overflow:hidden;display:flex;
+  box-shadow:0 30px 70px -28px rgba(0,0,0,.92)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.shot figure.missing{background:var(--ink2);align-items:center;justify-content:center;padding:24px}
+.shot figure.missing img{display:none}
+.shot figure .ph{display:none;font-family:var(--fm);font-size:clamp(11px,.9vw,16px);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--amber);text-align:center;line-height:1.6;max-width:36ch}
+.shot figure.missing .ph{display:block}
+.slide.on .shot figure{animation:mask .62s cubic-bezier(.16,1,.3,1) both;animation-delay:.16s}
+@keyframes mask{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.slide.on .shot figure{animation:none}}
+.cap{font-family:var(--fm);font-size:clamp(10px,.78vw,15px);line-height:1.5;
+  color:var(--mute);letter-spacing:.06em;text-transform:uppercase;flex:0 0 auto}
+.cap b{color:var(--mute);font-weight:400}
+
+.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.row{display:flex;justify-content:space-between;gap:18px;
+  padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.row>span:first-child{color:var(--text)}
+.row>span:last-child{color:var(--paper);font-family:var(--fm);
+  font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
+.row .hot{color:var(--hot)!important} .row .amb{color:var(--amber)!important}
+.row .grn{color:var(--green)!important} .row .sea{color:var(--seal-l)!important}
+
+.figs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,60px);align-items:flex-end}
+.fig{display:flex;flex-direction:column}
+.fig .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(44px,7.6vw,148px);line-height:.82;color:var(--paper);
+  letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.fig .n.hot{color:var(--hot)} .fig .n.amb{color:var(--amber)}
+.fig .l{font-family:var(--fm);font-size:clamp(11px,.84vw,16px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);margin-top:14px;max-width:22ch;line-height:1.5}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(140px,15vw,210px),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tile{background:var(--ink2);padding:clamp(12px,1.9vh,24px) clamp(13px,1.3vw,24px)}
+.tile .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(26px,3vw,56px);color:var(--paper);line-height:.86;
+  font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.tile .n.hot{color:var(--hot)} .tile .n.amb{color:var(--amber)}
+.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.38;color:var(--text);margin-top:12px}
+.tile .l b{color:var(--paper);font-weight:700}
+
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);
+  font-size:clamp(10px,.74vw,14px);letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border:1px solid var(--rule);color:var(--mute)}
+.pill.seal{color:var(--seal-l);border-color:#25406E}
+.pill.hot{color:var(--hot);border-color:#5B2412}
+.pill.amb{color:var(--amber);border-color:#5E4A12}
+
+/* paleta de cores do molde */
+.swatches{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
+.sw{width:clamp(26px,2.4vw,44px);height:clamp(26px,2.4vw,44px);border-radius:50%;border:2px solid var(--rule)}
+.sw.off{opacity:.25;border-style:dashed}
+
+/* bifurcação */
+.fork .eyebrow{color:var(--amber)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.1vw,18px);
+  margin-top:clamp(10px,1.6vh,18px);flex:0 0 auto}
+.choice{text-align:left;background:var(--ink2);border:1px solid var(--rule);
+  padding:clamp(14px,2.1vh,26px) clamp(15px,1.5vw,28px);cursor:pointer;
+  display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden;
+  transition:background .18s,border-color .18s,transform .18s}
+.choice::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--hot);transform:scaleY(0);transform-origin:top;transition:transform .22s}
+.choice:hover,.choice:focus-visible{background:var(--ink3);border-color:var(--faint);
+  transform:translateY(-2px);outline:none}
+.choice:hover::after,.choice:focus-visible::after{transform:scaleY(1)}
+.choice.rec{border-color:#2A4C8A}
+.choice .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;
+  color:var(--hot);text-transform:uppercase}
+.choice.rec .k{color:var(--seal-l)}
+.choice .q{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(18px,1.86vw,36px);color:var(--paper);line-height:1.02;letter-spacing:-.02em}
+.choice .d{font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
+.answer{border-left:3px solid var(--hot)}
+.backline{display:flex;gap:10px;align-items:center;margin-top:auto;
+  padding-top:clamp(12px,2vh,20px);border-top:1px solid var(--rule);flex:0 0 auto}
+.btn{background:transparent;border:1px solid var(--rule);padding:12px 24px;cursor:pointer;
+  font-size:clamp(12px,.92vw,18px);font-weight:600;transition:border-color .18s,background .18s;
+  font-family:var(--fm);letter-spacing:.06em;text-transform:uppercase}
+.btn:hover,.btn:focus-visible{border-color:var(--paper);outline:none}
+.btn.primary{background:var(--hot);border-color:var(--hot);color:#140A05;font-weight:700}
+.btn.primary:hover{background:var(--hot-d);border-color:var(--hot-d);color:var(--paper)}
+
+/* rail */
+.topbar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--rule);z-index:5}
+.topbar i{display:block;height:100%;background:var(--hot);width:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
+.rail{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);
+  padding:clamp(9px,1.3vh,15px) clamp(24px,4.2vw,92px);
+  padding-bottom:calc(clamp(9px,1.3vh,15px) + env(safe-area-inset-bottom,0px));
+  font-family:var(--fm);font-size:clamp(10px,.78vw,14px);color:var(--mute);letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(to top,var(--ink) 55%,transparent)}
+#pos{color:var(--mute)} #pos em{font-style:normal;color:var(--hot)}
+.hint{margin-left:auto;color:var(--faint)}
+.nav{display:flex;gap:5px}
+.nav button,.fsbtn{background:transparent;border:1px solid var(--rule);width:32px;height:28px;cursor:pointer;
+  color:var(--mute);line-height:1;transition:border-color .18s,color .18s;display:grid;place-items:center;font-size:12px}
+.nav button:hover:not(:disabled),.fsbtn:hover{border-color:var(--hot);color:var(--hot)}
+.nav button:disabled{opacity:.28;cursor:default}
+.fsbtn{width:auto;padding:0 11px;font-family:var(--fm);font-size:9px;letter-spacing:.14em}
+
+@media(max-width:860px){
+  body{overflow:auto}
+  .deck{position:static}
+  .slide{position:static;min-height:calc(100vh - 44px);padding:24px 18px 60px}
+  .ev,.ev.even{grid-template-columns:1fr;gap:16px}
+  .shot figure{min-height:32vh;max-height:40vh}
+  .choices{grid-template-columns:1fr}
+  .hint{display:none}
+  .figs{gap:22px}
+}
+</style>
+
+<div class="topbar"><i id="fill"></i></div>
+<div class="deck" id="deck">
+
+<!-- 00 CAPA -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">Diagnóstico de canal <b>/</b> Amazon Brasil e Mercado Livre <b>/</b> 5 out 2026</div>
+  <h1>Onde a Pet Toys está<br>nos marketplaces <em>hoje</em></h1>
+  <div class="figs">
+    <div class="fig"><div class="n" data-count="15">15</div><div class="l">fichas da marca na Amazon, cães, com estoque</div></div>
+    <div class="fig"><div class="n" data-count="8">8</div><div class="l">vendedores anunciando o catálogo</div></div>
+    <div class="fig"><div class="n hot" data-count="1">1</div><div class="l">ficha com avaliação, de quinze</div></div>
+  </div>
+  <div class="kick">Cada número aqui tem print, fonte e data.
+    <div class="small">Pet Toys &middot; Grupo Toys &nbsp;—&nbsp; levantamento por equipe impulsio</div></div>
+</section>
+
+<!-- 01 MÉTODO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">Como isto foi feito <b>/</b> 01</div>
+  <h1>Sem acesso a<br>nada de vocês</h1>
+  <div class="ev even">
+    <div class="col">
+      <p class="sub">Nenhum login, nenhuma planilha, nenhum dado interno. Tudo que está aqui qualquer
+      pessoa vê na Amazon e no Mercado Livre, e vocês conferem agora, na nossa frente.</p>
+      <div class="rows">
+        <div class="row"><span>Capturas de tela</span><span>9 &middot; 3 Amazon, 6 Mercado Livre</span></div>
+        <div class="row"><span>Fichas documentadas</span><span>15 na Amazon</span></div>
+        <div class="row"><span>Vendedores identificados</span><span>8 na Amazon &middot; 48 anúncios na busca do Mercado Livre</span></div>
+        <div class="row"><span>Catálogo da marca</span><span>site pettoys.com.br</span></div>
+        <div class="row"><span>Data</span><span>5 de outubro de 2026</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>A regra que seguimos</h2>
+      <p class="sub">Todo número tem fonte, data e nome de vendedor. Onde não conseguimos confirmar, está
+      escrito que não conseguimos. <strong>Nada aqui é estimativa nossa apresentada como fato.</strong></p>
+      <p class="small">O que ficou por verificar: a linha de gatos na Amazon, as fichas sem estoque (o filtro
+      padrão esconde), a contagem de anúncios no Mercado Livre e na Shopee, e quem é o vendedor de cada
+      uma das quinze fichas. Isso entra na segunda rodada, com a ferramenta de dados de Mercado Livre.</p>
+    </div>
+  </div>
+  <div class="kick">O diagnóstico vem antes do contrato. Esta é a parte que não se cobra.</div>
+</section>
+
+<!-- 02 CATÁLOGO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 02</div>
+  <h1>Quinze fichas para uma<br>fábrica de 50 mil m²</h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">O site da Pet Toys lista <strong>50 brinquedos só para cães</strong>, mais comedouros,
+      bebedouros e seis linhas para gatos: Glitter, Neon, Prime, Acrílico, Clássica e Degradê.</p>
+      <div class="rows">
+        <div class="row"><span>Brinquedos para cães no site</span><span>50</span></div>
+        <div class="row"><span>Linhas para gatos no site</span><span>6</span></div>
+        <div class="row"><span>Fichas de cães na Amazon, com estoque</span><span class="hot">15</span></div>
+        <div class="row"><span>Itens no portfólio do grupo</span><span>mais de 4.000</span></div>
+        <div class="row"><span>Colaboradores</span><span>cerca de 350</span></div>
+        <div class="row"><span>Grupo Toys desde 1997 &middot; Pet Toys desde</span><span>2019</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Brinquedo, comedouro e bebedouro, tudo junto, somam quinze.
+      É o que o comprador da Amazon vê da marca.</p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/amz-marca-1.webp" alt="Página da marca Pet Toys na Amazon com 15 resultados em Cachorros"></figure>
+      <div class="cap">Amazon.com.br <b>&middot;</b> marca &ldquo;Pet Toys&rdquo;, Pet Shop &rsaquo; Cachorros, ordenado por mais vendidos <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">Isso não é o catálogo de vocês. É o que sobrou no estoque de alguém.</div>
+</section>
+
+<!-- 03 TÍTULO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 03</div>
+  <h1>A ficha não diz<br>o nome de vocês</h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">Doze dos quinze títulos não trazem &ldquo;Pet Toys&rdquo;. O que trazem é a linha
+      do estoque: <strong>&ldquo;Brinq.&rdquo;, &ldquo;Mass&rdquo;, &ldquo;Macico&rdquo;, &ldquo;P/Caes&rdquo;,
+      &ldquo;-0162&rdquo;, &ldquo;-2633&rdquo;</strong>.</p>
+      <div class="rows">
+        <div class="row"><span>Títulos sem a marca</span><span class="hot">12 de 15</span></div>
+        <div class="row"><span>Títulos com abreviação ou código</span><span class="amb">8 de 15</span></div>
+        <div class="row"><span>Espécie-alvo da ficha &ldquo;para Cães e Gatos&rdquo;</span><span>&ldquo;Cão&rdquo;</span></div>
+        <div class="row"><span>Campo &ldquo;controle por rádio&rdquo;</span><span class="amb">&ldquo;Alimentação de cães&rdquo;</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">O título é a primeira coisa que a busca da Amazon lê. Quem procura
+      &ldquo;ossinho para cachorro&rdquo; não encontra &ldquo;Brinq. Ossinho Mass Cravo Pequeno-2633&rdquo;.</p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/amz-ficha-comedouro.webp" alt="Ficha do comedouro alto antiformiga Pet Toys na Amazon"
+        onerror="this.parentNode.classList.add('missing')">
+        <div class="ph">Print 3 pendente<br>ficha do comedouro alto antiformiga 500 ml<br>salvar como deck/img/amz-ficha-comedouro.webp</div></figure>
+      <div class="cap">Amazon.com.br <b>&middot;</b> ficha do comedouro alto antiformiga 500 ml <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">O título é a linha do ERP de alguém. Não é a vitrine de uma marca.</div>
+</section>
+
+<!-- 04 COR -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 04</div>
+  <h1>A cor que o comprador<br><em>não escolhe</em></h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">O comedouro alto existe em três cores. A foto da ficha mostra as três. O campo
+      &ldquo;Cor&rdquo; diz <strong>Azul</strong>, e não há botão para escolher outra.</p>
+      <div class="swatches">
+        <div class="sw" style="background:#1F4FD8"></div>
+        <div class="sw off" style="background:#E03A2E"></div>
+        <div class="sw off" style="background:#1F4FD8;opacity:.25"></div>
+        <span class="small">uma cor na ficha, três no molde</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span>Fichas &ldquo;Sortido&rdquo;: a cor é surpresa</span><span class="amb">2</span></div>
+        <div class="row"><span>Bebedouro Glitter rosa</span><span>R$ 34,49</span></div>
+        <div class="row"><span>Bebedouro Glitter azul, mesma ficha em outra</span><span class="hot">R$ 29,09</span></div>
+        <div class="row"><span>Fichas com escolha de cor</span><span class="hot">0 de 15</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Na Amazon, cor é variação de uma ficha única: um clique, avaliações
+      somadas, posição na busca somada. Aqui cada cor virou ficha solta, com preço próprio, ou virou
+      &ldquo;sortido&rdquo;, que é a devolução esperando acontecer.</p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/amz-ficha-comedouro.webp" alt="Ficha do comedouro antiformiga com campo Cor Azul e três miniaturas de cor"
+        onerror="this.parentNode.classList.add('missing')">
+        <div class="ph">Print 3 pendente<br>ficha do comedouro, campo Cor e miniaturas<br>salvar como deck/img/amz-ficha-comedouro.webp</div></figure>
+      <div class="cap">Amazon.com.br <b>&middot;</b> mesma ficha, campo &ldquo;Cor&rdquo; e miniaturas <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">Três cores no molde. Zero escolha na tela.</div>
+</section>
+
+<!-- 05 FORK A -->
+<section class="slide fork" data-role="trunk" data-fork="a">
+  <div class="eyebrow">Pergunta <b>/</b> 05</div>
+  <h1>Oito vendedores.<br>Quantos vocês escolheram?</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Amazon.com.br</span><span class="sea">compra de vocês, ou de distribuidor?</span></div>
+        <div class="row"><span>CSG Marketplace</span><span class="amb">vende o comedouro, não aparece no filtro</span></div>
+        <div class="row"><span>shoten</span><span>revendedor</span></div>
+        <div class="row"><span>COVOFEL AGROPET</span><span>revendedor</span></div>
+        <div class="row"><span>Pet Precinho Bom</span><span>revendedor</span></div>
+        <div class="row"><span>Loja Malu Variedades</span><span>revendedor</span></div>
+        <div class="row"><span>PET CENTER TATUAPE</span><span>revendedor</span></div>
+        <div class="row"><span>Patinhas</span><span>revendedor</span></div>
+      </div>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/amz-marca-2.webp" alt="Filtro Vendido por na página da marca Pet Toys na Amazon"></figure>
+      <div class="cap">Amazon.com.br <b>&middot;</b> filtro &ldquo;Vendido por&rdquo; na página da marca <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="choices">
+    <button class="choice" data-go="a1"><span class="k">Resposta 1</span>
+      <span class="q">Foi decisão nossa</span>
+      <span class="d">Existe critério comercial para quem vende onde</span></button>
+    <button class="choice" data-go="a2"><span class="k">Resposta 2</span>
+      <span class="q">Não sabíamos</span>
+      <span class="d">Eles apareceram sem passar por nós</span></button>
+  </div>
+</section>
+
+<section class="slide answer" data-role="answer" data-parent="a">
+  <div class="eyebrow">Resposta <b>/</b> existe critério</div>
+  <h1>Então a régua existe.<br>Ela só não chega <em>até a tela</em>.</h1>
+  <p class="sub">Se vocês escolheram esses oito, o trabalho não é selecionar parceiro. É fazer a decisão
+  de vocês aparecer no canal: <strong>qual sortimento cada um leva, com que ficha, em qual posição de preço.</strong></p>
+  <p class="sub">Hoje nada disso está visível. Um vendedor que nem aparece no filtro da marca está com a
+  buy box do comedouro. Quem olha a tela não distingue o parceiro escolhido do que chegou por conta própria.</p>
+  <div class="kick">Critério que não aparece no canal não governa o canal.</div>
+  <div class="backline"><button class="btn primary" data-next>Continuar</button>
+    <button class="btn" data-back>Voltar</button></div>
+</section>
+
+<section class="slide answer" data-role="answer" data-parent="a">
+  <div class="eyebrow">Resposta <b>/</b> chegaram sozinhos</div>
+  <h1>O que chega por acaso<br><em>sai por acaso</em></h1>
+  <p class="sub">Oito vendedores com uma a nove unidades cada um. Isso não é canal, é sobra de estoque
+  de loja física anunciada na Amazon.</p>
+  <p class="sub">O risco não é o revendedor que está lá. <strong>É o próximo.</strong> Sem critério de
+  credenciamento, quem chegar amanhã ocupa a mesma vitrine, cria a ficha do jeito que quiser, e vocês
+  descobrem depois.</p>
+  <div class="kick">Não é sobre tirar ninguém. É sobre decidir quem entra.</div>
+  <div class="backline"><button class="btn primary" data-next>Continuar</button>
+    <button class="btn" data-back>Voltar</button></div>
+</section>
+
+<!-- 06 DISPERSÃO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 06</div>
+  <h1>Um Pet Ball,<br>cinco preços</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="figs" style="margin-bottom:clamp(12px,2vh,22px)">
+        <div class="fig"><div class="n hot">8<span style="font-size:.5em">,00</span></div><div class="l">Mercado Livre · o mais barato</div></div>
+        <div class="fig"><div class="n">45<span style="font-size:.5em">,99</span></div><div class="l">Mercado Livre · o mais caro</div></div>
+      </div>
+      <div class="rows">
+        <div class="row"><span>Pet Ball no Mercado Livre</span><span>R$ 8,00 &middot; 21,99 &middot; 30,79 &middot; 45,99</span></div>
+        <div class="row"><span>Pet Ball na Amazon</span><span>R$ 28,99</span></div>
+        <div class="row"><span>Comedouro alto: Mercado Livre, dois vendedores</span><span>R$ 24,90 &middot; R$ 29,90</span></div>
+        <div class="row"><span>Comedouro alto: Amazon, enviado pela Amazon</span><span>R$ 34,90</span></div>
+        <div class="row"><span>Ossinho maciço pequeno, Amazon, duas ofertas</span><span>R$ 14,00 &middot; R$ 15,90</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">A mesma embalagem do Pet Ball aparece de R$ 8 a R$ 45,99. Não confirmamos
+      se todos são o mesmo tamanho: o site lista o Pet Ball de 13 cm. <strong>O comprador também não confirma.
+      Ele vê cinco preços para uma caixa igual.</strong></p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/ml-busca-2.webp" alt="Resultados do Mercado Livre com o Pet Ball em três preços diferentes"></figure>
+      <div class="cap">Mercadolivre.com.br <b>&middot;</b> busca &ldquo;pet ball toys&rdquo;, filtro de marca Pet Toys <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">O revendedor não ataca a marca. Ele faz o óbvio com o preço que recebeu e a unidade que sobrou.</div>
+</section>
+
+<!-- 07 ESTOQUE -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 07</div>
+  <h1>Estoque de vitrine,<br>não de canal</h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">Nas dez fichas em que o aviso é visível, <strong>todas</strong> mostram
+      &ldquo;somente N em estoque&rdquo;. Três estão com uma unidade.</p>
+      <div class="rows">
+        <div class="row"><span>Fichas com aviso de estoque baixo</span><span class="hot">10 de 10 visíveis</span></div>
+        <div class="row"><span>Maior estoque encontrado</span><span>9 unidades</span></div>
+        <div class="row"><span>Fichas com 1 unidade</span><span class="amb">3</span></div>
+        <div class="row"><span>Mercado Livre, Vivaz Pet</span><span class="amb">&ldquo;Última em estoque!&rdquo;</span></div>
+        <div class="row"><span>Filtro &ldquo;exibir itens sem estoque&rdquo;</span><span>desligado</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">O que acabou nem aparece na tela. E quando a última unidade sai,
+      a ficha some da busca e o histórico dela para. Um pote de 36 bolinhas a R$ 99,80, que é embalagem de
+      balcão de pet shop, está no mesmo corredor do consumidor final.</p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/amz-marca-1.webp" alt="Página da marca com avisos de somente N em estoque em todas as fichas"></figure>
+      <div class="cap">Amazon.com.br <b>&middot;</b> avisos &ldquo;somente N em estoque&rdquo; na página da marca <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">Quem repõe é o revendedor, quando quer. A fábrica não entra nessa conta.</div>
+</section>
+
+<!-- 08 AVALIAÇÕES -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 08</div>
+  <h1>Catorze fichas<br>sem nenhuma avaliação</h1>
+  <div class="ev even">
+    <div class="col">
+      <p class="sub">Avaliação na Amazon só existe depois da compra. Das quinze fichas, uma tem avaliação:
+      o Pet Ball, com <strong>5,0★ e três avaliações</strong>. As outras catorze não têm nenhuma.</p>
+      <div class="rows">
+        <div class="row"><span>Pet Ball Toys</span><span>5,0★ &middot; 3</span></div>
+        <div class="row"><span>As outras 14 fichas</span><span class="hot">0 avaliações</span></div>
+        <div class="row"><span>Mercado Livre, os dois vendedores</span><span class="amb">&ldquo;+5 vendas&rdquo;</span></div>
+        <div class="row"><span>Comedouro plástico de outro fabricante nacional, mesma categoria</span><span class="grn">210 &middot; 4,7★</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Ou a ficha é nova, ou não vende</h2>
+      <p class="sub">Sete anos de Pet Toys e a Amazon não tem histórico nenhum da marca. Cada vez que um revendedor
+      cria a ficha do zero, o pouco que vendeu antes fica na ficha antiga, que some quando o estoque acaba.</p>
+      <p class="small">O comparável de 210 avaliações foi capturado na Amazon.com.br em 23 de setembro de 2026,
+      na busca genérica de comedouro. É produto nacional, de plástico injetado, na mesma faixa de preço.</p>
+    </div>
+  </div>
+  <div class="kick">O problema não é o produto. É que ninguém deixou o produto acumular história.</div>
+</section>
+
+<!-- 09 MERCADO LIVRE: A MARCA -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 09</div>
+  <h1>No Mercado Livre,<br>&ldquo;Pet Toys&rdquo; é <em>qualquer coisa</em></h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">A busca &ldquo;pet ball toys&rdquo; com o filtro de marca <strong>Pet Toys</strong> devolve 48 anúncios.
+      Entre eles, produtos que não saem da fábrica de vocês.</p>
+      <div class="rows">
+        <div class="row"><span>Kit 20 bolinhas de tênis &ldquo;Pet Toys&rdquo;</span><span class="hot">GI GUERRA IMPORTS &middot; R$ 135,56</span></div>
+        <div class="row"><span>Pelúcia morango com apito &ldquo;Pet Toys&rdquo;</span><span class="hot">R$ 10,99 &middot; +25 vendidos</span></div>
+        <div class="row"><span>Corda com bola, kit de 8 brinquedos, bola mágica com LED</span><span class="amb">mesma marca no campo</span></div>
+        <div class="row"><span>Loja oficial da marca</span><span class="hot">não encontrada</span></div>
+        <div class="row"><span>Bola inteligente azul, 5,0★, +50 vendidos</span><span>R$ 45,99 &middot; vendedor não identificado</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">O nome da marca é o nome da categoria em inglês. Qualquer vendedor que
+      escreve &ldquo;pet toys&rdquo; no campo marca entra na mesma prateleira. Nós tivemos dificuldade de achar a
+      fábrica no meio disso. O comprador não vai insistir.</p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/ml-busca-1.webp" alt="Busca pet ball toys no Mercado Livre com filtro de marca Pet Toys e 48 resultados"></figure>
+      <div class="cap">Mercadolivre.com.br <b>&middot;</b> busca &ldquo;pet ball toys&rdquo;, filtro de marca Pet Toys, 48 resultados <b>&middot;</b> 5 out 2026</div>
+    </div>
+  </div>
+  <div class="kick">O problema no Mercado Livre não é a marca não aparecer. É &ldquo;Pet Toys&rdquo; aparecer em tudo.</div>
+</section>
+
+<!-- 10 MERCADO LIVRE: QUEM REPRESENTA -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O diagnóstico <b>/</b> 10</div>
+  <h1>Quem representa a marca lá:<br>dois alertas e <em>um exemplo</em></h1>
+  <div class="ev">
+    <div class="col">
+      <p class="sub">O comedouro alto vermelho tem dois vendedores no catálogo. Ao lado dos dois, o Mercado Livre
+      escreve em vermelho: <strong>&ldquo;Não oferece um bom atendimento&rdquo;</strong>. A aranha de brinquedo tem outro.</p>
+      <div class="rows">
+        <div class="row"><span>Cantinhopett &middot; comedouro</span><span class="hot">R$ 24,90 &middot; +5 vendas &middot; alerta de atendimento</span></div>
+        <div class="row"><span>Vivaz Pet &middot; comedouro</span><span class="hot">R$ 29,90 &middot; última unidade &middot; alerta de atendimento</span></div>
+        <div class="row"><span>Dona Patinha &middot; aranha 5139</span><span class="grn">R$ 13,06 &middot; MercadoLíder &middot; +1000 vendas &middot; +10 em estoque</span></div>
+        <div class="row"><span>Título da aranha</span><span>traz &ldquo;Pet Toys&rdquo;, e o código 5139</span></div>
+        <div class="row"><span>Ficha da aranha</span><span class="amb">2 atributos: &ldquo;1 brinquedo&rdquo;, &ldquo;cães&rdquo;</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">A Dona Patinha é pet shop de ração e remédio, com 1.300 seguidores, e vende o
+      brinquedo de vocês com estoque, reputação e o nome da marca no título. <strong>A rede sabe fazer. O que falta
+      é critério para decidir quem faz.</strong></p>
+    </div>
+    <div class="col shot">
+      <figure><img src="img/ml-aranha-donapatinha.webp" alt="Anúncio da aranha Pet Toys vendida pela Dona Patinha, MercadoLíder com mais de mil vendas"></figure>
+      <div class="cap">Mercadolivre.com.br <b>&middot;</b> &ldquo;Brinquedo Pet Aranha 5139 - Pet Toys&rdquo;, vendido por Dona Patinha <b>&middot;</b> 5 out 2026
+      <br>Catálogo do comedouro com os dois alertas: print pendente, salvar como deck/img/ml-catalogo-comedouro.webp</div>
+    </div>
+  </div>
+  <div class="kick">Mesma marca, mesmo canal: quem representa bem e quem representa mal. Hoje ninguém escolhe qual dos dois.</div>
+</section>
+
+<!-- 11 FORK C -->
+<section class="slide fork" data-role="trunk" data-fork="c">
+  <div class="eyebrow">Pergunta <b>/</b> 11</div>
+  <h1>Qual jogo vocês<br>querem jogar?</h1>
+  <p class="sub">Vocês falaram em controle de marca e em vender para a Amazon. A Amazon já vende a marca, e a rede
+  já está nos dois canais. Por isso o caminho que recomendamos é <strong>ser dono do canal e fornecedor da
+  Amazon</strong>, sem abrir loja própria. Mas a escolha é de vocês, e muda tudo que vem depois.</p>
+  <div class="choices">
+    <button class="choice rec" data-go="c1"><span class="k">Caminho 1 · recomendado</span>
+      <span class="q">Dono do canal, fornecedor da Amazon</span>
+      <span class="d">A Amazon compra de vocês (1P) e a rede credenciada vende no 3P. A marca é dona da ficha, da cor, do conteúdo e do critério de quem entra.</span></button>
+    <button class="choice" data-go="c2"><span class="k">Caminho 2</span>
+      <span class="q">Vender direto também</span>
+      <span class="d">A marca abre conta própria (3P) e entra na mesma vitrine da rede. O conflito passa a existir de propósito.</span></button>
+  </div>
+</section>
+
+<section class="slide answer" data-role="answer" data-parent="c">
+  <div class="eyebrow">Caminho <b>/</b> marca protagonista, com 1P</div>
+  <h1>A Amazon compra. A rede vende.<br>A marca é dona <em>do palco</em>.</h1>
+  <div class="ev even">
+    <div class="col">
+      <p class="sub">Vocês não disputam venda com ninguém. A Amazon passa a comprar de vocês em volume, o que resolve o
+      estoque de uma a nove unidades. A rede continua no 3P, com critério. E a marca controla a ficha, a cor e o conteúdo
+      que todos usam.</p>
+      <p class="sub">1P é outro jogo: pedido de compra, cobertura de estoque, fill rate, ficha no padrão que a Amazon
+      exige. É o jogo de uma indústria, e vocês já são uma.</p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Quem realiza a venda</span><span>a Amazon (1P) e a rede credenciada (3P)</span></div>
+        <div class="row"><span>Quem é dono da ficha, da cor e do conteúdo</span><span class="grn">a marca</span></div>
+        <div class="row"><span>Quem negocia com a Amazon</span><span>vocês; a impulsio prepara o catálogo</span></div>
+        <div class="row"><span>Conflito com distribuidor</span><span class="grn">nenhum novo</span></div>
+        <div class="row"><span>Posição de preço</span><span>diretriz, não imposição</span></div>
+        <div class="row"><span>Remuneração da impulsio</span><span class="sea">fixa, sem variável</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Em 1P quem decide o volume é a Amazon. Variável sobre decisão de terceiro
+      é disputa garantida, e por isso não cobramos.</p>
+    </div>
+  </div>
+  <div class="kick">A rede continua vendendo, a Amazon passa a comprar, e o palco é de vocês.</div>
+  <div class="backline"><button class="btn primary" data-next>Continuar</button>
+    <button class="btn" data-back>Voltar</button></div>
+</section>
+
+<section class="slide answer" data-role="answer" data-parent="c">
+  <div class="eyebrow">Caminho <b>/</b> venda direta</div>
+  <h1>Então o conflito existe,<br>e é melhor tratá-lo <em>agora</em></h1>
+  <div class="ev even">
+    <div class="col">
+      <p class="sub">A marca vai disputar a mesma vitrine da rede que hoje compra dela. Fingir que não vai
+      acontecer é o caminho mais rápido para uma guerra de preço em seis meses.</p>
+      <p class="sub">Antes de abrir venda direta é preciso definir <strong>o que a marca vende e o que fica com a
+      rede</strong>. Linhas exclusivas do canal, kits, o que o distribuidor não compra. Sem isso, a primeira
+      reclamação chega em semanas.</p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Quem realiza a venda</span><span>a rede e a marca</span></div>
+        <div class="row"><span>Sortimento</span><span class="grn">separado por linha</span></div>
+        <div class="row"><span>Posição de preço</span><span>diretriz pública e igual para todos</span></div>
+        <div class="row"><span>Credenciamento</span><span>critério escrito</span></div>
+        <div class="row"><span>Remuneração da impulsio</span><span>fixa, mais variável sobre o que a operação vende</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="kick">Dá para fazer. Não dá para fazer sem combinar antes.</div>
+  <div class="backline"><button class="btn primary" data-next>Continuar</button>
+    <button class="btn" data-back>Voltar</button></div>
+</section>
+
+<!-- 12 O QUE ESTÁ PARADO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O que está parado hoje <b>/</b> 12</div>
+  <h1>Sem estimar nada</h1>
+  <p class="sub">Não temos acesso ao faturamento de vocês, então não vamos inventar quanto isso custa.
+  O que está abaixo é o que dá para ver na tela, com print e data.</p>
+  <div class="tiles">
+    <div class="tile"><div class="n hot">12</div><div class="l">de 15 títulos <b>sem o nome da marca</b></div></div>
+    <div class="tile"><div class="n hot">14</div><div class="l">de 15 fichas <b>sem nenhuma avaliação</b></div></div>
+    <div class="tile"><div class="n amb">10</div><div class="l">de 10 fichas com estoque <b>de 1 a 9 unidades</b></div></div>
+    <div class="tile"><div class="n amb">5×</div><div class="l">entre o menor e o maior preço <b>do Pet Ball</b>, de R$ 8 a R$ 45,99</div></div>
+    <div class="tile"><div class="n hot">0</div><div class="l">de 15 fichas com <b>escolha de cor</b></div></div>
+    <div class="tile"><div class="n amb">8</div><div class="l">vendedores na Amazon, <b>0 com critério visível</b></div></div>
+    <div class="tile"><div class="n hot">48</div><div class="l">anúncios respondem pela marca no Mercado Livre, <b>bolinha de tênis importada inclusa</b></div></div>
+  </div>
+  <div class="kick">Nenhum número desta tela é estimativa. Todos têm print datado de 5 de outubro.</div>
+</section>
+
+<!-- 13 O QUE FAZEMOS -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">O que a impulsio faz <b>/</b> 13</div>
+  <h1>Nesta ordem,<br>e não em outra</h1>
+  <div class="ev even">
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span style="color:var(--paper);font-weight:700">1. Governança de marca</span><span>registro da marca no canal, dono da ficha, buy box, credenciamento</span></div>
+        <div class="row"><span style="color:var(--paper);font-weight:700">2. Catálogo e conteúdo</span><span>título, variação de cor, atributos de filtro, categoria, SEO</span></div>
+        <div class="row"><span style="color:var(--paper);font-weight:700">3. Arquitetura de canais</span><span>papel da Amazon, do Mercado Livre e da rede; sortimento; preço como diretriz</span></div>
+        <div class="row"><span style="color:var(--paper);font-weight:700">4. Retail media</span><span class="amb">depois do catálogo, nunca antes</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Por que mídia fica por último</h2>
+      <p class="sub">Tráfego pago para uma ficha sem a marca no título, sem cor para escolher e com uma unidade
+      em estoque vira desconto. Não vira venda.</p>
+      <p class="small">Isso é posicionamento, não cautela. Mídia entra como proposta separada, depois da
+      primeira onda de fichas publicada e medida.</p>
+      <p class="small" style="margin-top:14px">A impulsio opera dentro das contas de vocês. Os acessos, o registro
+      de marca no canal e tudo que for construído pertencem à Pet Toys, inclusive se um dia vocês
+      internalizarem a operação.</p>
+    </div>
+  </div>
+  <div class="kick">Marca é o gancho. Margem é o motor. Mídia é o acelerador, e só depois que o carro anda.</div>
+</section>
+
+<!-- 14 INDICADORES -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">Pelo que respondemos <b>/</b> 14</div>
+  <h1>E pelo que<br><em>não</em> respondemos</h1>
+  <div class="ev even">
+    <div class="col">
+      <h2>O que medimos</h2>
+      <div class="rows">
+        <div class="row"><span>Fichas no padrão da marca</span><span class="hot">0 de 15</span></div>
+        <div class="row"><span>Fichas com variação de cor</span><span class="hot">0 de 15</span></div>
+        <div class="row"><span>Vendedores com critério</span><span class="hot">0 de 8</span></div>
+        <div class="row"><span>Dispersão de preço no Pet Ball</span><span class="amb">R$ 8 a R$ 45,99</span></div>
+        <div class="row"><span>Fichas com estoque abaixo de 10</span><span class="amb">10 de 10</span></div>
+        <div class="row"><span>Anúncios de outras origens sob a marca no Mercado Livre</span><span class="hot">pelo menos 3</span></div>
+      </div>
+      <p class="small" style="margin-top:12px">Linha de partida medida em 5 de outubro. Toda revisão compara contra ela.</p>
+    </div>
+    <div class="col">
+      <h2>O que não prometemos</h2>
+      <p class="sub"><strong>Meta de faturamento.</strong> Faturamento depende de preço, estoque e decisão
+      de vocês: três coisas que a operação não controla.</p>
+      <p class="sub">Agência promete crescimento e entrega explicação no terceiro mês. A impulsio responde
+      pelo que dá para auditar na tela.</p>
+      <p class="small">Também não fazemos, e está no escopo: atendimento ao comprador, devoluções, disputa
+      com plataforma, foto e vídeo de produto. Questão jurídica de marca é do departamento legal de vocês.</p>
+    </div>
+  </div>
+  <div class="kick">É mais fácil vender promessa de faturamento. É mais honesto vender o que dá para conferir.</div>
+</section>
+
+<!-- 15 FECHO -->
+<section class="slide" data-role="trunk">
+  <div class="eyebrow">Fecho <b>/</b> 15</div>
+  <h1>O que ainda<br>não sabemos</h1>
+  <p class="sub">Três respostas que só vocês têm, e que mudam o desenho do trabalho:</p>
+  <div class="rows" style="font-size:clamp(13px,1.15vw,24px);max-width:74ch">
+    <div class="row"><span style="color:var(--paper)">A Amazon compra de vocês ou de um distribuidor?</span><span class="hot">01</span></div>
+    <div class="row"><span style="color:var(--paper)">Desses oito vendedores, quantos compram de vocês?</span><span class="hot">02</span></div>
+    <div class="row"><span style="color:var(--paper)">A marca está registrada no INPI? É o que abre o registro de marca nos dois canais.</span><span class="hot">03</span></div>
+  </div>
+  <p class="small" style="margin-top:18px">Este diagnóstico foi entregue antes de qualquer contrato, e fica com vocês
+  independentemente do que decidirem. A planilha com as quinze fichas, os oito vendedores e os preços
+  encontrados acompanha esta apresentação.</p>
+  <div class="kick">impulsio &middot; operação de canais digitais para indústrias e distribuidores
+    <div class="small">Diagnóstico de canal &middot; Amazon Brasil e Mercado Livre &middot; 5 de outubro de 2026</div></div>
+</section>
+
+</div>
+
+<div class="rail">
+  <span id="pos"><em>01</em> / 16</span>
+  <div class="nav">
+    <button id="prev" aria-label="Slide anterior">&larr;</button>
+    <button id="next" aria-label="Próximo slide">&rarr;</button>
+  </div>
+  <button class="fsbtn" id="fs" aria-label="Tela cheia">Tela cheia</button>
+  <span class="hint" id="hint">← → navegar &nbsp;·&nbsp; F tela cheia</span>
+</div>
+
+<script>
+(function(){
+  var all   = [].slice.call(document.querySelectorAll('.slide'));
+  var trunk = all.filter(function(s){ return s.dataset.role === 'trunk'; });
+  var cur = 0;
+  function parentOf(ans){
+    var k = ans.dataset.parent;
+    for(var i=0;i<all.length;i++){ if(all[i].dataset.fork === k) return all[i]; }
+    return trunk[0];
+  }
+  function countUp(slide){
+    slide.querySelectorAll('[data-count]').forEach(function(el){
+      var target = parseInt(el.dataset.count,10);
+      if(isNaN(target)) return;
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = target; return; }
+      var t0 = null, dur = 620;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min((ts-t0)/dur,1);
+        el.textContent = Math.round(target * (1 - Math.pow(1-p,3)));
+        if(p < 1) requestAnimationFrame(step);
+      }
+      el.textContent = '0';
+      requestAnimationFrame(step);
+    });
+  }
+  function show(i){
+    if(i < 0 || i >= all.length) return;
+    all.forEach(function(s){ s.classList.remove('on'); });
+    var s = all[i]; s.classList.add('on'); cur = i;
+    countUp(s); paint();
+    if(window.innerWidth <= 860) window.scrollTo(0,0);
+  }
+  function paint(){
+    var s = all[cur], isAns = s.dataset.role === 'answer';
+    var t = trunk.indexOf(isAns ? parentOf(s) : s); if(t < 0) t = 0;
+    document.getElementById('pos').innerHTML =
+      '<em>' + String(t+1).padStart(2,'0') + '</em> / ' + String(trunk.length).padStart(2,'0') + (isAns ? ' · resposta' : '');
+    document.getElementById('fill').style.width = ((t+1)/trunk.length*100) + '%';
+    document.getElementById('prev').disabled = (cur === 0);
+    var h = document.getElementById('hint');
+    if(s.dataset.fork) h.textContent = 'clique na resposta do cliente';
+    else if(isAns) h.textContent = 'continuar volta ao tronco';
+    else h.textContent = '← → navegar · F tela cheia';
+  }
+  function nextTrunk(){
+    var s = all[cur];
+    var from = (s.dataset.role === 'answer') ? all.indexOf(parentOf(s)) : cur;
+    for(var i=from+1;i<all.length;i++){ if(all[i].dataset.role === 'trunk'){ show(i); return; } }
+  }
+  function prevTrunk(){
+    var s = all[cur];
+    if(s.dataset.role === 'answer'){ show(all.indexOf(parentOf(s))); return; }
+    for(var i=cur-1;i>=0;i--){ if(all[i].dataset.role === 'trunk'){ show(i); return; } }
+  }
+  document.getElementById('next').addEventListener('click', nextTrunk);
+  document.getElementById('prev').addEventListener('click', prevTrunk);
+  var fsBtn = document.getElementById('fs');
+  function toggleFs(){
+    if(!document.fullscreenElement){
+      var p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      if(p && p.catch) p.catch(function(){});
+    } else if(document.exitFullscreen){ document.exitFullscreen(); }
+  }
+  fsBtn.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', function(){ fsBtn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia'; });
+  document.addEventListener('keydown', function(e){
+    if(e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if(e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' '){ e.preventDefault(); nextTrunk(); }
+    if(e.key === 'ArrowLeft'  || e.key === 'PageUp'){ e.preventDefault(); prevTrunk(); }
+    if(e.key === 'Home'){ e.preventDefault(); show(0); }
+    if(e.key === 'f' || e.key === 'F'){ e.preventDefault(); toggleFs(); }
+  });
+  document.querySelectorAll('[data-go]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.dataset.go, fork = key.charAt(0), n = parseInt(key.slice(1),10);
+      var m = all.filter(function(s){ return s.dataset.parent === fork; });
+      if(m[n-1]) show(all.indexOf(m[n-1]));
+    });
+  });
+  document.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click', nextTrunk); });
+  document.querySelectorAll('[data-back]').forEach(function(b){ b.addEventListener('click', function(){ show(all.indexOf(parentOf(all[cur]))); }); });
+  show(0);
+})();
+</script>

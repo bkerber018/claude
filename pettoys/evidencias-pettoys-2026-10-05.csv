@@ -1,0 +1,43 @@
+canal;captura;busca_ou_pagina;titulo_como_aparece;preco_brl;estoque_ou_prazo;vendedor;avaliacoes;marca_no_titulo;observacao;evidence_type;print
+Amazon;2026-10-05;marca Pet Toys, Pet Shop > Cachorros, mais vendidos;Brinq. Pet Ball Toys-0162;28,99;somente 3;n/d;5,0 (3);nao;titulo abreviado com codigo;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Comedouro/Bebedouro Alto Antiformiga 500ml para Caes e Gatos Pet Toys;34,90;somente 4; entrega amanha 08-13;CSG Marketplace, enviado pela Amazon;0;sim;Cor: Azul, sem variacao; 3 miniaturas de cor na foto; Especie-alvo: Cao; campo 'controle por radio: Alimentacao de caes'; Marca: PET TOYS;fact;amz-ficha-comedouro.webp (pendente)
+Amazon;2026-10-05;idem;Brinq. Frisbee Pet;13,89;somente 1; entrega amanha 08-13;n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Puxador Massageador Grande;25,30;somente 4; entrega amanha 08-13;n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Halteres com Cravo Medio;21,65;somente 1; entrega amanha 08-13;n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Comedouro E Bebedouro Retratil P/Caes E Gatos 400 Ml- Sortido;7,70;somente 2; entrega sab 10 out;n/d;0;nao;cor sortida;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Bebedouro Pelos Longos Cara De Dog 700 Ml Cartela - Sortido;27,50;somente 6; entrega amanha;n/d;0;nao;cor sortida;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Ossinho Mass Cravo Pequeno-2633;12,50;somente 9; entrega amanha 08-13;n/d;0;nao;codigo no titulo; 'Mais por Menos 5% em 5+';fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Ossinho Mass. Liso Pequeno;14,00;somente 1; entrega amanha 08-13;n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Ossinho Macico Pequeno (oferta 1);14,00;somente 2; entrega qui 8 out;n/d;0;nao;mesma ficha com segunda oferta;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Ossinho Macico Pequeno (oferta 2, 'Receba mais rapido');15,90;somente 3; entrega amanha;n/d;0;nao;dois precos e dois prazos na mesma ficha;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Bebedouro Caes Pet Toys Pelos Longos Rosa Glitter - 1000mL;34,49;n/d (cortado);n/d;0;sim;mesmo produto em ficha separada por cor;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Bebedouro Caes Pet Toys Pelos Longos Azul Glitter - 1000mL;29,09;n/d (cortado);n/d;0;sim;18% abaixo do rosa;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinquedo Bola Macica Lisa Media 55mm;18,56;n/d (cortado);n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Pote Bolinha C/Pena E Guizo com 36 unidades;99,80;n/d (cortado);n/d;0;nao;embalagem de balcao; 2x sem juros;fact;amz-marca-1.webp
+Amazon;2026-10-05;idem;Brinq. Bola Macica Cravo M 55mm;18,56;n/d (cortado);n/d;0;nao;;fact;amz-marca-1.webp
+Amazon;2026-10-05;filtro 'Vendido por' na pagina da marca;;;;Amazon.com.br; shoten; COVOFEL AGROPET; Pet Precinho Bom; Loja Malu Variedades; PET CENTER TATUAPE; Patinhas;;;7 no filtro + CSG Marketplace na ficha do comedouro = 8;fact;amz-marca-2.webp
+Amazon;2026-10-05;filtros da pagina;;;;;;;'Exibir itens sem estoque' desmarcado: fichas sem estoque nao aparecem; faixa de preco R$7 a R$94;fact;amz-marca-1.webp
+Mercado Livre;2026-10-05;busca 'pet ball toys' + filtro marca Pet Toys;48 resultados;;;;;;boa parte nao e da fabrica: kits de tenis, pelucia, corda;fact;ml-busca-1.webp
+Mercado Livre;2026-10-05;idem;Pet Ball Cachorro Brinquedo Interativo Bola Porta Racao Dog Cor Vermelho;45,99;frete gratis;n/d;0;nao;;fact;ml-busca-1.webp
+Mercado Livre;2026-10-05;idem;Bolinha Interativa Pet Ball Cachorro Brinquedo Petisco Racao;8,00;;n/d;0;nao;mesma embalagem Pet Ball; tamanho nao confirmado;fact;ml-busca-2.webp
+Mercado Livre;2026-10-05;idem;Brinquedo Interativo Pet Ball Bolinha Divertida Para Caes;21,99;chega quarta;n/d;0;nao;;fact;ml-busca-2.webp
+Mercado Livre;2026-10-05;idem;Pet Ball Cachorro Brinquedo Interativo Bola Porta Racao Dog;30,79;frete gratis;n/d;0;nao;;fact;ml-busca-2.webp
+Mercado Livre;2026-10-05;idem;Brinquedo Bola Inteligente Para Pets Azul;45,99;frete gratis;n/d;5,0 (+50 vendidos);nao;mesma bola do Pet Ball;fact;ml-busca-2.webp
+Mercado Livre;2026-10-05;idem;Brinquedo De Pelucia Coracao C/ Apito - Pet Toys;10,99;chega quarta; FULL;n/d;5,0 (+25 vendidos);sim;pelucia: nao e produto da fabrica (plastico injetado);fact;ml-busca-2.webp
+Mercado Livre;2026-10-05;idem;Kit 20 Bolinhas de Tenis Pet Toys Verde Limao para Cachorro;135,56;chega quarta;GI GUERRA IMPORTS;+25 vendidos;sim;importado com a marca no campo;fact;ml-busca-5.webp
+Mercado Livre;2026-10-05;idem;Bumerangue Mordedor Pet Toys 14cm Sortido Plastico Resistente Caes;18,00;ULTIMA; chega quarta; FULL;n/d;0;sim;marca PET TOYS no card; sortido;fact;ml-busca-3.webp
+Mercado Livre;2026-10-05;idem;Bola Macica 55mm Super Resistente Para Caes Mordedor Cravo M;19,00;frete gratis;n/d;0;nao;24% off de 25,32;fact;ml-busca-3.webp
+Mercado Livre;2026-10-05;idem;Brinquedo Bola Macica Pet Toys 55mm Rosa Com Cravo Para Caes;28,28;frete gratis;n/d;0;sim;;fact;ml-busca-4.png
+Mercado Livre;2026-10-05;idem;Bolinha Cravo Pet Cachorro Antiestresse 55 Mm;28,28;frete gratis;n/d;0;nao;3 cores (variacao criada pelo vendedor);fact;ml-busca-4.png
+Mercado Livre;2026-10-05;idem;Bola Macica Lisa Grande 75mm Cor Sortida;30,00;chega quarta;n/d;0;nao;sortido;fact;ml-busca-4.png
+Mercado Livre;2026-10-05;idem;Brinquedo Bola Macica Cravo Caes 55mm Am-lr-vd-rs - Dog2718;18,40;;n/d;0;nao;codigo no titulo;fact;ml-busca-4.png
+Mercado Livre;2026-10-05;idem;Bolinha Com Pena E Guizo - Pet Toys;12,99;chega quarta;n/d;0;sim;;fact;ml-busca-4.png
+Mercado Livre;2026-10-05;idem;Kit 36 Bolinhas Dispenser Guizo Gatos Calopsitas Brinquedo;121,80;chega quarta;n/d;0;nao;pote de 36 (Amazon: 99,80);fact;ml-busca-5.webp
+Mercado Livre;2026-10-05;idem;Bola de Brinquedo Pet Toys para Caes com Ventosa Fixa Vermelha;37,05;frete gratis;n/d;0;sim;5% off de 39;fact;ml-busca-3.webp
+Mercado Livre;2026-10-05;idem;Bolinha Acrilica Com Guizo E Glitter Para Gato;9,90;;n/d;0;nao;linha Glitter gatos;fact;ml-busca-3.webp
+Mercado Livre;2026-10-05;catalogo 'Comedouro Pet Toys Antiderrapante Vasilha Para Comedouro Alto Vermelho';oferta 1;24,90;chega qua-qui;CANTINHOPETT;+5 vendas; 'Nao oferece um bom atendimento';sim;cor: vermelho, unica;fact;ml-catalogo-comedouro.webp (pendente)
+Mercado Livre;2026-10-05;idem;oferta 2;29,90;'Ultima em estoque!';VIVAZ PET;+5 vendas; 'Nao oferece um bom atendimento';sim;;fact;ml-catalogo-comedouro.webp (pendente)
+Mercado Livre;2026-10-05;ficha Brinquedo Pet Aranha 5139 - Pet Toys;Brinquedo Pet Aranha 5139 - Pet Toys;13,06;+10 disponiveis; chega quarta;DONA PATINHA (MercadoLider, +1000 vendas, +1.300 seguidores);n/d;sim;5% off de 13,75; ficha com 2 atributos; 5 fotos;fact;ml-aranha-donapatinha.webp
+Amazon;2026-09-23;busca generica 'comedouro para roedor' (estudo anterior, dado publico);Comedouro plastico para Roedores (cores sortidas) MY PET BRASIL;24,48;somente 2;Amazon.com.br;5,0 (2); marca em destaque, 10K+ pedidos;;My Pet Brasil e distribuidora que lista Pet Toys;fact;mypet-23set.webp
+Web;2026-10-05;busca web (snippets);site pettoys.com.br: 50 brinquedos para caes; 6 linhas de gatos; Grupo Toys desde 1997; Pet Toys desde 2019; fabrica zona leste SP >50.000 m2;;;;;;site bloqueado pelo proxy; confirmar no site;web_snippet;
+Briefing interno;2026-10-05;PDF "Grupo Toys - Pet Toys - Cenario Atual e Oportunidades";contato Luzival Leao (comercial e on-line Pet Toys), via Andressa / Amigos Pet; interesses: controle de marca, 1P, internacional; grupo com ~350 colaboradores e 4.000+ itens; reuniao 02/10 14h on-line;;;;;;nenhum valor dito; cenario de marketplaces nao levantado;briefing;

@@ -1,0 +1,342 @@
+<title>Proposta Pet Toys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+/* Mesmo palco do diagnóstico, tinta um tom mais azul: é a segunda metade da reunião. */
+:root{
+  color-scheme: dark;
+  --ink:#080D1A; --ink2:#111A2E; --ink3:#182542; --rule:#263352;
+  --hot:#F0452F; --hot-d:#B52A19;
+  --seal:#2D6BE4; --seal-l:#7FA8F0;
+  --paper:#F6F5F1; --text:#C8CFDF; --mute:#7E889E; --faint:#4A5370;
+  --amber:#FFC83D; --green:#3DBE7C;
+  --fd:"Archivo",system-ui,sans-serif;
+  --fm:"JetBrains Mono",ui-monospace,monospace;
+  --exp:'wdth' 122; --cond:'wdth' 88;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--fd);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;font-family:var(--fd)}
+.deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+  padding:clamp(28px,4.4vh,64px) clamp(24px,4.2vw,92px) clamp(54px,7vh,88px);overflow:hidden}
+.slide.on{display:flex}
+.slide.on > *{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+.slide.on > *:nth-child(2){animation-delay:.06s}
+.slide.on > *:nth-child(3){animation-delay:.12s}
+.slide.on > *:nth-child(4){animation-delay:.18s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
+.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--hot);display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
+.eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
+h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(28px,4.3vw,80px);line-height:.95;
+  letter-spacing:-.025em;color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
+h1 em{font-style:normal;color:var(--hot)}
+h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;font-size:clamp(17px,1.72vw,32px);line-height:1.05;color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px)}
+.sub strong{color:var(--paper);font-weight:700}
+.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
+.kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);font-family:var(--fd);
+  font-variation-settings:var(--cond);font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);font-weight:700;text-wrap:balance;flex:0 0 auto}
+.kick .small{color:var(--mute);font-variation-settings:normal;font-weight:400;margin-top:8px}
+.ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);grid-template-columns:1fr 1fr;align-items:start}
+.ev.three{grid-template-columns:1fr 1fr 1fr}
+.col{min-height:0;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.row{display:flex;justify-content:space-between;gap:18px;padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.row>span:first-child{color:var(--text)}
+.row>span:last-child{color:var(--paper);font-family:var(--fm);font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
+.row .hot{color:var(--hot)!important} .row .amb{color:var(--amber)!important} .row .grn{color:var(--green)!important} .row .sea{color:var(--seal-l)!important}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(140px,15vw,210px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tile{background:var(--ink2);padding:clamp(12px,1.9vh,24px) clamp(13px,1.3vw,24px)}
+.tile .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(26px,3vw,56px);color:var(--paper);line-height:.86;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
+.tile .n.hot{color:var(--hot)} .tile .n.amb{color:var(--amber)} .tile .n.sea{color:var(--seal-l)}
+.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.38;color:var(--text);margin-top:12px}
+.tile .l b{color:var(--paper);font-weight:700}
+.card{background:var(--ink2);border:1px solid var(--rule);padding:clamp(14px,2vh,26px) clamp(15px,1.5vw,28px);display:flex;flex-direction:column;gap:8px}
+.card.rec{border-color:#2A4C8A}
+.card .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;color:var(--seal-l);text-transform:uppercase}
+.card .q{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(18px,1.86vw,36px);color:var(--paper);line-height:1.02;letter-spacing:-.02em}
+.card .d{font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
+.price{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(30px,3.6vw,68px);color:var(--paper);line-height:.9;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.price small{font-size:.42em;color:var(--mute);font-weight:600;letter-spacing:0}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);flex:0 0 auto}
+.step{background:var(--ink2);padding:clamp(12px,1.9vh,24px) clamp(13px,1.3vw,24px)}
+.step .m{font-family:var(--fm);font-size:clamp(10px,.8vw,15px);letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.step .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(16px,1.5vw,30px);color:var(--paper);margin:8px 0;line-height:1.05}
+.step ul{margin:0;padding-left:18px;font-size:clamp(12px,.96vw,19px);line-height:1.42;color:var(--text)}
+.topbar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--rule);z-index:5}
+.topbar i{display:block;height:100%;background:var(--hot);width:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
+.rail{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);
+  padding:clamp(9px,1.3vh,15px) clamp(24px,4.2vw,92px);padding-bottom:calc(clamp(9px,1.3vh,15px) + env(safe-area-inset-bottom,0px));
+  font-family:var(--fm);font-size:clamp(10px,.78vw,14px);color:var(--mute);letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(to top,var(--ink) 55%,transparent)}
+#pos em{font-style:normal;color:var(--hot)}
+.hint{margin-left:auto;color:var(--faint)}
+.nav{display:flex;gap:5px}
+.nav button,.fsbtn{background:transparent;border:1px solid var(--rule);width:32px;height:28px;cursor:pointer;color:var(--mute);line-height:1;display:grid;place-items:center;font-size:12px}
+.nav button:hover:not(:disabled),.fsbtn:hover{border-color:var(--hot);color:var(--hot)}
+.nav button:disabled{opacity:.28;cursor:default}
+.fsbtn{width:auto;padding:0 11px;font-family:var(--fm);font-size:9px;letter-spacing:.14em}
+@media(max-width:860px){
+  body{overflow:auto} .deck{position:static}
+  .slide{position:static;min-height:calc(100vh - 44px);padding:24px 18px 60px}
+  .ev,.ev.three{grid-template-columns:1fr;gap:16px}
+  .timeline{grid-template-columns:1fr}
+  .hint{display:none}
+}
+</style>
+
+<div class="topbar"><i id="fill"></i></div>
+<div class="deck" id="deck">
+
+<!-- P0 -->
+<section class="slide">
+  <div class="eyebrow">Proposta comercial <b>/</b> Pet Toys <b>/</b> 5 out 2026</div>
+  <h1>O diagnóstico<br>vocês já viram</h1>
+  <p class="sub">Esta é a segunda metade da reunião. O que vem aqui é escopo, prazo e investimento para
+  resolver o que a primeira metade mostrou.</p>
+  <div class="tiles">
+    <div class="tile"><div class="n hot">12</div><div class="l">de 15 títulos na Amazon <b>sem o nome da marca</b></div></div>
+    <div class="tile"><div class="n hot">0</div><div class="l">de 15 fichas com <b>escolha de cor</b></div></div>
+    <div class="tile"><div class="n amb">8</div><div class="l">vendedores na Amazon, <b>0 com critério visível</b></div></div>
+    <div class="tile"><div class="n amb">5×</div><div class="l">entre o menor e o maior preço <b>do Pet Ball</b></div></div>
+    <div class="tile"><div class="n hot">48</div><div class="l">anúncios respondem pela marca no Mercado Livre, <b>parte de outras fábricas</b></div></div>
+  </div>
+  <div class="kick">Tudo isso foi levantado sem contrato. O que segue é o que custa resolver.</div>
+</section>
+
+<!-- P1 CENÁRIO -->
+<section class="slide">
+  <div class="eyebrow">O cenário <b>/</b> 01</div>
+  <h1>Dona do canal, fornecedora da Amazon.<br><em>Mercado Livre em seguida</em>.</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="card rec">
+        <span class="k">Por que Amazon primeiro</span>
+        <span class="q">O canal já vende a marca</span>
+        <span class="d">A Amazon.com.br já vende Pet Toys, de vocês ou de um distribuidor. Vocês querem ser o fornecedor.
+        A ficha aceita variação de cor numa página só. E o registro de marca no canal transfere para vocês o
+        controle do título, da foto e do conteúdo, mesmo com oito vendedores anunciando.</span>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <span class="k">Por que Mercado Livre depois</span>
+        <span class="q">Lá o nome é o problema</span>
+        <span class="d">&ldquo;Pet Toys&rdquo; é o nome da categoria em inglês. Sem loja oficial e sem marca registrada,
+        qualquer vendedor entra na mesma prateleira. O Mercado Livre entra na segunda fase, com o registro no
+        INPI em mãos.</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Quem realiza a venda</span><span>a Amazon, comprando de vocês, e a rede credenciada</span></div>
+        <div class="row"><span>Quem é dono da ficha, da cor e do conteúdo</span><span class="grn">a marca</span></div>
+        <div class="row"><span>Conflito com a rede</span><span class="grn">nenhum novo</span></div>
+        <div class="row"><span>Posição de preço</span><span>diretriz pública, não imposição</span></div>
+        <div class="row"><span>Negociação de fornecimento com a Amazon</span><span>de vocês; a impulsio prepara o catálogo</span></div>
+        <div class="row"><span>Venda direta pela marca (3P próprio)</span><span>fora do escopo</span></div>
+        <div class="row"><span>Remuneração da impulsio</span><span class="sea">fixa, sem variável</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Variável existe onde a operação realiza a venda. Aqui quem vende é a
+      Amazon e a rede, e em 1P quem decide o volume é a Amazon. Cobrar variável sobre decisão de terceiro
+      seria cobrar por trabalho que não é nosso.</p>
+    </div>
+  </div>
+  <div class="kick">A rede continua vendendo, a Amazon passa a comprar, e o palco é de vocês.</div>
+</section>
+
+<!-- P2 NATUREZAS -->
+<section class="slide">
+  <div class="eyebrow">O escopo <b>/</b> 02</div>
+  <h1>Três naturezas de trabalho,<br>três formas de cobrar</h1>
+  <div class="ev three">
+    <div class="card">
+      <span class="k">Projeto &middot; termina</span>
+      <span class="q">Implantação</span>
+      <span class="d"><strong style="color:var(--paper)">Diagnóstico completo</strong>: catálogo inteiro, quatro categorias, os dois canais, com a ferramenta de dados de Mercado Livre e Shopee.</span>
+      <span class="d"><strong style="color:var(--paper)">Setup Amazon</strong>: registro de marca no canal, arquitetura de marca, padrão de ficha no formato que a Amazon exige de fornecedor, critério de credenciamento, rotina de monitoramento.</span>
+    </div>
+    <div class="card">
+      <span class="k">Por volume &middot; termina por onda</span>
+      <span class="q">Catálogo</span>
+      <span class="d"><strong style="color:var(--paper)">Onda 1, Amazon</strong>: as 15 fichas que estão no ar, corrigidas no padrão da marca, com variação de cor; e até 30 fichas novas do catálogo que ainda não está lá.</span>
+      <span class="d">45 fichas. Acima disso, onda nova, com o mesmo preço por ficha.</span>
+    </div>
+    <div class="card">
+      <span class="k">Rotina &middot; não termina</span>
+      <span class="q">Gestão mensal</span>
+      <span class="d">Monitoramento de vendedores, buy box, ruptura e dispersão de preço. Denúncia pelas ferramentas oficiais do canal. Manutenção de até 45 fichas. Relatório mensal contra a linha de partida.</span>
+    </div>
+  </div>
+  <div class="kick">Projeto empurrado para o mensal vira trabalho infinito a preço fixo. Por isso as três são separadas.</div>
+</section>
+
+<!-- P3 CRONOGRAMA -->
+<section class="slide">
+  <div class="eyebrow">O cronograma <b>/</b> 03</div>
+  <h1>Nesta ordem,<br>e não em outra</h1>
+  <div class="timeline">
+    <div class="step"><div class="m">Mês 1</div><div class="t">Governança</div>
+      <ul><li>Registro de marca no canal (precisa do INPI)</li><li>Arquitetura de marca e linhas</li><li>Padrão de ficha e de cor</li><li>Critério de credenciamento escrito</li></ul></div>
+    <div class="step"><div class="m">Meses 1 e 2</div><div class="t">Onda 1</div>
+      <ul><li>15 fichas corrigidas</li><li>Até 30 fichas novas</li><li>Variação de cor em cada uma</li><li>Linha de partida medida</li></ul></div>
+    <div class="step"><div class="m">Mês 3 em diante</div><div class="t">Rotina</div>
+      <ul><li>Vendedores, buy box, ruptura</li><li>Preço como diretriz</li><li>Brand protection operacional</li><li>Relatório mensal</li></ul></div>
+    <div class="step"><div class="m">Fase 2 &middot; gatilho</div><div class="t">Mercado Livre</div>
+      <ul><li>Entra com o INPI concedido</li><li>Loja oficial da marca</li><li>Catálogo em onda própria</li><li>Mensal ajustado por canal</li></ul></div>
+  </div>
+  <p class="small" style="margin-top:clamp(12px,2vh,22px)">O prazo corre a partir do recebimento de cada insumo. Atraso de insumo desloca a entrega no
+  mesmo número de dias, com aviso por escrito no momento em que aparece. Mídia paga não entra em nenhuma fase
+  desta proposta: é proposta separada, depois da Onda 1 publicada e medida.</p>
+  <div class="kick">Setup só cabe nos meses 1 e 2. É por isso que o mensal desses dois meses é reduzido, não por desconto.</div>
+</section>
+
+<!-- P4 FORA -->
+<section class="slide">
+  <div class="eyebrow">Os limites <b>/</b> 04</div>
+  <h1>O que não está incluído,<br>e o que vocês <em>fornecem</em></h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Não está incluído</h2>
+      <div class="rows">
+        <div class="row"><span>Mídia paga (Sponsored Products, Mercado Ads)</span><span>proposta separada</span></div>
+        <div class="row"><span>Venda direta pela marca, conta própria</span><span>caminho 2, não contratado</span></div>
+        <div class="row"><span>Negociação comercial com a Amazon (preço, pedido, verba)</span><span>de vocês</span></div>
+        <div class="row"><span>Shopee e TikTok Shop</span><span>fora</span></div>
+        <div class="row"><span>Atendimento ao comprador e devoluções</span><span>fora</span></div>
+        <div class="row"><span>Foto e vídeo de produto</span><span>fora</span></div>
+        <div class="row"><span>Registro no INPI, notificação, ação</span><span>jurídico de vocês</span></div>
+        <div class="row"><span>Meta de faturamento</span><span class="hot">não prometemos</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>O que a Pet Toys fornece</h2>
+      <div class="rows">
+        <div class="row"><span>Catálogo com código, nome, cores e medidas</span><span>no kickoff</span></div>
+        <div class="row"><span>GTIN/EAN de cada item e cor</span><span>no kickoff</span></div>
+        <div class="row"><span>Fotos de produto, por cor</span><span>até o fim do mês 1</span></div>
+        <div class="row"><span>Preço de tabela por canal</span><span>no kickoff</span></div>
+        <div class="row"><span>Protocolo ou certificado do INPI</span><span>no kickoff</span></div>
+        <div class="row"><span>Acesso às contas da marca na Amazon</span><span>no kickoff</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">Sobre preço de revenda: a impulsio monitora e orienta posicionamento. Não impõe preço
+      a revendedor. Cada parceiro mantém autonomia comercial.</p>
+    </div>
+  </div>
+  <div class="kick">Tudo que for construído é de vocês: acessos, registro no canal, fichas. Entrega em 15 dias se um dia saírem.</div>
+</section>
+
+<!-- P5 INVESTIMENTO -->
+<section class="slide">
+  <div class="eyebrow">O investimento <b>/</b> 05</div>
+  <h1>Quanto custa</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="card">
+        <span class="k">Implantação &middot; pagamento único</span>
+        <div class="price">R$ 14.100 <small>em 6× de R$ 2.350</small></div>
+        <div class="rows" style="margin-top:10px">
+          <div class="row"><span>Diagnóstico completo, 4 categorias, 2 canais</span><span>R$ 3.500</span></div>
+          <div class="row"><span>Setup Amazon</span><span>R$ 7.000</span></div>
+          <div class="row"><span>Onda 1: 15 correções + até 30 fichas novas</span><span>R$ 3.600</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <span class="k">Gestão mensal &middot; Amazon</span>
+        <div class="price">R$ 4.500 <small>por mês, a partir do mês 3</small></div>
+        <div class="rows" style="margin-top:10px">
+          <div class="row"><span>Meses 1 e 2, janela de implantação</span><span>R$ 3.500</span></div>
+          <div class="row"><span>Variável</span><span class="grn">não há</span></div>
+          <div class="row"><span>Fichas acima de 45 na manutenção</span><span>onda paga</span></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <span class="k">Fase 2 &middot; Mercado Livre, quando o gatilho vier</span>
+        <div class="rows">
+          <div class="row"><span>Setup do canal e loja oficial</span><span>R$ 5.300</span></div>
+          <div class="row"><span>Catálogo</span><span>R$ 60 por correção &middot; R$ 90 por ficha nova</span></div>
+          <div class="row"><span>Gestão mensal com os dois canais</span><span>R$ 6.000</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="kick">Vigência de 12 meses. Reajuste anual. Saída com aviso de 30 dias e entrega de tudo em 15.</div>
+</section>
+
+<!-- P6 MEDIDA -->
+<section class="slide">
+  <div class="eyebrow">Como medimos <b>/</b> 06</div>
+  <h1>Pelo que respondemos</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Fichas no padrão da marca</span><span><span class="hot">0 de 15</span> &rarr; 45 de 45</span></div>
+        <div class="row"><span>Fichas com variação de cor</span><span><span class="hot">0 de 15</span> &rarr; todas que têm cor</span></div>
+        <div class="row"><span>Vendedores com critério de credenciamento</span><span><span class="hot">0 de 8</span> &rarr; 8 de 8 avaliados</span></div>
+        <div class="row"><span>Dispersão de preço no mesmo produto</span><span><span class="amb">até 5×</span> &rarr; dentro da diretriz</span></div>
+        <div class="row"><span>Fichas em ruptura ou com estoque abaixo de 10</span><span><span class="amb">10 de 10</span> &rarr; medido todo mês</span></div>
+        <div class="row"><span>Registro de marca no canal</span><span><span class="hot">não</span> &rarr; sim</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>E pelo que não respondemos</h2>
+      <p class="sub"><strong>Faturamento.</strong> Depende de preço, estoque, do pedido da Amazon e da decisão de vocês: coisas que a operação não controla.</p>
+      <p class="small">Cada linha da esquerda é auditável na tela, com print e data, todo mês. É a linha de partida de 5 de outubro
+      contra o mês corrente. Nenhum indicador usa número estimado de ferramenta.</p>
+    </div>
+  </div>
+  <div class="kick">É mais fácil vender promessa de faturamento. É mais honesto vender o que dá para conferir.</div>
+</section>
+
+<!-- P7 PRÓXIMOS -->
+<section class="slide">
+  <div class="eyebrow">Próximos passos <b>/</b> 07</div>
+  <h1>O que precisamos<br>de vocês</h1>
+  <div class="rows" style="font-size:clamp(13px,1.15vw,24px);max-width:74ch">
+    <div class="row"><span style="color:var(--paper)">A Amazon compra de vocês ou de um distribuidor?</span><span class="hot">01</span></div>
+    <div class="row"><span style="color:var(--paper)">Desses oito vendedores, quantos compram de vocês?</span><span class="hot">02</span></div>
+    <div class="row"><span style="color:var(--paper)">A marca está registrada no INPI, ou protocolada?</span><span class="hot">03</span></div>
+    <div class="row"><span style="color:var(--paper)">Quais 30 produtos entram primeiro, e em quais cores?</span><span class="hot">04</span></div>
+  </div>
+  <p class="small" style="margin-top:18px">Com as quatro respostas, o contrato e o escopo de serviços seguem em até cinco dias úteis.
+  O diagnóstico fica com vocês independentemente da decisão.</p>
+  <div class="kick">impulsio &middot; operação de canais digitais para indústrias e distribuidores
+    <div class="small">Proposta comercial &middot; Pet Toys &middot; 5 de outubro de 2026</div></div>
+</section>
+
+</div>
+<div class="rail">
+  <span id="pos"><em>01</em> / 08</span>
+  <div class="nav"><button id="prev" aria-label="Slide anterior">&larr;</button><button id="next" aria-label="Próximo slide">&rarr;</button></div>
+  <button class="fsbtn" id="fs" aria-label="Tela cheia">Tela cheia</button>
+  <span class="hint">← → navegar &nbsp;·&nbsp; F tela cheia</span>
+</div>
+<script>
+(function(){
+  var all=[].slice.call(document.querySelectorAll('.slide')),cur=0;
+  function show(i){ if(i<0||i>=all.length)return; all.forEach(function(s){s.classList.remove('on')}); all[i].classList.add('on'); cur=i;
+    document.getElementById('pos').innerHTML='<em>'+String(i+1).padStart(2,'0')+'</em> / '+String(all.length).padStart(2,'0');
+    document.getElementById('fill').style.width=((i+1)/all.length*100)+'%';
+    document.getElementById('prev').disabled=(i===0); document.getElementById('next').disabled=(i===all.length-1);
+    if(window.innerWidth<=860)window.scrollTo(0,0); }
+  document.getElementById('next').addEventListener('click',function(){show(cur+1)});
+  document.getElementById('prev').addEventListener('click',function(){show(cur-1)});
+  var fsBtn=document.getElementById('fs');
+  function toggleFs(){ if(!document.fullscreenElement){var p=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(p&&p.catch)p.catch(function(){});} else if(document.exitFullscreen){document.exitFullscreen();} }
+  fsBtn.addEventListener('click',toggleFs);
+  document.addEventListener('fullscreenchange',function(){fsBtn.textContent=document.fullscreenElement?'Sair':'Tela cheia'});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(cur+1)}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1)}
+    if(e.key==='Home'){e.preventDefault();show(0)}
+    if(e.key==='f'||e.key==='F'){e.preventDefault();toggleFs()}
+  });
+  show(0);
+})();
+</script>
