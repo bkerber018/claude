@@ -29,46 +29,46 @@ button{font:inherit;color:inherit;font-family:var(--fd)}
 .slide.on > *:nth-child(4){animation-delay:.18s}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
-.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+.eyebrow{font-family:var(--fm);font-size:clamp(12px,1vw,17px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
   color:var(--hot);display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
 .eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
 h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(28px,4.3vw,80px);line-height:.95;
   letter-spacing:-.025em;color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
 h1 em{font-style:normal;color:var(--hot)}
-h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;font-size:clamp(17px,1.72vw,32px);line-height:1.05;color:var(--paper);margin:0 0 14px}
-.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px)}
+h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;font-size:clamp(20px,1.9vw,34px);line-height:1.05;color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(18px,1.6vw,31px);line-height:1.38;color:var(--text);max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px)}
 .sub strong{color:var(--paper);font-weight:700}
-.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
+.small{font-size:clamp(16px,1.3vw,25px);line-height:1.46;color:var(--mute);max-width:58ch}
 .kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);font-family:var(--fd);
-  font-variation-settings:var(--cond);font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);font-weight:700;text-wrap:balance;flex:0 0 auto}
+  font-variation-settings:var(--cond);font-size:clamp(17px,1.6vw,32px);line-height:1.16;color:var(--paper);font-weight:700;text-wrap:balance;flex:0 0 auto}
 .kick .small{color:var(--mute);font-variation-settings:normal;font-weight:400;margin-top:8px}
 .ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);grid-template-columns:1fr 1fr;align-items:start}
 .ev.three{grid-template-columns:1fr 1fr 1fr}
 .col{min-height:0;display:flex;flex-direction:column;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
-.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.rows{display:flex;flex-direction:column;font-size:clamp(16px,1.35vw,26px)}
 .row{display:flex;justify-content:space-between;gap:18px;padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
 .row:last-child{border-bottom:0}
 .row>span:first-child{color:var(--text)}
-.row>span:last-child{color:var(--paper);font-family:var(--fm);font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
+.row>span:last-child{color:var(--paper);font-family:var(--fm);font-size:clamp(15px,1.2vw,23px);text-align:right;font-variant-numeric:tabular-nums}
 .row .hot{color:var(--hot)!important} .row .amb{color:var(--amber)!important} .row .grn{color:var(--green)!important} .row .sea{color:var(--seal-l)!important}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(140px,15vw,210px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
 .tile{background:var(--ink2);padding:clamp(12px,1.9vh,24px) clamp(13px,1.3vw,24px)}
 .tile .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(26px,3vw,56px);color:var(--paper);line-height:.86;font-variant-numeric:tabular-nums;letter-spacing:-.035em}
 .tile .n.hot{color:var(--hot)} .tile .n.amb{color:var(--amber)} .tile .n.sea{color:var(--seal-l)}
-.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.38;color:var(--text);margin-top:12px}
+.tile .l{font-size:clamp(15px,1.2vw,23px);line-height:1.38;color:var(--text);margin-top:12px}
 .tile .l b{color:var(--paper);font-weight:700}
 .card{background:var(--ink2);border:1px solid var(--rule);padding:clamp(14px,2vh,26px) clamp(15px,1.5vw,28px);display:flex;flex-direction:column;gap:8px}
 .card.rec{border-color:#2A4C8A}
-.card .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;color:var(--seal-l);text-transform:uppercase}
+.card .k{font-family:var(--fm);font-size:clamp(12px,.9vw,16px);letter-spacing:.16em;color:var(--seal-l);text-transform:uppercase}
 .card .q{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(18px,1.86vw,36px);color:var(--paper);line-height:1.02;letter-spacing:-.02em}
-.card .d{font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
+.card .d{font-size:clamp(16px,1.25vw,24px);line-height:1.38;color:var(--text)}
 .price{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(30px,3.6vw,68px);color:var(--paper);line-height:.9;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
 .price small{font-size:.42em;color:var(--mute);font-weight:600;letter-spacing:0}
 .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);flex:0 0 auto}
 .step{background:var(--ink2);padding:clamp(12px,1.9vh,24px) clamp(13px,1.3vw,24px)}
-.step .m{font-family:var(--fm);font-size:clamp(10px,.8vw,15px);letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
+.step .m{font-family:var(--fm);font-size:clamp(12px,.95vw,17px);letter-spacing:.16em;text-transform:uppercase;color:var(--hot)}
 .step .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(16px,1.5vw,30px);color:var(--paper);margin:8px 0;line-height:1.05}
-.step ul{margin:0;padding-left:18px;font-size:clamp(12px,.96vw,19px);line-height:1.42;color:var(--text)}
+.step ul{margin:0;padding-left:18px;font-size:clamp(15px,1.2vw,23px);line-height:1.42;color:var(--text)}
 .topbar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--rule);z-index:5}
 .topbar i{display:block;height:100%;background:var(--hot);width:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
 .rail{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:clamp(10px,1.4vw,20px);
@@ -298,7 +298,7 @@ h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;font
 <section class="slide">
   <div class="eyebrow">Próximos passos <b>/</b> 07</div>
   <h1>O que precisamos<br>de vocês</h1>
-  <div class="rows" style="font-size:clamp(13px,1.15vw,24px);max-width:74ch">
+  <div class="rows" style="font-size:clamp(17px,1.45vw,28px);max-width:74ch">
     <div class="row"><span style="color:var(--paper)">A Amazon compra de vocês ou de um distribuidor?</span><span class="hot">01</span></div>
     <div class="row"><span style="color:var(--paper)">Desses oito vendedores, quantos compram de vocês?</span><span class="hot">02</span></div>
     <div class="row"><span style="color:var(--paper)">A marca está registrada no INPI, ou protocolada?</span><span class="hot">03</span></div>
