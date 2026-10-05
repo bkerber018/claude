@@ -20,8 +20,8 @@ Site: 50 brinquedos de cães, 6 linhas de gatos. Amazon: 15 fichas de cães com 
 > O título é a linha do ERP de alguém. Não é a vitrine de uma marca.
 
 ## 04 · A cor que o comprador não escolhe
-Comedouro em três cores, campo Cor = Azul, sem botão · 2 fichas "Sortido" · Glitter rosa R$ 34,49 e azul R$ 29,09 em fichas separadas · 0 de 15 com escolha de cor.
-> Três cores no molde. Zero escolha na tela.
+Comedouro em quatro cores; na Amazon campo Cor = Azul, sem botão; no Mercado Livre um vendedor montou a variação com as quatro (R$ 39,90, 3 vendidos) · 2 fichas "Sortido" · Glitter rosa R$ 34,49 e azul R$ 29,09 em fichas separadas · 0 de 15 na Amazon com escolha de cor.
+> Quatro cores no molde. Na Amazon, zero escolha na tela. No Mercado Livre, quem escolheu a ficha foi um revendedor.
 
 ## 05 · ⑃ Oito vendedores. Quantos vocês escolheram?
 Amazon.com.br (compra de vocês ou de distribuidor?) · CSG Marketplace (vende o comedouro, não aparece no filtro) · shoten · COVOFEL AGROPET · Pet Precinho Bom · Loja Malu Variedades · PET CENTER TATUAPE · Patinhas.
@@ -29,7 +29,7 @@ Amazon.com.br (compra de vocês ou de distribuidor?) · CSG Marketplace (vende o
 - **A2 Não sabíamos** → o que chega por acaso sai por acaso. Não é sobre tirar ninguém, é sobre decidir quem entra.
 
 ## 06 · Um Pet Ball, cinco preços
-ML: R$ 8,00 · 21,99 · 30,79 · 45,99. Amazon: R$ 28,99. Comedouro alto: ML R$ 24,90 e 29,90; Amazon R$ 34,90. Ossinho: R$ 14,00 e 15,90 na mesma ficha.
+ML: R$ 8,00 · 21,99 · 30,79 · 45,99. Amazon: R$ 28,99. Comedouro alto: ML R$ 24,90, 29,90 e 39,90; Amazon R$ 34,90. Ossinho: R$ 14,00 e 15,90 na mesma ficha.
 Ressalva: tamanho do Pet Ball de R$ 8 não confirmado.
 > O revendedor não ataca a marca. Ele faz o óbvio com o preço que recebeu e a unidade que sobrou.
 

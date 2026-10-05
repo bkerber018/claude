@@ -45,6 +45,7 @@
 **Abre com:** "Esse comedouro existe em três cores. A foto mostra as três. O campo cor diz azul. E não tem botão."
 **O mecanismo, em uma frase:** "Na Amazon, cor é variação de uma ficha só: um clique, avaliação somada, posição somada. Aqui cada cor virou ficha solta com preço próprio, ou virou 'sortido'."
 **Fecha com:** "'Sortido' é a devolução esperando acontecer."
+**O contraponto do Mercado Livre:** "Aqui um revendedor montou a ficha com as quatro cores, sozinho. Dá para fazer. A pergunta é por que a ficha da marca não é a de vocês."
 
 ## 06 · ⑃ OS OITO VENDEDORES
 **Abre com:** "Oito vendedores anunciam a marca na Amazon. Um é a própria Amazon."
