@@ -6,8 +6,8 @@ Fases 0, 1, 2 e 3 do `diagnostico-marketplace` da impulsio, mais o rascunho da f
 
 | Arquivo | O que é |
 |---|---|
-| **deck/index.html** | A apresentação do diagnóstico. 16 slides no tronco, 2 bifurcações |
-| **proposta/index.html** | A proposta comercial, 8 slides. Segunda metade da reunião, arquivo separado |
+| **deck/index.html** | A apresentação do diagnóstico. 16 slides no tronco, 2 bifurcações. Publicada em https://claude.ai/artifact/4wdjJB5Y1jj5kfMBbu3GyX |
+| **proposta/index.html** | A proposta comercial, 8 slides. Segunda metade da reunião, arquivo separado. Publicada em https://claude.ai/artifact/YVQgQqayDdZJ9ubvp2md2w |
 | **deck-conteudo.md** | Todo o texto dos dois decks, para ler e estudar |
 | **falas-da-call.md** | Como conduzir ao vivo: uma fala por slide, onde pausar, qual ramo clicar |
 | **manual-interno-pettoys.md** | Horas, custo, margem, capacidade, riscos. Não sai da impulsio |
