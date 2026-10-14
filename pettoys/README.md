@@ -4,12 +4,12 @@ Sponsor: Luzival Leão. Outubro de 2026. Fases: Protagonista (meses 1–3) → P
 
 | Arquivo | Para quem | O que é |
 |---|---|---|
-| **Proposta_PetToys.pdf** | cliente | Proposta de 19 páginas com premissas, projeção e cenários |
+| **Deck Slides** | cliente | https://claude.ai/artifact/MsPfUPPtsoXBb64uH2tq36 · 17 slides no padrão São Pet; fonte em `deck-slides/project/`. Exporte o PDF pelo deck |
 | **Projecao_PetToys.xlsx** | cliente | Projeção com fórmulas vivas; as células laranja são editáveis |
 | **Contexto-PetToys-Diagnostico.pdf** | cliente | Diagnóstico de canal, capturas de 05/10/2026 |
 | **mensagem-whatsapp.md** | envio | Texto da mensagem que acompanha os anexos |
 | **manual-interno-pettoys.md** | **interno** | Horas, custo, margem, capacidade e riscos. Não enviar |
-| proposta/index.html | apresentação | Versão navegável (← → e F para tela cheia) |
+| proposta/index.html | rascunho | Primeira versão em HTML, substituída pelo deck Slides |
 
 ## Como regenerar
 

@@ -1,7 +1,7 @@
 # Mensagem de WhatsApp para o Luzival
 
 **Anexos, nesta ordem:**
-1. `Proposta_PetToys.pdf`: proposta comercial, 19 páginas
+1. `Pet Toys — Proposta comercial.pdf`: proposta, 17 páginas (exportar do deck: Compartilhar › Exportar › PDF)
 2. `Projecao_PetToys.xlsx`: projeção editável
 3. `Contexto-PetToys-Diagnostico.pdf`: diagnóstico de 5/10
 
@@ -18,7 +18,7 @@ Organizei em duas fases, porque na conversa ficou claro que a rede é estratégi
 O investimento é o que conversamos: R$ 6.000/mês no primeiro semestre (setup de R$ 15 mil diluído em 6x + operação) e R$ 6.200/mês a partir do 7º mês (ML R$ 4.500 + Amazon R$ 1.700). Os 2% só existem na venda direta e só sobre o que passar de R$ 150 mil/mês.
 
 *2. Projeção (planilha)*
-É aquela simulação que te mostrei na call, agora com as fases. Na premissa base, o investimento se paga em out/27. As páginas 12 a 17 da proposta explicam de onde vem cada número. As células em laranja são editáveis, então vale colocar a margem real de vocês e ver como fica.
+É aquela simulação que te mostrei na call, agora com as fases. Na premissa base, o investimento se paga em out/27. As páginas 10 a 15 da proposta explicam de onde vem cada número. As células em laranja são editáveis, então vale colocar a margem real de vocês e ver como fica.
 
 *3. Diagnóstico*
 O levantamento que fizemos antes de qualquer contrato: como a marca aparece hoje para quem compra.
