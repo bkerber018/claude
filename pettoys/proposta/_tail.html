@@ -1,0 +1,48 @@
+
+<div class="rail">
+  <span id="pos"><em>01</em> / 11</span>
+  <div class="nav">
+    <button id="prev" aria-label="Slide anterior">&larr;</button>
+    <button id="next" aria-label="Próximo slide">&rarr;</button>
+  </div>
+  <button class="fsbtn" id="fs" aria-label="Tela cheia">Tela cheia</button>
+  <span class="hint" id="hint">← → navegar · F tela cheia</span>
+</div>
+
+<script>
+(function(){
+  var all = [].slice.call(document.querySelectorAll('.slide')), cur = 0;
+  function show(i){
+    if(i<0||i>=all.length) return;
+    all.forEach(function(s){ s.classList.remove('on'); });
+    all[i].classList.add('on'); cur = i;
+    document.getElementById('pos').innerHTML =
+      '<em>'+String(i+1).padStart(2,'0')+'</em> / '+String(all.length).padStart(2,'0');
+    document.getElementById('fill').style.width = ((i+1)/all.length*100)+'%';
+    document.getElementById('prev').disabled = (i===0);
+    document.getElementById('next').disabled = (i===all.length-1);
+    if(window.innerWidth<=860) window.scrollTo(0,0);
+  }
+  document.getElementById('next').addEventListener('click', function(){ show(cur+1); });
+  document.getElementById('prev').addEventListener('click', function(){ show(cur-1); });
+  var fsBtn = document.getElementById('fs');
+  function toggleFs(){
+    if(!document.fullscreenElement){
+      var p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      if(p && p.catch) p.catch(function(){});
+    } else if(document.exitFullscreen){ document.exitFullscreen(); }
+  }
+  fsBtn.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', function(){
+    fsBtn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); show(cur+1); }
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(cur-1); }
+    if(e.key==='Home'){ e.preventDefault(); show(0); }
+    if(e.key==='f'||e.key==='F'){ e.preventDefault(); toggleFs(); }
+  });
+  show(0);
+})();
+</script>

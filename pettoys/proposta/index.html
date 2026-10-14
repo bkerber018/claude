@@ -1,0 +1,676 @@
+<title>Proposta Pet Toys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,400..800&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#080D18; --ink2:#111A2C; --ink3:#182440; --rule:#24314F;
+  --hot:#FF4A1C; --hot-d:#C22F08;
+  --seal:#3B82F6; --seal-l:#7FA8F0;
+  --paper:#F7F4F0; --text:#C6D1E4; --mute:#78839A; --faint:#4C5670;
+  --amber:#F5A524; --green:#35B37E;
+  --fd:"Archivo",system-ui,sans-serif;
+  --fm:"JetBrains Mono",ui-monospace,monospace;
+  --exp:'wdth' 122; --cond:'wdth' 88;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--fd);
+  -webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;font-family:var(--fd)}
+
+.deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+  padding:clamp(28px,4.4vh,64px) clamp(24px,4.2vw,92px) clamp(54px,7vh,88px);overflow:hidden}
+.slide.on{display:flex}
+.slide.on > *{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+.slide.on > *:nth-child(1){animation-delay:.02s}
+.slide.on > *:nth-child(2){animation-delay:.07s}
+.slide.on > *:nth-child(3){animation-delay:.12s}
+.slide.on > *:nth-child(4){animation-delay:.17s}
+.slide.on > *:nth-child(5){animation-delay:.22s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.slide.on > *{animation:none}}
+
+.eyebrow{font-family:var(--fm);font-size:clamp(10px,.86vw,15px);font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--hot);
+  display:flex;gap:12px;align-items:center;margin-bottom:clamp(12px,2.2vh,26px);flex:0 0 auto}
+.eyebrow b{color:var(--faint);font-weight:400;letter-spacing:.16em}
+h1{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(28px,4.3vw,80px);line-height:.95;letter-spacing:-.025em;
+  color:var(--paper);margin:0 0 clamp(12px,2vh,22px);text-wrap:balance;flex:0 0 auto}
+h1 em{font-style:normal;color:var(--hot)}
+h2{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(17px,1.72vw,32px);line-height:1.05;color:var(--paper);margin:0 0 14px}
+.sub{font-size:clamp(15px,1.36vw,28px);line-height:1.38;color:var(--text);
+  max-width:56ch;margin:0 0 clamp(10px,1.6vh,18px)}
+.sub strong{color:var(--paper);font-weight:700}
+.small{font-size:clamp(13px,1.02vw,21px);line-height:1.46;color:var(--mute);max-width:58ch}
+.kick{margin-top:auto;padding-top:clamp(12px,2vh,22px);border-top:1px solid var(--rule);
+  font-family:var(--fd);font-variation-settings:var(--cond);
+  font-size:clamp(14px,1.42vw,30px);line-height:1.16;color:var(--paper);
+  font-weight:700;text-wrap:balance;flex:0 0 auto}
+.kick .small{color:var(--mute);font-variation-settings:normal;font-weight:400;margin-top:8px}
+
+.ev{flex:1;min-height:0;display:grid;gap:clamp(18px,2.4vw,44px);
+  grid-template-columns:1fr 1fr;align-items:start}
+.ev.wide{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.col{min-height:0;display:flex;flex-direction:column;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.col::-webkit-scrollbar{width:6px}
+.col::-webkit-scrollbar-thumb{background:var(--rule)}
+
+.rows{display:flex;flex-direction:column;font-size:clamp(13px,1.14vw,23px)}
+.row{display:flex;justify-content:space-between;gap:18px;
+  padding:clamp(7px,1.05vh,15px) 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.row>span:first-child{color:var(--text)}
+.row>span:last-child{color:var(--paper);font-family:var(--fm);
+  font-size:clamp(12px,.98vw,20px);text-align:right;font-variant-numeric:tabular-nums}
+.row .hot{color:var(--hot)!important} .row .grn{color:var(--green)!important}
+.row .amb{color:var(--amber)!important} .row .mut{color:var(--mute)!important}
+
+.figs{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,60px);align-items:flex-end}
+.fig{display:flex;flex-direction:column}
+.fig .n{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(40px,7vw,138px);line-height:.82;color:var(--paper);
+  letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.fig .n.hot{color:var(--hot)} .fig .n small{font-size:.42em;letter-spacing:-.02em}
+.fig .l{font-family:var(--fm);font-size:clamp(11px,.84vw,16px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);margin-top:14px;max-width:22ch;line-height:1.5}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(150px,16vw,240px),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.tile{background:var(--ink2);padding:clamp(13px,2vh,26px) clamp(14px,1.4vw,26px)}
+.tile .k{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:10px}
+.tile .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(16px,1.5vw,26px);color:var(--paper);line-height:1.08;margin-bottom:9px}
+.tile .l{font-size:clamp(12px,.96vw,19px);line-height:1.4;color:var(--mute)}
+
+.no{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(160px,17vw,250px),1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.no div{background:var(--ink2);padding:clamp(12px,1.8vh,22px) clamp(13px,1.3vw,24px);
+  font-size:clamp(13px,1.02vw,21px);line-height:1.38;color:var(--text)}
+.no div b{display:block;font-family:var(--fm);font-size:clamp(10px,.72vw,13px);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:8px;font-weight:700}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);flex:0 0 auto}
+.tl{background:var(--ink2);padding:clamp(13px,2vh,24px) clamp(12px,1.2vw,22px)}
+.tl .m{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.14em;
+  color:var(--hot);text-transform:uppercase;margin-bottom:10px}
+.tl .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:700;
+  font-size:clamp(15px,1.4vw,25px);color:var(--paper);line-height:1.08;margin-bottom:10px}
+.tl ul{margin:0;padding-left:16px;font-size:clamp(12px,.94vw,18px);line-height:1.42;color:var(--mute)}
+.tl li{margin-bottom:5px}
+.tl li::marker{color:var(--faint)}
+
+.price{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);flex:0 0 auto}
+.pc{background:var(--ink2);padding:clamp(18px,2.8vh,36px) clamp(18px,1.9vw,36px)}
+.pc .k{font-family:var(--fm);font-size:clamp(10px,.78vw,14px);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--hot);margin-bottom:14px}
+.pc .v{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;
+  font-size:clamp(34px,4.4vw,80px);line-height:.9;color:var(--paper);
+  letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.pc .v small{font-size:.32em;color:var(--mute);letter-spacing:0;font-weight:500}
+.pc .d{font-size:clamp(12px,.96vw,19px);line-height:1.42;color:var(--mute);margin-top:14px}
+
+.pill{display:inline-flex;align-items:center;gap:7px;font-family:var(--fm);
+  font-size:clamp(10px,.74vw,14px);letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 12px;border:1px solid var(--rule);color:var(--mute)}
+.pill.grn{color:var(--green);border-color:#1F4A38}
+.pill.hot{color:var(--hot);border-color:#5B2412}
+
+.rail{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;
+  gap:clamp(10px,1.4vw,20px);padding:clamp(9px,1.3vh,15px) clamp(24px,4.2vw,92px);
+  padding-bottom:calc(clamp(9px,1.3vh,15px) + env(safe-area-inset-bottom,0px));
+  font-family:var(--fm);font-size:clamp(10px,.78vw,14px);color:var(--mute);
+  letter-spacing:.14em;text-transform:uppercase;
+  background:linear-gradient(to top,var(--ink) 55%,transparent)}
+#pos em{font-style:normal;color:var(--hot)}
+.topbar{position:fixed;left:0;right:0;top:0;height:2px;background:var(--rule);z-index:5}
+.topbar i{display:block;height:100%;background:var(--hot);width:0;transition:width .45s cubic-bezier(.16,1,.3,1)}
+.hint{margin-left:auto;color:var(--faint)}
+.nav{display:flex;gap:5px}
+.nav button,.fsbtn{background:transparent;border:1px solid var(--rule);width:32px;height:28px;
+  cursor:pointer;color:var(--mute);display:grid;place-items:center;font-size:12px;
+  transition:border-color .18s,color .18s}
+.nav button:hover:not(:disabled),.fsbtn:hover{border-color:var(--hot);color:var(--hot)}
+.nav button:disabled{opacity:.28;cursor:default}
+.fsbtn{width:auto;padding:0 11px;font-family:var(--fm);font-size:9px;letter-spacing:.14em}
+
+@media(max-width:860px){
+  body{overflow:auto} .deck{position:static}
+  .slide{position:static;min-height:calc(100vh - 44px);padding:24px 18px 60px}
+  .ev,.ev.wide,.price{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr 1fr}
+  .hint{display:none}
+}
+</style>
+
+<style>
+.chart{width:100%;height:auto;max-height:52vh;display:block}
+.chart .grid{stroke:var(--rule);stroke-width:1}
+.chart .zero{stroke:var(--mute);stroke-width:1.2}
+.chart .ax{fill:var(--mute);font-family:var(--fm);font-size:13px}
+.chart .f1{fill:var(--ink3);opacity:.55}
+.chart .tag{fill:var(--faint);font-family:var(--fm);font-size:11px;letter-spacing:.16em}
+.chart .ar{fill:var(--seal);opacity:.12}
+.chart .ln{fill:none;stroke:var(--seal-l);stroke-width:3;stroke-linejoin:round}
+.chart .ln2{fill:none;stroke:var(--amber);stroke-width:2.4;stroke-dasharray:7 5}
+.chart .ln3{fill:none;stroke:var(--hot);stroke-width:2.4;stroke-dasharray:2 5;stroke-linecap:round}
+.chart .lnt{fill:var(--seal-l)} .chart .ln2t{fill:var(--amber)} .chart .ln3t{fill:var(--hot)}
+.chart .lab{font-family:var(--fm);font-size:13px;font-weight:700}
+.chart .hot{fill:var(--hot)} .chart .grn{fill:var(--green)} .chart .amb{fill:var(--amber)}
+.chart .dot{stroke:var(--ink);stroke-width:3}
+.chart .bar{fill:var(--seal);opacity:.85} .chart .bar.bf{fill:var(--hot);opacity:.95}
+.chart .gat{stroke:var(--amber);stroke-width:1.6;stroke-dasharray:6 5}
+.chart.c3 .ax{font-size:20px} .chart.c3 .lab{font-size:21px}
+.leg{display:flex;flex-wrap:wrap;gap:18px;font-family:var(--fm);font-size:clamp(10px,.76vw,13px);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:6px 0 4px}
+.leg i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:8px}
+.prem{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule);
+  border:1px solid var(--rule);flex:0 1 auto;min-height:0;overflow-y:auto}
+.pm{background:var(--ink2);padding:clamp(9px,1.3vh,16px) clamp(12px,1.1vw,20px);display:grid;
+  grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline}
+.pm .q{font-size:clamp(12px,.98vw,19px);color:var(--paper);font-weight:600}
+.pm .v{font-family:var(--fm);font-size:clamp(12px,.98vw,19px);color:var(--hot);text-align:right;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.pm .s{grid-column:1/-1;font-size:clamp(11px,.84vw,16px);line-height:1.4;color:var(--mute)}
+.pm .s b{color:var(--text);font-weight:600}
+.tbl{flex:1;min-height:0;overflow:auto;border:1px solid var(--rule)}
+.tbl table{border-collapse:collapse;width:100%;font-family:var(--fm);font-size:clamp(10px,.78vw,14px);
+  font-variant-numeric:tabular-nums}
+.tbl th{position:sticky;top:0;background:var(--ink3);color:var(--mute);font-weight:400;
+  letter-spacing:.08em;text-transform:uppercase;text-align:right;padding:8px 10px;white-space:nowrap}
+.tbl td{text-align:right;padding:6px 10px;border-top:1px solid var(--rule);color:var(--text);white-space:nowrap}
+.tbl th:nth-child(-n+2),.tbl td:nth-child(-n+2){text-align:left}
+.tbl .neg{color:var(--hot)} .tbl .pos{color:var(--green)}
+.tbl tr.f1r td{color:var(--faint)} .tbl tr.f1r td.neg{color:var(--hot-d)}
+.tbl tr.bfr td:nth-child(2){color:var(--hot)}
+.quote{border-left:3px solid var(--hot);padding:4px 0 4px clamp(12px,1.2vw,22px);
+  font-size:clamp(14px,1.2vw,24px);line-height:1.38;color:var(--paper);margin:0 0 clamp(10px,1.6vh,18px)}
+.quote span{display:block;font-family:var(--fm);font-size:clamp(10px,.72vw,13px);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mute);margin-top:6px}
+.phase{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.ph{background:var(--ink2);padding:clamp(14px,2.2vh,28px) clamp(14px,1.5vw,28px)}
+.ph .m{font-family:var(--fm);font-size:clamp(10px,.78vw,14px);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--hot);margin-bottom:10px}
+.ph .t{font-family:var(--fd);font-variation-settings:var(--exp);font-weight:800;font-size:clamp(20px,2.1vw,38px);
+  color:var(--paper);line-height:1;margin-bottom:12px}
+.ph p{margin:0 0 10px;font-size:clamp(13px,1.02vw,20px);line-height:1.42;color:var(--text)}
+.ph .who{font-family:var(--fm);font-size:clamp(10px,.76vw,14px);letter-spacing:.1em;color:var(--mute);
+  text-transform:uppercase;border-top:1px solid var(--rule);padding-top:10px;margin-top:12px}
+@media(max-width:860px){.prem,.phase{grid-template-columns:1fr}}
+</style>
+
+<div class="topbar"><i id="fill"></i></div>
+<div class="deck" id="deck">
+
+<section class="slide">
+  <div class="eyebrow">Proposta comercial <b>/</b> Mercado Livre e Amazon Brasil <b>/</b> outubro 2026</div>
+  <h1>A Pet Toys dona<br>da <em>própria vitrine</em></h1>
+  <p class="sub">Primeiro a marca governa o canal e a rede continua vendendo. Depois, quando vocês
+  decidirem, a Pet Toys também vende direto, com a casa já arrumada.</p>
+  <div class="figs">
+    <div class="fig"><div class="n">2</div><div class="l">canais operados: Mercado Livre e Amazon</div></div>
+    <div class="fig"><div class="n hot">2</div><div class="l">fases, a segunda por decisão de vocês</div></div>
+    <div class="fig"><div class="n">40</div><div class="l">SKUs na primeira onda de catálogo</div></div>
+  </div>
+  <div class="kick">Preparado para Luzival Leão, Pet Toys · Grupo Toys
+    <div class="small">impulsio · operação de canais digitais para indústrias e distribuidores</div></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O ponto de partida <b>/</b> 02</div>
+  <h1>O que o diagnóstico<br>já mediu</h1>
+  <div class="ev wide">
+    <div class="col">
+      <p class="sub">O levantamento de 5 de outubro capturou em tela o que o comprador vê hoje, com
+      fonte e data em cada número. Esta proposta parte dele.</p>
+      <p class="small">Nenhum dado interno da Pet Toys foi usado. O produto não é o problema: um
+      revendedor da rede, a Dona Patinha, vende a aranha 5139 com reputação MercadoLíder e mais de mil
+      vendas. A rede sabe vender a marca. Falta critério sobre quem a representa.</p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Fichas da marca na Amazon, linha de cães</span><span>15</span></div>
+        <div class="row"><span>Títulos sem o nome Pet Toys</span><span class="hot">12 de 15</span></div>
+        <div class="row"><span>Fichas sem nenhuma avaliação</span><span class="hot">14 de 15</span></div>
+        <div class="row"><span>Fichas com escolha de cor</span><span class="amb">0 de 15</span></div>
+        <div class="row"><span>Vendedores na Amazon com critério visível</span><span class="amb">0 de 8</span></div>
+        <div class="row"><span>Preço do mesmo Pet Ball, do menor ao maior</span><span class="amb">R$ 8 a R$ 45,99</span></div>
+        <div class="row"><span>Loja oficial no Mercado Livre</span><span class="hot">não encontrada</span></div>
+      </div>
+      <p class="small" style="margin-top:12px">Amazon.com.br e Mercado Livre, capturas de 05/10/2026.</p>
+    </div>
+  </div>
+  <div class="kick">Toda revisão do contrato compara contra esta linha de partida.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O que ouvimos de vocês <b>/</b> 03</div>
+  <h1>Três pontos da conversa<br>que desenham <em>a proposta</em></h1>
+  <div class="ev">
+    <div class="col">
+      <div class="quote">A dificuldade não é vender. É ter gente para operar o canal de ponta a ponta.
+        <span>Estrutura</span></div>
+      <div class="quote">A estratégia hoje é abastecer a rede, que já vende nos marketplaces, inclusive
+        um parceiro que opera de dentro da sede.<span>Relação com a rede</span></div>
+      <div class="quote">Se o trabalho de organizar for feito, faz sentido a Pet Toys também vender,
+        com o estoque indo para o centro de distribuição do marketplace.<span>Venda direta</span></div>
+    </div>
+    <div class="col">
+      <h2>Como isso vira desenho</h2>
+      <div class="rows">
+        <div class="row"><span>Falta de time interno</span><span>a impulsio opera</span></div>
+        <div class="row"><span>Rede que já vende</span><span>Fase 1 protege</span></div>
+        <div class="row"><span>Vontade de vender direto</span><span>Fase 2 libera</span></div>
+        <div class="row"><span>Linha de alimento nova</span><span>entra na onda 1</span></div>
+        <div class="row"><span>Estúdio próprio de foto e vídeo</span><span>vira insumo</span></div>
+      </div>
+      <p class="small" style="margin-top:12px">A venda direta não começa no primeiro dia. Abrir uma loja
+      que disputa com a rede antes de ter critério de canal cria o conflito que vocês querem evitar.</p>
+    </div>
+  </div>
+  <div class="kick">Organizar antes de vender. A ordem é o que protege quem já compra de vocês.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O modelo <b>/</b> 04</div>
+  <h1>Duas fases,<br>uma decisão <em>no meio</em></h1>
+  <div class="phase">
+    <div class="ph"><div class="m">Fase 1 · meses 1 a 3 · nov/26 a jan/27</div>
+      <div class="t">Marca Protagonista</div>
+      <p>A Pet Toys passa a ser dona da ficha: título, cor, foto, vídeo e atributos que todos os
+      vendedores usam. A rede credenciada continua vendendo, com estoque e preço próprios.</p>
+      <p>Registro da marca nos dois canais, loja oficial no Mercado Livre, Brand Store na Amazon e
+      critério de credenciamento da rede.</p>
+      <div class="who">Quem vende: a rede credenciada</div></div>
+    <div class="ph"><div class="m">Fase 2 · a partir do mês 4 · fev/27</div>
+      <div class="t">Protagonista + venda direta</div>
+      <p>A loja oficial também vende, com estoque da Pet Toys no Full do Mercado Livre. A rede segue
+      vendendo nas mesmas fichas, agora padronizadas.</p>
+      <p>Planejamento de envio ao Full, mídia paga a partir do terceiro mês de venda e lançamento
+      digital da linha de alimento.</p>
+      <div class="who">Quem vende: a rede e a Pet Toys, lado a lado</div></div>
+  </div>
+  <p class="small" style="margin-top:clamp(12px,2vh,20px)">A Fase 2 depende de aprovação interna de
+  vocês. Se ela não vier, o contrato segue na Fase 1 com o mesmo fixo e sem nenhum variável. Na
+  Amazon, o modelo em que ela compra da fábrica e revende (1P) fica como próximo horizonte: a ficha
+  sai pronta desta fase para quando a negociação avançar.</p>
+  <div class="kick">Variável só existe onde a operação realiza a venda. Na Fase 1, quem vende é a rede.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O que a impulsio executa <b>/</b> 05</div>
+  <h1>O escopo,<br>frente por frente</h1>
+  <div class="tiles">
+    <div class="tile"><div class="k">01 · Governança de marca</div><div class="t">Quem representa a Pet Toys</div>
+      <div class="l">Registro da marca no Mercado Livre e Brand Registry na Amazon, critério de credenciamento
+      da rede, monitoramento de vendedores e denúncia pelas ferramentas oficiais de anúncios que usam a
+      marca sem ser da fábrica.</div></div>
+    <div class="tile"><div class="k">02 · Catálogo e conteúdo</div><div class="t">Uma ficha por produto</div>
+      <div class="l">Título com a marca, variação de cor numa ficha só, atributos de filtro, categoria
+      certa, vídeo, conteúdo A+ na Amazon e loja oficial com vitrine por linha.</div></div>
+    <div class="tile"><div class="k">03 · Arquitetura de canais</div><div class="t">O papel de cada canal</div>
+      <div class="l">Sortimento por canal, diretriz de posicionamento de preço, planejamento de estoque no
+      Full e preparação da ficha para o modelo 1P da Amazon.</div></div>
+    <div class="tile"><div class="k">04 · Mídia, na Fase 2</div><div class="t">Depois da ficha pronta</div>
+      <div class="l">Mercado Ads e Sponsored Products a partir do terceiro mês de venda direta. A verba
+      é paga por vocês direto à plataforma.</div></div>
+  </div>
+  <div class="kick">Tráfego pago para ficha sem a marca no título e sem cor vira desconto, não venda. Por isso a mídia vem por último.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Catálogo em ondas <b>/</b> 06</div>
+  <h1>Quarenta primeiro.<br><em>O resto em ondas.</em></h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Onda 1, dentro do setup</h2>
+      <div class="rows">
+        <div class="row"><span>SKUs da curva A de brinquedos e comedouros</span><span>definidos com vocês</span></div>
+        <div class="row"><span>Linha de alimento, lançada há 45 dias</span><span>incluída</span></div>
+        <div class="row"><span>As 15 fichas atuais da Amazon</span><span>corrigidas</span></div>
+        <div class="row"><span>Total da onda 1</span><span class="grn">40 SKUs</span></div>
+        <div class="row"><span>Publicação</span><span class="mut">meses 1 a 3</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Ondas seguintes</h2>
+      <div class="rows">
+        <div class="row"><span>SKU novo</span><span>R$ 90 por SKU, por canal</span></div>
+        <div class="row"><span>Correção de ficha existente</span><span>R$ 60 por SKU, por canal</span></div>
+        <div class="row"><span>Tamanho e ordem da onda</span><span class="mut">vocês decidem</span></div>
+      </div>
+      <p class="small" style="margin-top:14px">O catálogo da linha pet tem cerca de 50 brinquedos para
+      cães, comedouros, bebedouros e seis linhas para gatos. Subir tudo de uma vez produz fichas
+      medianas. Em ondas, cada uma sai no padrão e a seguinte aproveita o que a anterior ensinou.</p>
+    </div>
+  </div>
+  <div class="kick">Onda nova só começa com a anterior publicada. Catálogo meio corrigido não sustenta o seguinte.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Como o trabalho anda <b>/</b> 07</div>
+  <h1>Do kickoff à<br>venda direta</h1>
+  <div class="timeline">
+    <div class="tl"><div class="m">Nov/26 · mês 1</div><div class="t">Fundação</div>
+      <ul><li>Registro da marca nos canais</li><li>Padrão de ficha e de título</li><li>Seleção dos 40 SKUs</li><li>Critério da rede</li></ul></div>
+    <div class="tl"><div class="m">Dez/26 a jan/27</div><div class="t">Onda 1 no ar</div>
+      <ul><li>Loja oficial e Brand Store</li><li>40 fichas publicadas</li><li>Cor como variação</li><li>Rede credenciada</li></ul></div>
+    <div class="tl"><div class="m">Fev/27 · mês 4</div><div class="t">Venda direta</div>
+      <ul><li>Primeiro envio ao Full</li><li>Loja oficial vendendo</li><li>Linha de alimento no ar</li></ul></div>
+    <div class="tl"><div class="m">Abr/27 em diante</div><div class="t">Escala</div>
+      <ul><li>Mídia paga</li><li>Ondas seguintes de catálogo</li><li>Ficha pronta para o 1P</li></ul></div>
+  </div>
+  <p class="small" style="margin-top:clamp(12px,2vh,20px)">Novembro é o pico de vocês. Por isso o mês 1 é
+  de fundação, que pede decisão e informação, não operação de pedido. O prazo de cada entrega corre a
+  partir do recebimento do insumo; se um material atrasar, a entrega desloca o mesmo número de dias, com
+  aviso por escrito no momento em que o atraso aparece.</p>
+  <div class="kick">A Black Friday de 2027 é a primeira em que a Pet Toys vende direto, com catálogo e histórico já formados.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O que não está incluído <b>/</b> 08</div>
+  <h1>E dizemos isso<br><em>antes</em> de vocês perguntarem</h1>
+  <div class="no">
+    <div><b>Preço de revenda</b>A rede define o próprio preço. A impulsio monitora e orienta posicionamento; não impõe preço a terceiro, porque impor preço de revenda com punição é infração à ordem econômica.</div>
+    <div><b>Logística e faturamento</b>Separação, nota fiscal e envio ao Full ficam com a Pet Toys. Nós entregamos o plano de envio por SKU; a expedição é de vocês.</div>
+    <div><b>Verba de mídia</b>O investimento em anúncios é pago por vocês direto à plataforma, fora deste contrato.</div>
+    <div><b>Negociação 1P com a Amazon</b>Pedido, preço de compra e prazo são relação direta de vocês com a Amazon. Preparamos a ficha e o sortimento.</div>
+    <div><b>Assunto jurídico de marca</b>Registro no INPI, contrafação e notificação são do jurídico da Pet Toys. A impulsio atua na operação, pelas ferramentas oficiais dos canais.</div>
+    <div><b>SAC e devolução</b>Atendimento ao comprador da venda direta segue com vocês, com roteiro de respostas preparado por nós.</div>
+  </div>
+  <div class="kick">Escopo que não está escrito vira discussão no mês quatro. Preferimos ter essa conversa agora.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Como o trabalho é medido <b>/</b> 09</div>
+  <h1>Pelo que a operação<br>controla</h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Os indicadores do contrato</h2>
+      <div class="rows">
+        <div class="row"><span>Fichas com Pet Toys no título</span><span>3 de 15 &rarr; 40 de 40</span></div>
+        <div class="row"><span>Fichas com escolha de cor</span><span>0 &rarr; todas com variação</span></div>
+        <div class="row"><span>Loja oficial e Brand Store</span><span>nenhuma &rarr; as duas no ar</span></div>
+        <div class="row"><span>Vendedores credenciados</span><span>0 de 8 &rarr; critério publicado</span></div>
+        <div class="row"><span>Dispersão de preço por SKU</span><span>medida todo mês</span></div>
+        <div class="row"><span>Ruptura nas fichas da onda 1</span><span>medida todo mês</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>O que não prometemos</h2>
+      <p class="sub"><strong>Meta de faturamento.</strong> Faturamento depende de preço, estoque e
+      decisões que são de vocês e da plataforma.</p>
+      <p class="small">A projeção das páginas seguintes é uma simulação com premissas abertas, feita
+      para vocês avaliarem o investimento. Não é meta e não é compromisso de resultado.</p>
+    </div>
+  </div>
+  <div class="kick">É mais fácil vender promessa de faturamento. Preferimos vender o que dá para conferir na tela.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O investimento <b>/</b> 10</div>
+  <h1>Seis mil por mês<br>no primeiro semestre</h1>
+  <div class="price">
+    <div class="pc">
+      <div class="k">Meses 1 a 6</div>
+      <div class="v">R$ 6.000<small> /mês</small></div>
+      <div class="d">Setup de R$ 15.000 em 6 parcelas de R$ 2.500, mais operação mensal de R$ 3.500.
+      O setup cobre a fundação de marca nos dois canais, o padrão de ficha e a onda 1 de 40 SKUs.</div>
+    </div>
+    <div class="pc">
+      <div class="k">Mês 7 em diante</div>
+      <div class="v">R$ 6.200<small> /mês</small></div>
+      <div class="d">Mercado Livre R$ 4.500 mais Amazon R$ 1.700. Operação contínua de catálogo,
+      governança, arquitetura de canal e, na Fase 2, gestão da venda direta e da mídia.</div>
+    </div>
+  </div>
+  <div class="rows" style="margin-top:clamp(12px,2vh,22px)">
+    <div class="row"><span>Variável, só na Fase 2, sobre a venda direta</span><span>2% do que passar de R$ 150 mil/mês</span></div>
+    <div class="row"><span>Exemplo: mês com R$ 180 mil de venda direta</span><span>2% × R$ 30 mil = R$ 600</span></div>
+    <div class="row"><span>Base de cálculo</span><span class="mut">relatório da conta da Pet Toys</span></div>
+    <div class="row"><span>Ondas adicionais de catálogo</span><span class="mut">R$ 90 SKU novo · R$ 60 correção · por canal</span></div>
+  </div>
+  <p class="small" style="margin-top:12px">Até R$ 150 mil por mês de venda direta não há variável. A venda
+  da rede nunca entra na conta. A venda direta parte do zero, então a base é zero, e isso fica escrito no contrato.</p>
+  <div class="kick">O variável só começa quando a operação já passou de R$ 150 mil por mês. Antes disso, o fixo paga o trabalho.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O mercado <b>/</b> 11</div>
+  <h1>O tamanho<br>da <em>prateleira</em></h1>
+  <div class="ev wide">
+    <div class="col">
+      <div class="figs">
+        <div class="fig"><div class="n">R$ 16<small> mi</small></div><div class="l">por mês, brinquedos, comedouros e bebedouros de cães e gatos</div></div>
+      </div>
+      <p class="sub" style="margin-top:clamp(14px,2.4vh,26px)">Comedouros e bebedouros crescem mais rápido
+      que brinquedos: <strong>+77%</strong> em um ano para cães e <strong>+93%</strong> para gatos.
+      É a linha do comedouro alto, que um revendedor já vende em quatro cores numa ficha só.</p>
+      <p class="small">Hoje o campo de marca PETTOYS soma cerca de R$ 7 mil/mês em 338 anúncios e 88
+      vendedores, só 9 com venda. Parte desses anúncios nem é da fábrica, porque "pet toys" é também
+      um termo genérico.</p>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Brinquedos para cães</span><span>R$ 3,4 mi · +29%</span></div>
+        <div class="row"><span>Brinquedos para gatos</span><span>R$ 1,5 mi · −5%</span></div>
+        <div class="row"><span>Comedouros e bebedouros, cães</span><span>R$ 7,2 mi · +77%</span></div>
+        <div class="row"><span>Comedouros e bebedouros, gatos</span><span>R$ 3,9 mi · +93%</span></div>
+        <div class="row"><span>5ª maior marca em brinquedos para cães</span><span class="amb">≈ R$ 87 mil/mês</span></div>
+        <div class="row"><span>5ª maior marca em comedouros para cães</span><span class="amb">≈ R$ 82 mil/mês</span></div>
+      </div>
+      <p class="small" style="margin-top:12px">Estimativas JoomPulse sobre dados públicos do Mercado Livre,
+      setembro de 2026, variação contra setembro de 2025. Servem para dimensionar a prateleira, não são
+      faturamento auditado.</p>
+    </div>
+  </div>
+  <div class="kick">Os R$ 200 mil da projeção equivalem a 1,2% dessa prateleira, o patamar de uma marca entre as cinco maiores em brinquedos e em comedouros ao mesmo tempo.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · premissas <b>/</b> 12</div>
+  <h1>De onde vem<br><em>cada número</em></h1>
+  <div class="prem">
+    <div class="pm"><div class="q">Início do contrato</div><div class="v">nov/2026</div>
+      <div class="s">Mês 1 é a assinatura. Venda direta só a partir do <b>mês 4 (fev/27)</b>; os três primeiros meses são Fase 1, sem venda direta na conta.</div></div>
+    <div class="pm"><div class="q">Potencial da venda direta em regime</div><div class="v">R$ 200 mil/mês</div>
+      <div class="s">Premissa alinhada na conversa: 1,2% da prateleira de R$ 16 mi da página 11. Corresponde à operação madura, no <b>mês 20 (jun/28)</b>. Cenário alternativo com R$ 150 mil na página 15.</div></div>
+    <div class="pm"><div class="q">Margem sobre a venda</div><div class="v">20%</div>
+      <div class="s">Margem da Pet Toys já descontados comissão do marketplace, frete e imposto. Faixa informada por vocês: <b>15% a 20%</b>. O conservador usa 15%.</div></div>
+    <div class="pm"><div class="q">Maturação do canal</div><div class="v">18 meses até 100%</div>
+      <div class="s">Rampa padrão de canal novo com catálogo novo: 2% do potencial no 1º mês de venda, 48% no 8º, 100% no 17º. Histórico e avaliações levam tempo.</div></div>
+    <div class="pm"><div class="q">Sazonalidade</div><div class="v">varejo pet</div>
+      <div class="s">Consumo recorrente, picos suaves: fevereiro a 0,86 do mês médio, <b>novembro a 1,18</b> (Black Friday), dezembro a 1,12.</div></div>
+    <div class="pm"><div class="q">Mídia paga</div><div class="v">3% do GMV</div>
+      <div class="s">A partir do 3º mês de venda direta (abr/27), com verba mínima de R$ 1.000/mês até o 6º. Paga à plataforma, fora do contrato.</div></div>
+    <div class="pm"><div class="q">Contrato impulsio</div><div class="v">R$ 6.000 → R$ 6.200</div>
+      <div class="s">R$ 2.500 de setup + R$ 3.500 de operação nos meses 1 a 6; R$ 6.200 do mês 7 em diante; 2% sobre o excedente de R$ 150 mil.</div></div>
+    <div class="pm"><div class="q">Horizonte</div><div class="v">25 meses</div>
+      <div class="s">Novembro de 2026 a novembro de 2028, passando por <b>duas Black Fridays</b> de venda direta.</div></div>
+  </div>
+  <div class="kick">Todas as premissas são editáveis na planilha que acompanha esta proposta. Troquem pelos números de vocês.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · resultado acumulado <b>/</b> 13</div>
+  <h1>O investimento se paga<br>em <em>outubro de 2027</em></h1>
+  <div class="leg"><span><i style="background:var(--seal-l)"></i>resultado acumulado da venda direta, depois do contrato e da mídia</span></div>
+  <svg class="chart" viewBox="0 0 1000 380" role="img" aria-label="Resultado acumulado da venda direta, cenário base"><rect class="f1" x="70.0" y="24.0" width="109.2" height="312.0"/><text class="tag" x="78.0" y="40.0">FASE 1</text><text class="tag" x="187.2" y="40.0">FASE 2 · VENDA DIRETA</text><line class="grid" x1="70" x2="980" y1="336.0" y2="336.0"/><text class="ax" x="60" y="340.0" text-anchor="end">−100 mil</text><line class="zero" x1="70" x2="980" y1="273.6" y2="273.6"/><text class="ax" x="60" y="277.6" text-anchor="end">0</text><line class="grid" x1="70" x2="980" y1="211.2" y2="211.2"/><text class="ax" x="60" y="215.2" text-anchor="end">100 mil</text><line class="grid" x1="70" x2="980" y1="148.8" y2="148.8"/><text class="ax" x="60" y="152.8" text-anchor="end">200 mil</text><line class="grid" x1="70" x2="980" y1="86.4" y2="86.4"/><text class="ax" x="60" y="90.4" text-anchor="end">300 mil</text><line class="grid" x1="70" x2="980" y1="24.0" y2="24.0"/><text class="ax" x="60" y="28.0" text-anchor="end">400 mil</text><text class="ax" x="88.2" y="358" text-anchor="middle">nov/26</text><text class="ax" x="197.4" y="358" text-anchor="middle">fev/27</text><text class="ax" x="306.6" y="358" text-anchor="middle">mai/27</text><text class="ax" x="415.8" y="358" text-anchor="middle">ago/27</text><text class="ax" x="525.0" y="358" text-anchor="middle">nov/27</text><text class="ax" x="634.2" y="358" text-anchor="middle">fev/28</text><text class="ax" x="743.4" y="358" text-anchor="middle">mai/28</text><text class="ax" x="852.6" y="358" text-anchor="middle">ago/28</text><text class="ax" x="961.8" y="358" text-anchor="middle">nov/28</text><polygon class="ar" points="88.2,273.6 88.2,277.3 124.6,281.1 161.0,284.8 197.4,288.1 233.8,290.9 270.2,293.3 306.6,294.5 343.0,294.3 379.4,292.3 415.8,287.8 452.2,281.5 488.6,272.3 525.0,259.9 561.4,246.4 597.8,235.2 634.2,223.3 670.6,208.5 707.0,193.3 743.4,176.7 779.8,160.9 816.2,144.2 852.6,126.9 889.0,110.2 925.4,92.3 961.8,72.3 961.8,273.6"/><polyline class="ln" points="88.2,277.3 124.6,281.1 161.0,284.8 197.4,288.1 233.8,290.9 270.2,293.3 306.6,294.5 343.0,294.3 379.4,292.3 415.8,287.8 452.2,281.5 488.6,272.3 525.0,259.9 561.4,246.4 597.8,235.2 634.2,223.3 670.6,208.5 707.0,193.3 743.4,176.7 779.8,160.9 816.2,144.2 852.6,126.9 889.0,110.2 925.4,92.3 961.8,72.3"/><circle class="dot hot" cx="306.6" cy="294.5" r="6"/><text class="lab hot" x="306.6" y="320.5" text-anchor="middle">pior momento · −R$ 33.500</text><circle class="dot grn" cx="488.6" cy="272.3" r="6"/><text class="lab grn" x="502.6" y="302.3">investimento pago · out/27</text></svg>
+  <div class="figs" style="margin-top:clamp(8px,1.4vh,16px)">
+    <div class="fig"><div class="n hot" style="font-size:clamp(28px,3.6vw,64px)">−34 mil</div><div class="l">pior momento do caixa · mai/27</div></div>
+    <div class="fig"><div class="n" style="font-size:clamp(28px,3.6vw,64px)">out/27</div><div class="l">acumulado volta ao positivo</div></div>
+    <div class="fig"><div class="n" style="font-size:clamp(28px,3.6vw,64px)">323 mil</div><div class="l">acumulado em nov/28, 25 meses</div></div>
+  </div>
+  <div class="kick">Resultado = margem de 20% sobre a venda direta, menos mídia, menos contrato impulsio. A venda da rede não entra.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · venda direta mês a mês <b>/</b> 14</div>
+  <h1>A curva de<br>venda direta</h1>
+  <div class="leg"><span><i style="background:var(--seal)"></i>venda direta projetada (GMV)</span><span><i style="background:var(--hot)"></i>novembro · Black Friday</span><span><i style="background:var(--amber)"></i>gatilho do variável</span></div>
+  <svg class="chart" viewBox="0 0 1000 380" role="img" aria-label="Faturamento mensal projetado da venda direta"><rect class="f1" x="70.0" y="24.0" width="109.2" height="312.0"/><text class="tag" x="78.0" y="40.0">FASE 1</text><text class="tag" x="187.2" y="40.0">FASE 2 · VENDA DIRETA</text><line class="grid" x1="70" x2="980" y1="336.0" y2="336.0"/><text class="ax" x="60" y="340.0" text-anchor="end">0</text><line class="grid" x1="70" x2="980" y1="232.0" y2="232.0"/><text class="ax" x="60" y="236.0" text-anchor="end">100 mil</text><line class="grid" x1="70" x2="980" y1="128.0" y2="128.0"/><text class="ax" x="60" y="132.0" text-anchor="end">200 mil</text><line class="grid" x1="70" x2="980" y1="24.0" y2="24.0"/><text class="ax" x="60" y="28.0" text-anchor="end">300 mil</text><text class="ax" x="88.2" y="358" text-anchor="middle">nov/26</text><text class="ax" x="197.4" y="358" text-anchor="middle">fev/27</text><text class="ax" x="306.6" y="358" text-anchor="middle">mai/27</text><text class="ax" x="415.8" y="358" text-anchor="middle">ago/27</text><text class="ax" x="525.0" y="358" text-anchor="middle">nov/27</text><text class="ax" x="634.2" y="358" text-anchor="middle">fev/28</text><text class="ax" x="743.4" y="358" text-anchor="middle">mai/28</text><text class="ax" x="852.6" y="358" text-anchor="middle">ago/28</text><text class="ax" x="961.8" y="358" text-anchor="middle">nov/28</text><rect class="bar" x="186.1" y="332.4" width="22.6" height="3.6"/><rect class="bar" x="222.5" y="327.7" width="22.6" height="8.3"/><rect class="bar" x="258.9" y="319.9" width="22.6" height="16.1"/><rect class="bar" x="295.3" y="308.4" width="22.6" height="27.6"/><rect class="bar" x="331.7" y="296.5" width="22.6" height="39.5"/><rect class="bar" x="368.1" y="277.8" width="22.6" height="58.2"/><rect class="bar" x="404.5" y="254.4" width="22.6" height="81.6"/><rect class="bar" x="440.9" y="236.2" width="22.6" height="99.8"/><rect class="bar" x="477.3" y="208.1" width="22.6" height="127.9"/><rect class="bar bf" x="513.7" y="176.4" width="22.6" height="159.6"/><rect class="bar" x="550.1" y="163.4" width="22.6" height="172.6"/><rect class="bar" x="586.5" y="187.8" width="22.6" height="148.2"/><rect class="bar" x="622.9" y="182.1" width="22.6" height="153.9"/><rect class="bar" x="659.3" y="148.8" width="22.6" height="187.2"/><rect class="bar" x="695.7" y="144.6" width="22.6" height="191.4"/><rect class="bar" x="732.1" y="130.1" width="22.6" height="205.9"/><rect class="bar" x="768.5" y="138.4" width="22.6" height="197.6"/><rect class="bar" x="804.9" y="128.0" width="22.6" height="208.0"/><rect class="bar" x="841.3" y="121.8" width="22.6" height="214.2"/><rect class="bar" x="877.7" y="128.0" width="22.6" height="208.0"/><rect class="bar" x="914.1" y="115.5" width="22.6" height="220.5"/><rect class="bar bf" x="950.5" y="90.6" width="22.6" height="245.4"/><line class="gat" x1="70" x2="980" y1="180.0" y2="180.0"/><text class="lab amb" x="78" y="172.0">R$ 150 mil/mês · gatilho do variável</text></svg>
+  <div class="kick">Pela premissa, a venda direta cruza R$ 150 mil na Black Friday de 2027. Só a partir daí existe variável, e só sobre o excedente.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · cenários <b>/</b> 15</div>
+  <h1>Se as premissas<br><em>não se confirmarem</em></h1>
+  <div class="ev wide">
+    <div class="col">
+      <div class="leg"><span><i style="background:var(--seal-l)"></i>base</span><span><i style="background:var(--amber)"></i>potencial R$ 150 mil</span><span><i style="background:var(--hot)"></i>conservador</span></div>
+      <svg class="chart c3" viewBox="0 0 1000 380" role="img" aria-label="Resultado acumulado em três cenários"><line class="grid" x1="70" x2="980" y1="336.0" y2="336.0"/><text class="ax" x="60" y="340.0" text-anchor="end">−100 mil</text><line class="zero" x1="70" x2="980" y1="273.6" y2="273.6"/><text class="ax" x="60" y="277.6" text-anchor="end">0</text><line class="grid" x1="70" x2="980" y1="211.2" y2="211.2"/><text class="ax" x="60" y="215.2" text-anchor="end">100 mil</text><line class="grid" x1="70" x2="980" y1="148.8" y2="148.8"/><text class="ax" x="60" y="152.8" text-anchor="end">200 mil</text><line class="grid" x1="70" x2="980" y1="86.4" y2="86.4"/><text class="ax" x="60" y="90.4" text-anchor="end">300 mil</text><line class="grid" x1="70" x2="980" y1="24.0" y2="24.0"/><text class="ax" x="60" y="28.0" text-anchor="end">400 mil</text><text class="ax" x="88.2" y="358" text-anchor="middle">nov/26</text><text class="ax" x="197.4" y="358" text-anchor="middle">fev/27</text><text class="ax" x="306.6" y="358" text-anchor="middle">mai/27</text><text class="ax" x="415.8" y="358" text-anchor="middle">ago/27</text><text class="ax" x="525.0" y="358" text-anchor="middle">nov/27</text><text class="ax" x="634.2" y="358" text-anchor="middle">fev/28</text><text class="ax" x="743.4" y="358" text-anchor="middle">mai/28</text><text class="ax" x="852.6" y="358" text-anchor="middle">ago/28</text><text class="ax" x="961.8" y="358" text-anchor="middle">nov/28</text><polyline class="ln" points="88.2,277.3 124.6,281.1 161.0,284.8 197.4,288.1 233.8,290.9 270.2,293.3 306.6,294.5 343.0,294.3 379.4,292.3 415.8,287.8 452.2,281.5 488.6,272.3 525.0,259.9 561.4,246.4 597.8,235.2 634.2,223.3 670.6,208.5 707.0,193.3 743.4,176.7 779.8,160.9 816.2,144.2 852.6,126.9 889.0,110.2 925.4,92.3 961.8,72.3"/><text class="lab lnt" x="955.8" y="62.3" text-anchor="end">Base</text><polyline class="ln2" points="88.2,277.3 124.6,281.1 161.0,284.8 197.4,288.3 233.8,291.3 270.2,294.1 306.6,296.1 343.0,297.1 379.4,296.5 415.8,294.1 452.2,290.4 488.6,284.5 525.0,276.1 561.4,266.8 597.8,259.3 634.2,251.4 670.6,241.0 707.0,230.2 743.4,218.3 779.8,207.1 816.2,195.0 852.6,182.6 889.0,170.5 925.4,157.6 961.8,143.1"/><text class="lab ln2t" x="955.8" y="133.1" text-anchor="end">Potencial de R$ 150 mil</text><polyline class="ln3" points="88.2,277.3 124.6,281.1 161.0,284.8 197.4,288.4 233.8,291.8 270.2,295.4 306.6,298.6 343.0,301.1 379.4,302.8 415.8,303.6 452.2,303.5 488.6,302.3 525.0,299.5 561.4,295.8 597.8,292.9 634.2,289.5 670.6,283.9 707.0,277.6 743.4,270.2 779.8,262.9 816.2,254.4 852.6,245.0 889.0,235.7 925.4,225.2 961.8,213.1"/><text class="lab ln3t" x="955.8" y="203.1" text-anchor="end">Conservador</text></svg>
+    </div>
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span><b style="color:var(--paper)">Base</b> · R$ 200 mil, 20%, 18 meses</span><span></span></div>
+        <div class="row"><span>pior caixa · paga em</span><span>−34 mil · out/27</span></div>
+        <div class="row"><span>acumulado em 25 meses</span><span class="grn">323 mil</span></div>
+        <div class="row"><span><b style="color:var(--paper)">Potencial menor</b> · R$ 150 mil</span><span></span></div>
+        <div class="row"><span>pior caixa · paga em</span><span>−38 mil · dez/27</span></div>
+        <div class="row"><span>acumulado em 25 meses</span><span class="grn">209 mil</span></div>
+        <div class="row"><span><b style="color:var(--paper)">Conservador</b> · margem 15%, rampa 1,5× mais lenta</span><span></span></div>
+        <div class="row"><span>pior caixa · paga em</span><span>−48 mil · mai/28</span></div>
+        <div class="row"><span>acumulado em 25 meses</span><span class="grn">97 mil</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="kick">Mesmo no conservador o investimento volta dentro do horizonte. O que muda é quanto tempo o caixa fica negativo.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · o que fica de fora <b>/</b> 16</div>
+  <h1>A conta é<br><em>conservadora</em> de propósito</h1>
+  <div class="ev">
+    <div class="col">
+      <h2>Não entra na projeção</h2>
+      <div class="rows">
+        <div class="row"><span>Venda da rede depois da Fase 1</span><span class="mut">fichas melhores, mais giro</span></div>
+        <div class="row"><span>Pedidos da Amazon no modelo 1P</span><span class="mut">quando a negociação avançar</span></div>
+        <div class="row"><span>Recorrência da linha de alimento</span><span class="mut">Programe e Poupe na Amazon</span></div>
+        <div class="row"><span>Shopee e TikTok Shop</span><span class="mut">fase futura</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Por que deixar de fora</h2>
+      <p class="sub">A projeção conta só o que a venda direta gera para a Pet Toys. O efeito na rede é real,
+      mas aparece como pedido de revendedor, e misturar as duas coisas inflaria o número.</p>
+      <p class="small">O potencial de R$ 200 mil é premissa, não medição. Os valores de mercado do
+      diagnóstico são estimativas de plataforma e não servem de base para cobrança.</p>
+    </div>
+  </div>
+  <div class="kick">Se algo der certo fora desta conta, ele aparece no pedido da rede e no da Amazon, não nesta curva.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">A projeção · mês a mês <b>/</b> 17</div>
+  <h1>A tabela<br>completa</h1>
+  <div class="tbl"><table>
+    <thead><tr><th>Mês</th><th></th><th>Venda direta</th><th>Margem 20%</th><th>Mídia</th><th>impulsio fixo</th><th>Variável</th><th>Resultado</th><th>Acumulado</th></tr></thead>
+    <tbody><tr class="f1r"><td>1</td><td>nov/26</td><td>—</td><td>—</td><td>—</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 6.000</td><td class="neg">−R$ 6.000</td></tr><tr class="f1r"><td>2</td><td>dez/26</td><td>—</td><td>—</td><td>—</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 6.000</td><td class="neg">−R$ 12.000</td></tr><tr class="f1r"><td>3</td><td>jan/27</td><td>—</td><td>—</td><td>—</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 6.000</td><td class="neg">−R$ 18.000</td></tr><tr><td>4</td><td>fev/27</td><td>R$ 3.500</td><td>R$ 700</td><td>—</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 5.300</td><td class="neg">−R$ 23.300</td></tr><tr><td>5</td><td>mar/27</td><td>R$ 8.000</td><td>R$ 1.600</td><td>—</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 4.400</td><td class="neg">−R$ 27.700</td></tr><tr><td>6</td><td>abr/27</td><td>R$ 15.500</td><td>R$ 3.100</td><td>R$ 1.000</td><td>R$ 6.000</td><td>—</td><td class="neg">−R$ 3.900</td><td class="neg">−R$ 31.600</td></tr><tr><td>7</td><td>mai/27</td><td>R$ 26.500</td><td>R$ 5.300</td><td>R$ 1.000</td><td>R$ 6.200</td><td>—</td><td class="neg">−R$ 1.900</td><td class="neg">−R$ 33.500</td></tr><tr><td>8</td><td>jun/27</td><td>R$ 38.000</td><td>R$ 7.600</td><td>R$ 1.140</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 260</td><td class="neg">−R$ 33.240</td></tr><tr><td>9</td><td>jul/27</td><td>R$ 56.000</td><td>R$ 11.200</td><td>R$ 1.680</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 3.320</td><td class="neg">−R$ 29.920</td></tr><tr><td>10</td><td>ago/27</td><td>R$ 78.500</td><td>R$ 15.700</td><td>R$ 2.355</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 7.145</td><td class="neg">−R$ 22.775</td></tr><tr><td>11</td><td>set/27</td><td>R$ 96.000</td><td>R$ 19.200</td><td>R$ 2.880</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 10.120</td><td class="neg">−R$ 12.655</td></tr><tr><td>12</td><td>out/27</td><td>R$ 123.000</td><td>R$ 24.600</td><td>R$ 3.690</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 14.710</td><td class="pos">R$ 2.055</td></tr><tr class="bfr"><td>13</td><td>nov/27</td><td>R$ 153.500</td><td>R$ 30.700</td><td>R$ 4.605</td><td>R$ 6.200</td><td>R$ 70</td><td class="pos">R$ 19.825</td><td class="pos">R$ 21.880</td></tr><tr><td>14</td><td>dez/27</td><td>R$ 166.000</td><td>R$ 33.200</td><td>R$ 4.980</td><td>R$ 6.200</td><td>R$ 320</td><td class="pos">R$ 21.700</td><td class="pos">R$ 43.580</td></tr><tr><td>15</td><td>jan/28</td><td>R$ 142.500</td><td>R$ 28.500</td><td>R$ 4.275</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 18.025</td><td class="pos">R$ 61.605</td></tr><tr><td>16</td><td>fev/28</td><td>R$ 148.000</td><td>R$ 29.600</td><td>R$ 4.440</td><td>R$ 6.200</td><td>—</td><td class="pos">R$ 18.960</td><td class="pos">R$ 80.565</td></tr><tr><td>17</td><td>mar/28</td><td>R$ 180.000</td><td>R$ 36.000</td><td>R$ 5.400</td><td>R$ 6.200</td><td>R$ 600</td><td class="pos">R$ 23.800</td><td class="pos">R$ 104.365</td></tr><tr><td>18</td><td>abr/28</td><td>R$ 184.000</td><td>R$ 36.800</td><td>R$ 5.520</td><td>R$ 6.200</td><td>R$ 680</td><td class="pos">R$ 24.400</td><td class="pos">R$ 128.765</td></tr><tr><td>19</td><td>mai/28</td><td>R$ 198.000</td><td>R$ 39.600</td><td>R$ 5.940</td><td>R$ 6.200</td><td>R$ 960</td><td class="pos">R$ 26.500</td><td class="pos">R$ 155.265</td></tr><tr><td>20</td><td>jun/28</td><td>R$ 190.000</td><td>R$ 38.000</td><td>R$ 5.700</td><td>R$ 6.200</td><td>R$ 800</td><td class="pos">R$ 25.300</td><td class="pos">R$ 180.565</td></tr><tr><td>21</td><td>jul/28</td><td>R$ 200.000</td><td>R$ 40.000</td><td>R$ 6.000</td><td>R$ 6.200</td><td>R$ 1.000</td><td class="pos">R$ 26.800</td><td class="pos">R$ 207.365</td></tr><tr><td>22</td><td>ago/28</td><td>R$ 206.000</td><td>R$ 41.200</td><td>R$ 6.180</td><td>R$ 6.200</td><td>R$ 1.120</td><td class="pos">R$ 27.700</td><td class="pos">R$ 235.065</td></tr><tr><td>23</td><td>set/28</td><td>R$ 200.000</td><td>R$ 40.000</td><td>R$ 6.000</td><td>R$ 6.200</td><td>R$ 1.000</td><td class="pos">R$ 26.800</td><td class="pos">R$ 261.865</td></tr><tr><td>24</td><td>out/28</td><td>R$ 212.000</td><td>R$ 42.400</td><td>R$ 6.360</td><td>R$ 6.200</td><td>R$ 1.240</td><td class="pos">R$ 28.600</td><td class="pos">R$ 290.465</td></tr><tr class="bfr"><td>25</td><td>nov/28</td><td>R$ 236.000</td><td>R$ 47.200</td><td>R$ 7.080</td><td>R$ 6.200</td><td>R$ 1.720</td><td class="pos">R$ 32.200</td><td class="pos">R$ 322.665</td></tr></tbody>
+  </table></div>
+  <div class="kick" style="font-size:clamp(12px,1.1vw,22px)">Meses 1 a 3 em cinza: Fase 1, sem venda direta na conta. O mesmo modelo está na planilha editável.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O que precisamos de vocês <b>/</b> 18</div>
+  <h1>O que destrava<br>cada entrega</h1>
+  <div class="ev">
+    <div class="col">
+      <div class="rows">
+        <div class="row"><span>Acesso às contas de Mercado Livre e Amazon</span><span class="mut">semana 1</span></div>
+        <div class="row"><span>Situação da marca no INPI</span><span class="mut">semana 1</span></div>
+        <div class="row"><span>Planilha de produtos do ERP, com medidas e EAN</span><span class="mut">semana 1</span></div>
+        <div class="row"><span>Lista de revendedores atuais da rede</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Registro MAPA da linha de alimento</span><span class="mut">mês 1</span></div>
+        <div class="row"><span>Fotos e vídeos do estúdio interno, por briefing</span><span class="mut">por onda</span></div>
+        <div class="row"><span>Aprovação interna da Fase 2</span><span class="mut">até jan/27</span></div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Parada de relógio</h2>
+      <p class="sub">O prazo de cada entrega corre <strong>a partir do recebimento do insumo</strong>, não da data do contrato.</p>
+      <p class="small">A situação no INPI é a que mais trava: registro de marca no Mercado Livre e Brand
+      Registry na Amazon dependem dela. Com "Pet Toys" sendo também o nome da categoria em inglês, vale
+      confirmar se o registro cobre o nome ou o logotipo.</p>
+      <p class="small" style="margin-top:12px">O estúdio de vocês é vantagem real: o conteúdo sai com a
+      cara da fábrica, sem custo de produção externa. Nós entregamos o briefing de cada imagem e vídeo a
+      partir do que funciona na categoria.</p>
+    </div>
+  </div>
+  <div class="kick">A conta, o registro, as fichas e o conteúdo são da Pet Toys, durante o contrato e depois dele.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">O próximo passo <b>/</b> 19</div>
+  <h1>Quatro movimentos<br>para começar em novembro</h1>
+  <div class="tiles">
+    <div class="tile"><div class="k">01</div><div class="t">Validação interna</div>
+      <div class="l">Vocês levam esta proposta e a planilha para a diretoria. Ajustamos premissas juntos, se precisar.</div></div>
+    <div class="tile"><div class="k">02</div><div class="t">Aceite</div>
+      <div class="l">Assinatura e primeira parcela do setup.</div></div>
+    <div class="tile"><div class="k">03</div><div class="t">Kickoff</div>
+      <div class="l">Em até 48 horas do aceite, com acessos e planilha do ERP.</div></div>
+    <div class="tile"><div class="k">04</div><div class="t">Seleção da onda 1</div>
+      <div class="l">Os 40 SKUs, escolhidos com vocês a partir da curva de venda.</div></div>
+  </div>
+  <div class="kick">impulsio · operação de canais digitais para indústrias e distribuidores
+    <div class="small">Proposta válida por 30 dias · outubro de 2026</div></div>
+</section>
+
+</div>
+
+<div class="rail">
+  <span id="pos"><em>01</em> / 19</span>
+  <div class="nav">
+    <button id="prev" aria-label="Slide anterior">&larr;</button>
+    <button id="next" aria-label="Próximo slide">&rarr;</button>
+  </div>
+  <button class="fsbtn" id="fs" aria-label="Tela cheia">Tela cheia</button>
+  <span class="hint" id="hint">← → navegar · F tela cheia</span>
+</div>
+
+<script>
+(function(){
+  var all = [].slice.call(document.querySelectorAll('.slide')), cur = 0;
+  function show(i){
+    if(i<0||i>=all.length) return;
+    all.forEach(function(s){ s.classList.remove('on'); });
+    all[i].classList.add('on'); cur = i;
+    document.getElementById('pos').innerHTML =
+      '<em>'+String(i+1).padStart(2,'0')+'</em> / '+String(all.length).padStart(2,'0');
+    document.getElementById('fill').style.width = ((i+1)/all.length*100)+'%';
+    document.getElementById('prev').disabled = (i===0);
+    document.getElementById('next').disabled = (i===all.length-1);
+    if(window.innerWidth<=860) window.scrollTo(0,0);
+  }
+  document.getElementById('next').addEventListener('click', function(){ show(cur+1); });
+  document.getElementById('prev').addEventListener('click', function(){ show(cur-1); });
+  var fsBtn = document.getElementById('fs');
+  function toggleFs(){
+    if(!document.fullscreenElement){
+      var p = document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      if(p && p.catch) p.catch(function(){});
+    } else if(document.exitFullscreen){ document.exitFullscreen(); }
+  }
+  fsBtn.addEventListener('click', toggleFs);
+  document.addEventListener('fullscreenchange', function(){
+    fsBtn.textContent = document.fullscreenElement ? 'Sair' : 'Tela cheia';
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); show(cur+1); }
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); show(cur-1); }
+    if(e.key==='Home'){ e.preventDefault(); show(0); }
+    if(e.key==='f'||e.key==='F'){ e.preventDefault(); toggleFs(); }
+  });
+  show(0);
+})();
+</script>
