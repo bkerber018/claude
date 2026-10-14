@@ -67,9 +67,9 @@ O caixa inclui comissão: 60% da 1ª parcela (R$ 1.500) + 5% do mensal recebido.
 | Representante que negocia 1P com a Amazon (desconhecido) | Não oferecer negociação 1P. A proposta só prepara a ficha (slide 08). Perguntar quem é no kickoff. |
 | Parceiro com contêiner dentro da sede | Tratá-lo como o primeiro credenciado, não como alvo. Nenhuma ação de brand protection contra a rede por preço. |
 | "Derrubar quem queima preço" (dito na call) | **Nunca.** Lei 12.529/2011. Brand protection só para anúncio que não é da fábrica (ex.: kit de bolinhas de tênis do importador). |
-| Projeção lida como meta | A apresentação a rotula como simulação (slides 09, 16). Os KPIs do contrato são operacionais. |
+| Projeção lida como meta | A apresentação a rotula como simulação (slides 11 e 15). Os KPIs do contrato são operacionais. |
 | Linha de alimento sem registro MAPA | Confirmar antes de subir. Sem registro, a linha sai da onda 1. |
-| Potencial de R$ 200 mil é ambicioso | Equivale a estar no top 5 em brinquedos e em comedouros (JoomPulse, set/26). Por isso o slide 15 mostra R$ 150 mil e o conservador. |
+| Potencial de R$ 200 mil é ambicioso | Equivale a estar no top 5 em brinquedos e em comedouros (JoomPulse, set/26). Por isso o slide 14 mostra R$ 150 mil e o conservador. |
 
 ## 6. O que exige sua aprovação
 
