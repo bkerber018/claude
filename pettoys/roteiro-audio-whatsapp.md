@@ -1,24 +1,32 @@
-# Áudio de WhatsApp para o Luzival
+# Áudio de WhatsApp para o Luzival (v2: premissas da planilha)
 
-Voz: "Bruno Kerber - Voz real" (clone no ElevenLabs). Cerca de 2 minutos. Mandar logo depois dos três anexos.
+Voz: "Bruno Kerber - Voz real" (clone no ElevenLabs). Cerca de 1min45.
+Contexto: a proposta já foi enviada sozinha. Este áudio vai DEPOIS da planilha e do diagnóstico,
+junto com o texto de complemento. Substitui a v1 (que falava dos três arquivos de uma vez).
 Números estão por extenso de propósito, para a voz sintética não errar a leitura.
+
+**Texto que vai antes, junto com os dois arquivos:**
+
+> Luzival, complementando a proposta: segue a planilha de projeção que te mostrei na call, agora com as duas fases, e o diagnóstico de como a marca aparece hoje nos marketplaces. Te mando um áudio rapidinho explicando como ler a planilha.
 
 ---
 
-Fala, Luzival, tudo bem? Aqui é o Bruno. Te mandei agora há pouco o material da Pet Toys, e queria te explicar rapidinho por áudio, pra facilitar quando você for levar pra diretoria.
+Fala, Luzival, tudo bem? Aqui é o Bruno. Te mandei a planilha de projeção e o diagnóstico, que completam a proposta. Queria te explicar rapidinho como ler a planilha, porque é ela que vai te ajudar a defender isso lá dentro.
 
-São três arquivos. O primeiro é a proposta. Eu organizei em duas fases, porque na nossa conversa ficou muito claro que a rede de revendedores é estratégica pra vocês.
+Primeiro ponto: a conta só considera a venda direta da Pet Toys. Nos três primeiros meses, que é a fase um, quem vende é a rede, então ali só aparece o investimento. A venda direta começa em fevereiro.
 
-Na fase um, de novembro a janeiro, a Pet Toys passa a ser dona da vitrine no Mercado Livre e na Amazon: registro da marca, loja oficial, as fichas no padrão, com o nome da marca e as cores certinhas, e um critério pra rede. Quem vende continua sendo a rede, igual hoje.
+As premissas que mais mexem no resultado são quatro.
 
-A fase dois, a partir de fevereiro, é a venda direta, com estoque no Full. Mas ela só entra se a diretoria aprovar. Se não aprovar, segue tudo na fase um, com o mesmo valor.
+Potencial: a gente colocou duzentos mil reais por mês quando a operação estiver madura. Parece muito, mas é pouco mais de um por cento de uma prateleira que gira uns dezesseis milhões por mês no Mercado Livre.
 
-Sobre investimento, é o que a gente conversou: seis mil reais por mês no primeiro semestre, já com o setup diluído em seis vezes. E seis mil e duzentos a partir do sétimo mês, somando Mercado Livre e Amazon. Os dois por cento só existem na venda direta, e só sobre o que passar de cento e cinquenta mil reais no mês.
+Maturação: canal novo demora. A planilha leva uns dezoito meses pra chegar nesse potencial.
 
-O segundo arquivo é aquela planilha de projeção que eu te mostrei na call, agora com as fases. No cenário base, o investimento se paga em outubro do ano que vem. Mas eu coloquei também um cenário mais conservador, pra vocês enxergarem o pior caso. E dá pra mexer nos números, colocar a margem real de vocês.
+Margem: coloquei vinte por cento, já descontando comissão, frete e imposto. Você comentou que fica entre quinze e vinte. Essa é a primeira que eu trocaria pelo número real de vocês.
 
-O terceiro é o diagnóstico, que mostra como a marca aparece hoje pra quem compra.
+E mídia: três por cento da venda, só a partir do terceiro mês de venda direta.
 
-Pra gente ganhar tempo, se você conseguir me levantar três coisas: se a marca Pet Toys tá registrada no I, N, P, I; se a linha de ração já tem registro no MAPA; e quem é o representante que tá negociando com a Amazon.
+Com isso, o pior momento do caixa é em maio, uns trinta e três mil investidos, e o investimento se paga em outubro do ano que vem. No cenário conservador, com margem de quinze e a rampa mais lenta, se paga em maio de vinte e oito.
 
-Se ajudar, eu faço uma call rápida com você ou com a diretoria pra passar pelas premissas. Valeu, Luzival, um abraço.
+E tem coisa que ficou fora da conta de propósito: a venda da rede melhorando e a Amazon comprando direto. Então é uma conta pé no chão.
+
+As células em laranja, na aba de premissas, você pode mudar à vontade. Qualquer dúvida, me chama, ou a gente faz uma call rápida com a diretoria. Abraço.
