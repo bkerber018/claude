@@ -9,7 +9,10 @@ SAZ = {"jan":0.95,"fev":0.86,"mar":0.98,"abr":0.96,"mai":1.00,"jun":0.95,
 MAT = [0.02,0.04,0.08,0.13,0.20,0.29,0.38,0.48,0.58,0.67,0.75,0.82,0.88,0.93,0.96,0.98,1.00]
 
 INICIO_VENDA = 3          # índice de fev/27
-SETUP, PARCELAS = 16000, 10
+# Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 6.000 desde o mês 1,
+# setup de R$ 16.000 isento com fidelidade de 12 meses, 2% sobre o excedente de R$ 50 mil.
+MENSAL = 6000
+SETUP, PARCELAS = 0, 10
 GATILHO, PCT_VAR = 50000, 0.02
 
 def mat(k, lento=1.0):
@@ -27,7 +30,7 @@ def roda(potencial=150000, margem=0.20, lento=1.0):
         if i >= 5:                     # a partir de abr/27
             midia = 0.03 * gmv
             if i <= 8: midia = max(midia, 1000)   # mínimo até jul/27
-        mensal = 4000 if i < 2 else 6000
+        mensal = MENSAL
         setup = SETUP / PARCELAS if i < PARCELAS else 0
         var = PCT_VAR * (gmv - GATILHO) if gmv > GATILHO else 0
         imp = mensal + setup + var
