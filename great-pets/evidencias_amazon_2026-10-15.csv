@@ -24,3 +24,8 @@ data_captura,canal,cep,busca,produto,marca,patrocinado,avaliacao,n_avaliacoes,si
 2026-10-15,Amazon BR,01319-900,great pets,Areia Higienica Biodegradavel Tofu 2kg Natural,Great Pets,nao,4.4,249,900+,27.90,,,hoje,
 2026-10-15,Amazon BR,01319-900,great pets,Granulado Higienico Premium Blue Moon Natural 4kg,Great Pets,nao,4.6,204,200+,25.59,Oferta Exclusiva Prime,,,
 2026-10-15,Amazon BR,01319-900,great pets,(topo da pagina),Great Pets,,,,,,,,,sem banner de marca / Brand Store no topo da busca pelo nome da marca; filtro Vendido por mostra GREAT PETS e Amazon.com.br
+2026-10-15,Amazon BR,01319-900,great pets + filtro marca Great Pets,(total de resultados),Great Pets,,,,,,,,,191 resultados com filtro de marca (inclui variacoes e kits de terceiros) vs 480 SKUs informados pela marca; Vendido por: GREAT PETS e Oh my Dog! Pet Center
+2026-10-15,Amazon BR,01319-900,great pets + filtro marca Great Pets,Granulado Higienico Biodegradavel de Tofu Carvao 2kg,Great Pets,nao,4.2,57,400+,26.80,,,hoje,
+2026-10-15,Amazon BR,01319-900,great pets + filtro marca Great Pets,Tapete Higienico Ultra Secao Preto 80x60 30 un,Great Pets,nao,4.4,162,200+,68.36,,,hoje,
+2026-10-15,Amazon BR,01319-900,great pets + filtro marca Great Pets,Granulado Premium White Snow Natural 4kg,Great Pets,nao,4.6,6,,33.41,,,18/out,
+2026-10-15,Amazon BR,01319-900,great pets + filtro marca Great Pets,Areia Biodegradavel Milho e Mandioca Fina 2kg,Great Pets,nao,4.6,513,300+,26.90,,,28/out,prazo de 13 dias confirmado em segunda busca
