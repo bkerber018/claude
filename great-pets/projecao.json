@@ -6,11 +6,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -6000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -4500.0
   },
   {
    "mes": "dez/26",
@@ -18,11 +18,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -12000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -9000.0
   },
   {
    "mes": "jan/27",
@@ -30,11 +30,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -18000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -13500.0
   },
   {
    "mes": "fev/27",
@@ -42,11 +42,11 @@
    "margem": 516.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5484.0,
-   "acumulado": -23484.0
+   "impulsio": 4500.0,
+   "resultado": -3984.0,
+   "acumulado": -17484.0
   },
   {
    "mes": "mar/27",
@@ -54,11 +54,11 @@
    "margem": 1176.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -4824.0,
-   "acumulado": -28308.0
+   "impulsio": 4500.0,
+   "resultado": -3324.0,
+   "acumulado": -20808.0
   },
   {
    "mes": "abr/27",
@@ -66,11 +66,11 @@
    "margem": 2304.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -4696.0,
-   "acumulado": -33004.0
+   "impulsio": 4500.0,
+   "resultado": -3196.0,
+   "acumulado": -24004.0
   },
   {
    "mes": "mai/27",
@@ -78,11 +78,11 @@
    "margem": 3900.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -3100.0,
-   "acumulado": -36104.0
+   "impulsio": 4500.0,
+   "resultado": -1600.0,
+   "acumulado": -25604.0
   },
   {
    "mes": "jun/27",
@@ -90,11 +90,11 @@
    "margem": 5700.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -1300.0,
-   "acumulado": -37404.0
+   "impulsio": 4500.0,
+   "resultado": 200.0,
+   "acumulado": -25404.0
   },
   {
    "mes": "jul/27",
@@ -102,11 +102,11 @@
    "margem": 8700.0,
    "midia": 1305.0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": 1395.0,
-   "acumulado": -36009.0
+   "impulsio": 4500.0,
+   "resultado": 2895.0,
+   "acumulado": -22509.0
   },
   {
    "mes": "ago/27",
@@ -114,11 +114,11 @@
    "margem": 11742.0,
    "midia": 1761.3,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 174.20000000000002,
-   "impulsio": 6174.2,
-   "resultado": 3806.500000000001,
-   "acumulado": -32202.5
+   "impulsio": 4674.2,
+   "resultado": 5306.500000000001,
+   "acumulado": -17202.5
   },
   {
    "mes": "set/27",
@@ -126,11 +126,11 @@
    "margem": 14400.0,
    "midia": 2160.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 440.0,
-   "impulsio": 6440.0,
-   "resultado": 5800.0,
-   "acumulado": -26402.5
+   "impulsio": 4940.0,
+   "resultado": 7300.0,
+   "acumulado": -9902.5
   },
   {
    "mes": "out/27",
@@ -138,11 +138,11 @@
    "margem": 18444.0,
    "midia": 2766.6,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 844.4,
-   "impulsio": 6844.4,
-   "resultado": 8833.0,
-   "acumulado": -17569.5
+   "impulsio": 5344.4,
+   "resultado": 10333.0,
+   "acumulado": 430.5
   },
   {
    "mes": "nov/27",
@@ -150,11 +150,11 @@
    "margem": 23718.0,
    "midia": 3557.7,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1371.8,
-   "impulsio": 7371.8,
-   "resultado": 12788.5,
-   "acumulado": -4781.0
+   "impulsio": 5871.8,
+   "resultado": 14288.5,
+   "acumulado": 14719.0
   },
   {
    "mes": "dez/27",
@@ -162,11 +162,11 @@
    "margem": 25200.0,
    "midia": 3780.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1520.0,
-   "impulsio": 7520.0,
-   "resultado": 13900.0,
-   "acumulado": 9119.0
+   "impulsio": 6020.0,
+   "resultado": 15400.0,
+   "acumulado": 30119.0
   },
   {
    "mes": "jan/28",
@@ -174,11 +174,11 @@
    "margem": 23370.0,
    "midia": 3505.5,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1337.0,
-   "impulsio": 7337.0,
-   "resultado": 12527.5,
-   "acumulado": 21646.5
+   "impulsio": 5837.0,
+   "resultado": 14027.5,
+   "acumulado": 44146.5
   },
   {
    "mes": "fev/28",
@@ -186,11 +186,11 @@
    "margem": 22704.0,
    "midia": 3405.6,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1270.4,
-   "impulsio": 7270.4,
-   "resultado": 12028.000000000002,
-   "acumulado": 33674.5
+   "impulsio": 5770.4,
+   "resultado": 13528.000000000002,
+   "acumulado": 57674.5
   },
   {
    "mes": "mar/28",
@@ -198,11 +198,11 @@
    "margem": 27342.0,
    "midia": 4101.3,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1734.2,
-   "impulsio": 7734.2,
-   "resultado": 15506.5,
-   "acumulado": 49181.0
+   "impulsio": 6234.2,
+   "resultado": 17006.5,
+   "acumulado": 74681.0
   },
   {
    "mes": "abr/28",
@@ -210,11 +210,11 @@
    "margem": 27648.0,
    "midia": 4147.2,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1764.8,
-   "impulsio": 7764.8,
-   "resultado": 15736.0,
-   "acumulado": 64917.0
+   "impulsio": 6264.8,
+   "resultado": 17236.0,
+   "acumulado": 91917.0
   },
   {
    "mes": "mai/28",
@@ -222,11 +222,11 @@
    "margem": 29400.0,
    "midia": 4410.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1940.0,
-   "impulsio": 7940.0,
-   "resultado": 17050.0,
-   "acumulado": 81967.0
+   "impulsio": 6440.0,
+   "resultado": 18550.0,
+   "acumulado": 110467.0
   },
   {
    "mes": "jun/28",
@@ -234,11 +234,11 @@
    "margem": 28500.0,
    "midia": 4275.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1850.0,
-   "impulsio": 7850.0,
-   "resultado": 16375.0,
-   "acumulado": 98342.0
+   "impulsio": 6350.0,
+   "resultado": 17875.0,
+   "acumulado": 128342.0
   },
   {
    "mes": "jul/28",
@@ -246,11 +246,11 @@
    "margem": 30000.0,
    "midia": 4500.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2000.0,
-   "impulsio": 8000.0,
-   "resultado": 17500.0,
-   "acumulado": 115842.0
+   "impulsio": 6500.0,
+   "resultado": 19000.0,
+   "acumulado": 147342.0
   },
   {
    "mes": "ago/28",
@@ -258,11 +258,11 @@
    "margem": 30900.0,
    "midia": 4635.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2090.0,
-   "impulsio": 8090.0,
-   "resultado": 18175.0,
-   "acumulado": 134017.0
+   "impulsio": 6590.0,
+   "resultado": 19675.0,
+   "acumulado": 167017.0
   },
   {
    "mes": "set/28",
@@ -270,11 +270,11 @@
    "margem": 30000.0,
    "midia": 4500.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2000.0,
-   "impulsio": 8000.0,
-   "resultado": 17500.0,
-   "acumulado": 151517.0
+   "impulsio": 6500.0,
+   "resultado": 19000.0,
+   "acumulado": 186017.0
   },
   {
    "mes": "out/28",
@@ -282,11 +282,11 @@
    "margem": 31800.0,
    "midia": 4770.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2180.0,
-   "impulsio": 8180.0,
-   "resultado": 18850.0,
-   "acumulado": 170367.0
+   "impulsio": 6680.0,
+   "resultado": 20350.0,
+   "acumulado": 206367.0
   },
   {
    "mes": "nov/28",
@@ -294,11 +294,11 @@
    "margem": 35400.0,
    "midia": 5310.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2540.0,
-   "impulsio": 8540.0,
-   "resultado": 21550.0,
-   "acumulado": 191917.0
+   "impulsio": 7040.0,
+   "resultado": 23050.0,
+   "acumulado": 229417.0
   }
  ],
  "menor": [
@@ -308,11 +308,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -6000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -4500.0
   },
   {
    "mes": "dez/26",
@@ -320,11 +320,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -12000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -9000.0
   },
   {
    "mes": "jan/27",
@@ -332,11 +332,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -18000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -13500.0
   },
   {
    "mes": "fev/27",
@@ -344,11 +344,11 @@
    "margem": 344.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5656.0,
-   "acumulado": -23656.0
+   "impulsio": 4500.0,
+   "resultado": -4156.0,
+   "acumulado": -17656.0
   },
   {
    "mes": "mar/27",
@@ -356,11 +356,11 @@
    "margem": 784.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5216.0,
-   "acumulado": -28872.0
+   "impulsio": 4500.0,
+   "resultado": -3716.0,
+   "acumulado": -21372.0
   },
   {
    "mes": "abr/27",
@@ -368,11 +368,11 @@
    "margem": 1536.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5464.0,
-   "acumulado": -34336.0
+   "impulsio": 4500.0,
+   "resultado": -3964.0,
+   "acumulado": -25336.0
   },
   {
    "mes": "mai/27",
@@ -380,11 +380,11 @@
    "margem": 2600.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -4400.0,
-   "acumulado": -38736.0
+   "impulsio": 4500.0,
+   "resultado": -2900.0,
+   "acumulado": -28236.0
   },
   {
    "mes": "jun/27",
@@ -392,11 +392,11 @@
    "margem": 3800.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -3200.0,
-   "acumulado": -41936.0
+   "impulsio": 4500.0,
+   "resultado": -1700.0,
+   "acumulado": -29936.0
   },
   {
    "mes": "jul/27",
@@ -404,11 +404,11 @@
    "margem": 5800.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -1200.0,
-   "acumulado": -43136.0
+   "impulsio": 4500.0,
+   "resultado": 300.0,
+   "acumulado": -29636.0
   },
   {
    "mes": "ago/27",
@@ -416,11 +416,11 @@
    "margem": 7828.0,
    "midia": 1174.2,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": 653.8000000000002,
-   "acumulado": -42482.2
+   "impulsio": 4500.0,
+   "resultado": 2153.8,
+   "acumulado": -27482.2
   },
   {
    "mes": "set/27",
@@ -428,11 +428,11 @@
    "margem": 9600.0,
    "midia": 1440.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000,
-   "resultado": 2160.0,
-   "acumulado": -40322.2
+   "impulsio": 4500,
+   "resultado": 3660.0,
+   "acumulado": -23822.2
   },
   {
    "mes": "out/27",
@@ -440,11 +440,11 @@
    "margem": 12296.0,
    "midia": 1844.3999999999999,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 229.6,
-   "impulsio": 6229.6,
-   "resultado": 4222.0,
-   "acumulado": -36100.2
+   "impulsio": 4729.6,
+   "resultado": 5722.0,
+   "acumulado": -18100.2
   },
   {
    "mes": "nov/27",
@@ -452,11 +452,11 @@
    "margem": 15812.0,
    "midia": 2371.7999999999997,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 581.2,
-   "impulsio": 6581.2,
-   "resultado": 6859.000000000001,
-   "acumulado": -29241.199999999997
+   "impulsio": 5081.2,
+   "resultado": 8359.0,
+   "acumulado": -9741.2
   },
   {
    "mes": "dez/27",
@@ -464,11 +464,11 @@
    "margem": 16800.0,
    "midia": 2520.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 680.0,
-   "impulsio": 6680.0,
-   "resultado": 7600.0,
-   "acumulado": -21641.199999999997
+   "impulsio": 5180.0,
+   "resultado": 9100.0,
+   "acumulado": -641.2000000000007
   },
   {
    "mes": "jan/28",
@@ -476,11 +476,11 @@
    "margem": 15580.0,
    "midia": 2337.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 558.0,
-   "impulsio": 6558.0,
-   "resultado": 6685.0,
-   "acumulado": -14956.199999999997
+   "impulsio": 5058.0,
+   "resultado": 8185.0,
+   "acumulado": 7543.799999999999
   },
   {
    "mes": "fev/28",
@@ -488,11 +488,11 @@
    "margem": 15136.0,
    "midia": 2270.4,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 513.6,
-   "impulsio": 6513.6,
-   "resultado": 6352.0,
-   "acumulado": -8604.199999999997
+   "impulsio": 5013.6,
+   "resultado": 7852.0,
+   "acumulado": 15395.8
   },
   {
    "mes": "mar/28",
@@ -500,11 +500,11 @@
    "margem": 18228.0,
    "midia": 2734.2,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 822.8000000000001,
-   "impulsio": 6822.8,
-   "resultado": 8671.0,
-   "acumulado": 66.80000000000291
+   "impulsio": 5322.8,
+   "resultado": 10171.0,
+   "acumulado": 25566.8
   },
   {
    "mes": "abr/28",
@@ -512,11 +512,11 @@
    "margem": 18432.0,
    "midia": 2764.7999999999997,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 843.2,
-   "impulsio": 6843.2,
-   "resultado": 8824.0,
-   "acumulado": 8890.800000000003
+   "impulsio": 5343.2,
+   "resultado": 10324.0,
+   "acumulado": 35890.8
   },
   {
    "mes": "mai/28",
@@ -524,11 +524,11 @@
    "margem": 19600.0,
    "midia": 2940.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 960.0,
-   "impulsio": 6960.0,
-   "resultado": 9700.0,
-   "acumulado": 18590.800000000003
+   "impulsio": 5460.0,
+   "resultado": 11200.0,
+   "acumulado": 47090.8
   },
   {
    "mes": "jun/28",
@@ -536,11 +536,11 @@
    "margem": 19000.0,
    "midia": 2850.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 900.0,
-   "impulsio": 6900.0,
-   "resultado": 9250.0,
-   "acumulado": 27840.800000000003
+   "impulsio": 5400.0,
+   "resultado": 10750.0,
+   "acumulado": 57840.8
   },
   {
    "mes": "jul/28",
@@ -548,11 +548,11 @@
    "margem": 20000.0,
    "midia": 3000.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1000.0,
-   "impulsio": 7000.0,
-   "resultado": 10000.0,
-   "acumulado": 37840.8
+   "impulsio": 5500.0,
+   "resultado": 11500.0,
+   "acumulado": 69340.8
   },
   {
    "mes": "ago/28",
@@ -560,11 +560,11 @@
    "margem": 20600.0,
    "midia": 3090.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1060.0,
-   "impulsio": 7060.0,
-   "resultado": 10450.0,
-   "acumulado": 48290.8
+   "impulsio": 5560.0,
+   "resultado": 11950.0,
+   "acumulado": 81290.8
   },
   {
    "mes": "set/28",
@@ -572,11 +572,11 @@
    "margem": 20000.0,
    "midia": 3000.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1000.0,
-   "impulsio": 7000.0,
-   "resultado": 10000.0,
-   "acumulado": 58290.8
+   "impulsio": 5500.0,
+   "resultado": 11500.0,
+   "acumulado": 92790.8
   },
   {
    "mes": "out/28",
@@ -584,11 +584,11 @@
    "margem": 21200.0,
    "midia": 3180.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1120.0,
-   "impulsio": 7120.0,
-   "resultado": 10900.0,
-   "acumulado": 69190.8
+   "impulsio": 5620.0,
+   "resultado": 12400.0,
+   "acumulado": 105190.8
   },
   {
    "mes": "nov/28",
@@ -596,11 +596,11 @@
    "margem": 23600.0,
    "midia": 3540.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1360.0,
-   "impulsio": 7360.0,
-   "resultado": 12700.0,
-   "acumulado": 81890.8
+   "impulsio": 5860.0,
+   "resultado": 14200.0,
+   "acumulado": 119390.8
   }
  ],
  "conservador": [
@@ -610,11 +610,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -6000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -4500.0
   },
   {
    "mes": "dez/26",
@@ -622,11 +622,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -12000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -9000.0
   },
   {
    "mes": "jan/27",
@@ -634,11 +634,11 @@
    "margem": 0.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -6000.0,
-   "acumulado": -18000.0
+   "impulsio": 4500.0,
+   "resultado": -4500.0,
+   "acumulado": -13500.0
   },
   {
    "mes": "fev/27",
@@ -646,11 +646,11 @@
    "margem": 387.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5613.0,
-   "acumulado": -23613.0
+   "impulsio": 4500.0,
+   "resultado": -4113.0,
+   "acumulado": -17613.0
   },
   {
    "mes": "mar/27",
@@ -658,11 +658,11 @@
    "margem": 735.0,
    "midia": 0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5265.0,
-   "acumulado": -28878.0
+   "impulsio": 4500.0,
+   "resultado": -3765.0,
+   "acumulado": -21378.0
   },
   {
    "mes": "abr/27",
@@ -670,11 +670,11 @@
    "margem": 1152.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5848.0,
-   "acumulado": -34726.0
+   "impulsio": 4500.0,
+   "resultado": -4348.0,
+   "acumulado": -25726.0
   },
   {
    "mes": "mai/27",
@@ -682,11 +682,11 @@
    "margem": 1800.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -5200.0,
-   "acumulado": -39926.0
+   "impulsio": 4500.0,
+   "resultado": -3700.0,
+   "acumulado": -29426.0
   },
   {
    "mes": "jun/27",
@@ -694,11 +694,11 @@
    "margem": 2422.5,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -4577.5,
-   "acumulado": -44503.5
+   "impulsio": 4500.0,
+   "resultado": -3077.5,
+   "acumulado": -32503.5
   },
   {
    "mes": "jul/27",
@@ -706,11 +706,11 @@
    "margem": 3450.0,
    "midia": 1000,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -3550.0,
-   "acumulado": -48053.5
+   "impulsio": 4500.0,
+   "resultado": -2050.0,
+   "acumulado": -34553.5
   },
   {
    "mes": "ago/27",
@@ -718,11 +718,11 @@
    "margem": 4635.0,
    "midia": 927.0,
    "setup": 0.0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000.0,
-   "resultado": -2292.0,
-   "acumulado": -50345.5
+   "impulsio": 4500.0,
+   "resultado": -792.0,
+   "acumulado": -35345.5
   },
   {
    "mes": "set/27",
@@ -730,11 +730,11 @@
    "margem": 5850.0,
    "midia": 1170.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 0,
-   "impulsio": 6000,
-   "resultado": -1320.0,
-   "acumulado": -51665.5
+   "impulsio": 4500,
+   "resultado": 180.0,
+   "acumulado": -35165.5
   },
   {
    "mes": "out/27",
@@ -742,11 +742,11 @@
    "margem": 7632.0,
    "midia": 1526.3999999999999,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 17.6,
-   "impulsio": 6017.6,
-   "resultado": 88.0,
-   "acumulado": -51577.5
+   "impulsio": 4517.6,
+   "resultado": 1588.0,
+   "acumulado": -33577.5
   },
   {
    "mes": "nov/27",
@@ -754,11 +754,11 @@
    "margem": 10089.0,
    "midia": 2017.8,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 345.2,
-   "impulsio": 6345.2,
-   "resultado": 1726.0,
-   "acumulado": -49851.5
+   "impulsio": 4845.2,
+   "resultado": 3226.0,
+   "acumulado": -30351.5
   },
   {
    "mes": "dez/27",
@@ -766,11 +766,11 @@
    "margem": 11256.0,
    "midia": 2251.2,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 500.8,
-   "impulsio": 6500.8,
-   "resultado": 2503.999999999999,
-   "acumulado": -47347.5
+   "impulsio": 5000.8,
+   "resultado": 4003.999999999999,
+   "acumulado": -26347.5
   },
   {
    "mes": "jan/28",
@@ -778,11 +778,11 @@
    "margem": 10972.5,
    "midia": 2194.5,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 463.0,
-   "impulsio": 6463.0,
-   "resultado": 2315.0,
-   "acumulado": -45032.5
+   "impulsio": 4963.0,
+   "resultado": 3815.0,
+   "acumulado": -22532.5
   },
   {
    "mes": "fev/28",
@@ -790,11 +790,11 @@
    "margem": 11223.0,
    "midia": 2244.6,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 496.40000000000003,
-   "impulsio": 6496.4,
-   "resultado": 2482.0,
-   "acumulado": -42550.5
+   "impulsio": 4996.4,
+   "resultado": 3982.0,
+   "acumulado": -18550.5
   },
   {
    "mes": "mar/28",
@@ -802,11 +802,11 @@
    "margem": 14112.0,
    "midia": 2822.4,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 881.6,
-   "impulsio": 6881.6,
-   "resultado": 4408.0,
-   "acumulado": -38142.5
+   "impulsio": 5381.6,
+   "resultado": 5908.0,
+   "acumulado": -12642.5
   },
   {
    "mes": "abr/28",
@@ -814,11 +814,11 @@
    "margem": 15048.0,
    "midia": 3009.6,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1006.4,
-   "impulsio": 7006.4,
-   "resultado": 5032.0,
-   "acumulado": -33110.5
+   "impulsio": 5506.4,
+   "resultado": 6532.0,
+   "acumulado": -6110.5
   },
   {
    "mes": "mai/28",
@@ -826,11 +826,11 @@
    "margem": 16875.0,
    "midia": 3375.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1250.0,
-   "impulsio": 7250.0,
-   "resultado": 6250.0,
-   "acumulado": -26860.5
+   "impulsio": 5750.0,
+   "resultado": 7750.0,
+   "acumulado": 1639.5
   },
   {
    "mes": "jun/28",
@@ -838,11 +838,11 @@
    "margem": 17028.75,
    "midia": 3405.75,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1270.5,
-   "impulsio": 7270.5,
-   "resultado": 6352.5,
-   "acumulado": -20508.0
+   "impulsio": 5770.5,
+   "resultado": 7852.5,
+   "acumulado": 9492.0
   },
   {
    "mes": "jul/28",
@@ -850,11 +850,11 @@
    "margem": 18900.0,
    "midia": 3780.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1520.0,
-   "impulsio": 7520.0,
-   "resultado": 7600.0,
-   "acumulado": -12908.0
+   "impulsio": 6020.0,
+   "resultado": 9100.0,
+   "acumulado": 18592.0
   },
   {
    "mes": "ago/28",
@@ -862,11 +862,11 @@
    "margem": 20394.0,
    "midia": 4078.7999999999997,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1719.2,
-   "impulsio": 7719.2,
-   "resultado": 8596.0,
-   "acumulado": -4312.0
+   "impulsio": 6219.2,
+   "resultado": 10096.0,
+   "acumulado": 28688.0
   },
   {
    "mes": "set/28",
@@ -874,11 +874,11 @@
    "margem": 20550.0,
    "midia": 4110.0,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1740.0,
-   "impulsio": 7740.0,
-   "resultado": 8700.0,
-   "acumulado": 4388.0
+   "impulsio": 6240.0,
+   "resultado": 10200.0,
+   "acumulado": 38888.0
   },
   {
    "mes": "out/28",
@@ -886,11 +886,11 @@
    "margem": 22419.0,
    "midia": 4483.8,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 1989.2,
-   "impulsio": 7989.2,
-   "resultado": 9946.0,
-   "acumulado": 14334.0
+   "impulsio": 6489.2,
+   "resultado": 11446.0,
+   "acumulado": 50334.0
   },
   {
    "mes": "nov/28",
@@ -898,11 +898,11 @@
    "margem": 25488.0,
    "midia": 5097.599999999999,
    "setup": 0,
-   "mensal": 6000,
+   "mensal": 4500,
    "var": 2398.4,
-   "impulsio": 8398.4,
-   "resultado": 11992.000000000002,
-   "acumulado": 26326.0
+   "impulsio": 6898.4,
+   "resultado": 13492.000000000002,
+   "acumulado": 63826.0
   }
  ]
 }

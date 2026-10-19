@@ -9,9 +9,9 @@ SAZ = {"jan":0.95,"fev":0.86,"mar":0.98,"abr":0.96,"mai":1.00,"jun":0.95,
 MAT = [0.02,0.04,0.08,0.13,0.20,0.29,0.38,0.48,0.58,0.67,0.75,0.82,0.88,0.93,0.96,0.98,1.00]
 
 INICIO_VENDA = 3          # índice de fev/27
-# Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 6.000 desde o mês 1,
+# Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 4.500 desde o mês 1,
 # setup de R$ 16.000 isento com fidelidade de 12 meses, 2% sobre o excedente de R$ 50 mil.
-MENSAL = 6000
+MENSAL = 4500
 SETUP, PARCELAS = 0, 10
 GATILHO, PCT_VAR = 50000, 0.02
 
