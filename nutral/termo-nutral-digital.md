@@ -46,7 +46,24 @@ A Nutral Digital decide a logística de cada item: fulfillment do marketplace, p
 
 Estoque enviado ao fulfillment fica sob a custódia da Nutral Digital. **Modelo a definir:** compra com prazo de pagamento ou remessa em consignação.
 
-O dinheiro das vendas entra na Nutral Digital. A Nutral recebe as unidades vendidas em acerto **semanal ou quinzenal**.
+## Fechamento e repasse
+
+O dinheiro das vendas entra na Nutral Digital. O acerto com a Nutral é **mensal**, sempre pelo mesmo roteiro:
+
+1. **Base do mês:** unidades entregues ao cliente no mês, descontados cancelamentos e devoluções. Fonte: relatórios de vendas e de liberação de dinheiro dos marketplaces, sem estimativa.
+2. **Relatório de fechamento**, enviado até o dia [a definir] do mês seguinte:
+   - unidades por item e preço de transferência;
+   - receita líquida e royalty;
+   - devoluções e reserva;
+   - estoque no fulfillment e em trânsito;
+   - saldo a pagar.
+3. **Nota fiscal:** a Nutral emite com base no relatório. No modelo consignado, cobre só as unidades vendidas no mês.
+4. **Pagamento** até o dia [a definir] do mês seguinte.
+5. **Reserva para devoluções:** uma parcela de [a definir] fica retida por um ciclo e é liberada no fechamento seguinte, descontadas as devoluções efetivas.
+6. **Conferência:** a Nutral tem [a definir] dias para contestar o relatório e acesso de leitura aos relatórios dos marketplaces. Auditoria anual, se pedir.
+7. **Atraso no repasse** gera multa e juros, nas mesmas condições que valerem para atraso de fornecimento.
+
+**Receita líquida**, para efeito do royalty: preço de venda menos cancelamentos, devoluções e tarifas do marketplace. A definição fica escrita no contrato, item por item.
 
 ## Exclusividade com metas
 
