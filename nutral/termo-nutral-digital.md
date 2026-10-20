@@ -51,7 +51,10 @@ O estoque que vai ao fulfillment é remetido pela Nutral em **consignação**: c
 - **Reposição:** a Nutral Digital envia a previsão de reposição por item, e a Nutral atende no prazo combinado.
 - **Validade:** cada lote chega com validade mínima de [a definir] meses. A expedição segue a ordem de vencimento.
 - **Itens parados:** estoque sem giro por mais de [a definir] dias volta para a Nutral ou entra em ação de venda combinada entre as partes.
-- **Perdas e avarias** no fulfillment seguem a regra de ressarcimento do marketplace. O que não for ressarcido é tratado conforme o contrato.
+- **Risco do estoque:** fica com a Nutral, dona da mercadoria. A Nutral Digital só responde por perda que tenha causado, e até o valor que o marketplace ressarcir.
+- **Recebimento:** a contagem de entrada do fulfillment é o registro oficial do que foi remetido. Divergência na entrada é da Nutral.
+- **Defeito, vencimento e recolhimento** de produto são da Nutral.
+- **Volume máximo em consignação:** cobertura de até [a definir] dias de venda por item.
 - **Conciliação mensal** do estoque consignado: remetido, vendido, devolvido e em estoque.
 
 ## Fechamento e repasse
