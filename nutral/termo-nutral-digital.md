@@ -44,7 +44,15 @@ A Nutral Digital não cobra fee mensal da Nutral.
 
 A Nutral Digital decide a logística de cada item: fulfillment do marketplace, parceiro logístico ou expedição pela fábrica. A regra é usar o fulfillment sempre que ele melhorar prazo e competitividade da oferta. O contrato não limita essa escolha.
 
-Estoque enviado ao fulfillment fica sob a custódia da Nutral Digital. **Modelo a definir:** compra com prazo de pagamento ou remessa em consignação.
+## Estoque em consignação
+
+O estoque que vai ao fulfillment é remetido pela Nutral em **consignação**: continua da Nutral até ser vendido, e a Nutral Digital paga só pelas unidades vendidas, no fechamento mensal.
+
+- **Reposição:** a Nutral Digital envia a previsão de reposição por item, e a Nutral atende no prazo combinado.
+- **Validade:** cada lote chega com validade mínima de [a definir] meses. A expedição segue a ordem de vencimento.
+- **Itens parados:** estoque sem giro por mais de [a definir] dias volta para a Nutral ou entra em ação de venda combinada entre as partes.
+- **Perdas e avarias** no fulfillment seguem a regra de ressarcimento do marketplace. O que não for ressarcido é tratado conforme o contrato.
+- **Conciliação mensal** do estoque consignado: remetido, vendido, devolvido e em estoque.
 
 ## Fechamento e repasse
 
@@ -57,7 +65,7 @@ O dinheiro das vendas entra na Nutral Digital. O acerto com a Nutral é **mensal
    - devoluções e reserva;
    - estoque no fulfillment e em trânsito;
    - saldo a pagar.
-3. **Nota fiscal:** a Nutral emite com base no relatório. No modelo consignado, cobre só as unidades vendidas no mês.
+3. **Nota fiscal:** a Nutral emite com base no relatório, cobrindo só as unidades vendidas no mês.
 4. **Pagamento** até o dia [a definir] do mês seguinte.
 5. **Reserva para devoluções:** uma parcela de [a definir] fica retida por um ciclo e é liberada no fechamento seguinte, descontadas as devoluções efetivas.
 6. **Conferência:** a Nutral tem [a definir] dias para contestar o relatório e acesso de leitura aos relatórios dos marketplaces. Auditoria anual, se pedir.
