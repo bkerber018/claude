@@ -8,7 +8,9 @@ Minuta não vinculante. Serve para alinhar o desenho antes de qualquer contrato.
 
 A Nutral faz o produto. A Nutral Digital faz o vending.
 
-Uma empresa nova, operada pela impulsio, recebe da Nutral o direito exclusivo de vender **parte** do portfólio nos marketplaces. A Nutral continua dona da marca, da fábrica e da sua distribuição atual. A Nutral Digital assume a operação de venda online e só ganha quando vende.
+Uma empresa nova, operada pela impulsio sob a responsabilidade de Bruno Kerber, recebe da Nutral o direito exclusivo de operar a marca nos marketplaces. A Nutral continua dona da marca e da fábrica. A Nutral Digital assume a venda online e só ganha quando vende.
+
+O objetivo é construir um canal próprio que reduza a dependência da Nutral de um único cliente.
 
 ## Quem entra com o quê
 
@@ -22,11 +24,21 @@ A Nutral Digital não cobra fee mensal da Nutral.
 
 ## O que é licenciado
 
-1. **Formatos exclusivos do digital:** embalagens maiores, kits, packs que não existem na tabela da rede.
-2. **Lançamentos:** produtos novos chegam primeiro ao digital, incluindo a linha de suplementos para cães e gatos.
-3. **Canais em que a Nutral não opera hoje:** loja oficial na Amazon Brasil e nos demais marketplaces, para os itens acima.
+**Toda a linha Nutral**, nos marketplaces: Mercado Livre, Amazon Brasil, Shopee e os que vierem a ser abertos. Dentro dela, três frentes com prioridade:
 
-**Fica de fora:** os produtos que a rede de revendedores e a Cobasi já vendem, e a Linha Profissional. A Nutral Digital não disputa o que a rede já sustenta. Essa é a regra que permite à Nutral dar exclusividade sem abrir conflito com quem compra dela hoje.
+1. **Os produtos de maior demanda já comprovada**, que hoje vendem pela mão de terceiros.
+2. **Lançamentos**, que chegam primeiro ao digital, incluindo a linha de suplementos para cães e gatos.
+3. **Formatos exclusivos do digital:** embalagens maiores, kits e packs que não existem na tabela da rede.
+
+**O que "exclusivo" quer dizer:** a Nutral Digital é a única operação oficial da marca nos marketplaces. A Nutral não abre loja própria nem licencia outro operador. Revendedores que compram da Nutral continuam livres para revender.
+
+**A confirmar:** Linha Profissional (contratos de distribuição exclusiva já existentes) e linha Mega Food.
+
+## Rede de revenda e Cobasi
+
+- A Nutral Digital opera a loja oficial. A rede continua vendendo, com autonomia sobre os próprios preços.
+- Revendedores que quiserem vender sob o selo oficial seguem critérios de credenciamento: catálogo no padrão, conteúdo oficial, nota fiscal, reputação e prazo. Preço não é critério.
+- A mudança é comunicada à Cobasi e aos principais revendedores **antes** do lançamento, pela Nutral, com o apoio da Nutral Digital.
 
 ## Como a operação começa
 
