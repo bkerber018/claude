@@ -40,10 +40,11 @@ A Nutral Digital não cobra fee mensal da Nutral.
 - Revendedores que quiserem vender sob o selo oficial seguem critérios de credenciamento: catálogo no padrão, conteúdo oficial, nota fiscal, reputação e prazo. Preço não é critério.
 - A mudança é comunicada à Cobasi e aos principais revendedores **antes** do lançamento, pela Nutral, com o apoio da Nutral Digital.
 
-## Como a operação começa
+## Logística
 
-- **Fase 1:** a Nutral expede os pedidos da fábrica, em nome da Nutral Digital, com prazo de despacho definido em contrato. Teste com 20 pedidos antes do lançamento.
-- **Fase 2:** os itens com giro comprovado vão para o fulfillment do marketplace, por meio de um parceiro logístico.
+A Nutral Digital decide a logística de cada item: fulfillment do marketplace, parceiro logístico ou expedição pela fábrica. A regra é usar o fulfillment sempre que ele melhorar prazo e competitividade da oferta. O contrato não limita essa escolha.
+
+Estoque enviado ao fulfillment fica sob a custódia da Nutral Digital. **Modelo a definir:** compra com prazo de pagamento ou remessa em consignação.
 
 O dinheiro das vendas entra na Nutral Digital. A Nutral recebe as unidades vendidas em acerto **semanal ou quinzenal**.
 
