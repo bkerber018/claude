@@ -9,8 +9,8 @@ SAZ = {"jan":0.95,"fev":0.86,"mar":0.98,"abr":0.96,"mai":1.00,"jun":0.95,
 MAT = [0.02,0.04,0.08,0.13,0.20,0.29,0.38,0.48,0.58,0.67,0.75,0.82,0.88,0.93,0.96,0.98,1.00]
 
 INICIO_VENDA = 3          # índice de fev/27
-# Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 4.500 desde o mês 1,
-# setup de R$ 16.000 isento com fidelidade de 12 meses, 2% sobre o excedente de R$ 50 mil.
+# Modelo comercial (versão 3, 05/11/2026): implantação de R$ 4.500 na assinatura,
+# mensalidade de R$ 3.700, 2% sobre o excedente de R$ 50 mil. Margem base de 15%.
 MENSAL = 3700
 SETUP, PARCELAS = 4500, 1
 GATILHO, PCT_VAR = 50000, 0.02
@@ -21,7 +21,7 @@ def mat(k, lento=1.0):
     lo = int(i); f = i - lo
     return MAT[lo] + (MAT[lo+1] - MAT[lo]) * f
 
-def roda(potencial=150000, margem=0.20, lento=1.0):
+def roda(potencial=150000, margem=0.15, lento=1.0):
     linhas, acum = [], 0
     for i, mes in enumerate(MESES):
         k = i - INICIO_VENDA
@@ -49,7 +49,7 @@ def resumo(l):
                 var_total=round(sum(r["var"] for r in l)), gmv_nov28=l[-1]["gmv"])
 
 if __name__ == "__main__":
-    cen = {"base": roda(), "menor": roda(potencial=100000), "conservador": roda(margem=0.15, lento=1.5)}
+    cen = {"base": roda(), "menor": roda(potencial=100000), "conservador": roda(margem=0.12, lento=1.5)}
     for n, l in cen.items(): print(n, resumo(l))
     print()
     for r in cen["base"]:
