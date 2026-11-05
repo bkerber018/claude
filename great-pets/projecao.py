@@ -11,7 +11,7 @@ MAT = [0.02,0.04,0.08,0.13,0.20,0.29,0.38,0.48,0.58,0.67,0.75,0.82,0.88,0.93,0.9
 INICIO_VENDA = 3          # índice de fev/27
 # Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 4.500 desde o mês 1,
 # setup de R$ 16.000 isento com fidelidade de 12 meses, 2% sobre o excedente de R$ 50 mil.
-MENSAL = 4500
+MENSAL = 3700
 SETUP, PARCELAS = 4500, 1
 GATILHO, PCT_VAR = 50000, 0.02
 
