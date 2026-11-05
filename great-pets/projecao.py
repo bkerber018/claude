@@ -12,7 +12,7 @@ INICIO_VENDA = 3          # índice de fev/27
 # Modelo comercial (versão 2, 15/10/2026): mensalidade única de R$ 4.500 desde o mês 1,
 # setup de R$ 16.000 isento com fidelidade de 12 meses, 2% sobre o excedente de R$ 50 mil.
 MENSAL = 4500
-SETUP, PARCELAS = 0, 10
+SETUP, PARCELAS = 4500, 1
 GATILHO, PCT_VAR = 50000, 0.02
 
 def mat(k, lento=1.0):
